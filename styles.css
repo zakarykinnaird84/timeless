@@ -996,17 +996,6 @@ html.compact-top .title-row {
 .page--catalog {
     align-items: stretch;
     min-height: 100%;
-    overflow: hidden;
-}
-
-html:has(.page--catalog) {
-    overflow: hidden;
-    height: 100%;
-}
-
-body:has(.page--catalog) {
-    overflow: hidden;
-    height: 100%;
 }
 
 .site-header {
@@ -1031,11 +1020,11 @@ body:has(.page--catalog) {
     opacity: 0;
 }
 
-.page--catalog:has(.catalog > .object-screen:first-child .hero-media.is-developing) .site-header {
+.page--catalog:has(.catalog > .object-screen--featured .hero-media.is-developing) .site-header {
     animation: nav-fade-in var(--reveal-duration) var(--reveal-ease) var(--nav-fade-delay) both;
 }
 
-.page--catalog:has(.catalog > .object-screen:first-child .hero-media.is-developed) .site-header {
+.page--catalog:has(.catalog > .object-screen--featured .hero-media.is-developed) .site-header {
     opacity: 1;
 }
 
@@ -1162,10 +1151,6 @@ html.nav-intro-seen .page--catalog .site-header {
 
 .catalog {
     width: 100%;
-    scroll-snap-type: y mandatory;
-    overflow-y: auto;
-    height: 100vh;
-    height: 100dvh;
 }
 
 .catalog-error,
@@ -1178,11 +1163,53 @@ html.nav-intro-seen .page--catalog .site-header {
 }
 
 .object-screen {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
     height: var(--top-screen-height, 100svh);
     min-height: var(--top-screen-height, 100svh);
     padding: calc(env(safe-area-inset-top, 0px) + var(--site-header-height)) var(--catalog-padding) calc(var(--screen-bottom-padding) + env(safe-area-inset-bottom, 0px));
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 48px 32px;
+    padding: 0 var(--catalog-padding) calc(var(--screen-bottom-padding) + env(safe-area-inset-bottom, 0px));
+}
+
+.object-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.object-card__media {
+    display: block;
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: var(--placeholder);
+}
+
+.object-card__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.object-card__placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--placeholder);
+}
+
+.object-nav--card {
+    opacity: 1;
+    padding-top: 16px;
+    animation: none;
 }
 
 .object-screen__inner {
@@ -1232,7 +1259,7 @@ html.nav-intro-seen .page--catalog .site-header {
     opacity: 1;
 }
 
-html.nav-intro-seen .object-screen:first-child:has(.hero-media.is-developing) .object-nav {
+html.nav-intro-seen .object-screen--featured:has(.hero-media.is-developing) .object-nav {
     opacity: 1;
     animation: none;
 }
@@ -1521,6 +1548,11 @@ html.nav-intro-seen .page--detail:has(.detail-hero.is-developing) .object-nav--d
         --catalog-padding: 16px;
         --screen-bottom-padding: var(--catalog-padding);
         --detail-title-size: 72px;
+    }
+
+    .catalog-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
     }
 
     .detail-header {

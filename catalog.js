@@ -48,10 +48,15 @@
         return sortFeaturedFirst(items);
     }
 
+    function getListingImage(item) {
+        return item.listingImage || item.image || null;
+    }
+
     function renderHeroImage(item, alt, isFirst) {
-        if (item.image) {
+        const src = getListingImage(item);
+        if (src) {
             const loading = isFirst ? "eager" : "lazy";
-            return `<img class="hero-image" src="${escapeHtml(item.image)}" alt="${escapeHtml(alt)}" loading="${loading}">`;
+            return `<img class="hero-image" src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="${loading}">`;
         }
         return `<div class="hero-placeholder" aria-hidden="true"></div>`;
     }
@@ -72,24 +77,63 @@
         const category = escapeHtml(item.category);
         const itemType = currentView === "creators" ? "creator" : "object";
         const alt = `${item.name}${item.brand ? ` by ${item.brand}` : item.discipline ? ` — ${item.discipline}` : ""}`;
+        const detailHref = `detail.html?slug=${slug}&type=${itemType}`;
 
-        return `
-            <section class="object-screen" id="${category}-${slug}" data-category="${category}" data-slug="${slug}">
+        if (isFirst) {
+            return `
+            <section class="object-screen object-screen--featured" id="${category}-${slug}" data-category="${category}" data-slug="${slug}">
                 <div class="object-screen__inner">
                     <div class="object-hero hero-media"${introAttr}>
-                        ${renderHeroImage(item, alt, isFirst)}
+                        ${renderHeroImage(item, alt, true)}
                         <span class="hero-develop" aria-hidden="true"></span>
                     </div>
                     <nav class="object-nav" aria-label="${name}">
                         <span class="object-nav__brand">${brand}</span>
                         <div class="object-nav__end">
-                            <a class="object-nav__link" href="detail.html?slug=${slug}&type=${itemType}">${name}</a>
+                            <a class="object-nav__link" href="${detailHref}">${name}</a>
                             ${renderExternalLink(item)}
                         </div>
                     </nav>
                 </div>
             </section>
         `;
+        }
+
+        const listingImage = getListingImage(item);
+        const media = listingImage
+            ? `<img class="object-card__image" src="${escapeHtml(listingImage)}" alt="${escapeHtml(alt)}" loading="lazy">`
+            : `<div class="object-card__placeholder" aria-hidden="true"></div>`;
+
+        return `
+            <article class="object-card" id="${category}-${slug}" data-category="${category}" data-slug="${slug}">
+                <a class="object-card__media" href="${detailHref}">
+                    ${media}
+                </a>
+                <nav class="object-nav object-nav--card" aria-label="${name}">
+                    <span class="object-nav__brand">${brand}</span>
+                    <div class="object-nav__end">
+                        <a class="object-nav__link" href="${detailHref}">${name}</a>
+                        ${renderExternalLink(item)}
+                    </div>
+                </nav>
+            </article>
+        `;
+    }
+
+    function renderCatalogSections(items) {
+        if (items.length === 0) {
+            return "";
+        }
+
+        const featured = renderObjectSection(items[0], 0);
+        const rest = items.slice(1);
+
+        if (rest.length === 0) {
+            return featured;
+        }
+
+        const grid = rest.map((item, index) => renderObjectSection(item, index + 1)).join("");
+        return `${featured}<div class="catalog-grid">${grid}</div>`;
     }
 
     function renderEmptyState() {
@@ -102,10 +146,10 @@
         if (items.length === 0) {
             catalogEl.innerHTML = renderEmptyState();
         } else {
-            catalogEl.innerHTML = items.map(renderObjectSection).join("");
+            catalogEl.innerHTML = renderCatalogSections(items);
         }
 
-        catalogEl.scrollTo({ top: 0, behavior: "auto" });
+        window.scrollTo({ top: 0, behavior: "auto" });
         document.dispatchEvent(new CustomEvent("catalog:rendered", { detail: { count: items.length } }));
     }
 

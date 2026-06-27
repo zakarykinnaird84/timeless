@@ -11,6 +11,10 @@
         return;
     }
 
+    function getDetailImage(item) {
+        return item.detailImage || item.listingImage || item.image || null;
+    }
+
     function escapeHtml(value) {
         return String(value)
             .replace(/&/g, "&amp;")
@@ -48,8 +52,8 @@
             const subtitle = type === "creator" ? item.discipline : item.name;
             document.title = `${item.name} — Timeless Objects`;
 
-            const hero = item.image
-                ? `<img class="hero-image detail-hero__image" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}">`
+            const hero = getDetailImage(item)
+                ? `<img class="hero-image detail-hero__image" src="${escapeHtml(getDetailImage(item))}" alt="${escapeHtml(item.name)}">`
                 : `<div class="hero-placeholder detail-hero__placeholder" aria-hidden="true"></div>`;
 
             const externalLink = item.externalUrl

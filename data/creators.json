@@ -4,107 +4,119 @@
     "name": "Dieter Rams",
     "discipline": "Industrial Design",
     "category": "creators",
-    "image": null,
     "externalUrl": "https://en.wikipedia.org/wiki/Dieter_Rams",
-    "description": "Less, but better. The ten principles still read like a manifesto."
+    "description": "Less, but better. The ten principles still read like a manifesto.",
+    "listingImage": null,
+    "detailImage": null
   },
   {
     "slug": "charles-ray-eames",
     "name": "Charles & Ray Eames",
     "discipline": "Architecture & Design",
     "category": "creators",
-    "image": null,
     "externalUrl": "https://www.eamesoffice.com",
-    "description": "Plywood, fiberglass, film — a studio that treated everything as material."
+    "description": "Plywood, fiberglass, film — a studio that treated everything as material.",
+    "listingImage": null,
+    "detailImage": null
   },
   {
     "slug": "verner-panton",
     "name": "Verner Panton",
     "discipline": "Furniture Design",
     "category": "creators",
-    "image": null,
     "externalUrl": "https://en.wikipedia.org/wiki/Verner_Panton",
-    "description": "Colour as structure. The Panton Chair still looks like it arrived from elsewhere."
+    "description": "Colour as structure. The Panton Chair still looks like it arrived from elsewhere.",
+    "listingImage": null,
+    "detailImage": null
   },
   {
     "slug": "virgil-abloh",
     "name": "Virgil Abloh",
     "discipline": "Fashion & Design",
     "category": "creators",
-    "image": null,
     "externalUrl": "https://en.wikipedia.org/wiki/Virgil_Abloh",
-    "description": "The quotation mark as critique. Streetwear elevated to cultural commentary."
+    "description": "The quotation mark as critique. Streetwear elevated to cultural commentary.",
+    "listingImage": null,
+    "detailImage": null
   },
   {
     "slug": "jony-ive",
     "name": "Jony Ive",
     "discipline": "Industrial Design",
     "category": "creators",
-    "image": null,
     "externalUrl": "https://en.wikipedia.org/wiki/Jony_Ive",
-    "description": "Aluminium unibody. The iPod wheel. Objects that felt inevitable."
+    "description": "Aluminium unibody. The iPod wheel. Objects that felt inevitable.",
+    "listingImage": null,
+    "detailImage": null
   },
   {
     "slug": "marc-newson",
     "name": "Marc Newson",
     "discipline": "Industrial Design",
     "category": "creators",
-    "image": null,
     "externalUrl": "https://en.wikipedia.org/wiki/Marc_Newson",
-    "description": "Biomorphic forms in aluminium and neoprene — Lockheed Lounge to Apple Watch."
+    "description": "Biomorphic forms in aluminium and neoprene — Lockheed Lounge to Apple Watch.",
+    "listingImage": null,
+    "detailImage": null
   },
   {
     "slug": "naoto-fukasawa",
     "name": "Naoto Fukasawa",
     "discipline": "Industrial Design",
     "category": "creators",
-    "image": null,
     "externalUrl": "https://en.wikipedia.org/wiki/Naoto_Fukasawa",
-    "description": "Super Normal. Design that disappears into daily life."
+    "description": "Super Normal. Design that disappears into daily life.",
+    "listingImage": null,
+    "detailImage": null
   },
   {
     "slug": "le-corbusier",
     "name": "Le Corbusier",
     "discipline": "Architecture",
     "category": "creators",
-    "image": null,
     "externalUrl": "https://en.wikipedia.org/wiki/Le_Corbusier",
-    "description": "Modulor, concrete, the LC collection — architecture as machine for living."
+    "description": "Modulor, concrete, the LC collection — architecture as machine for living.",
+    "listingImage": null,
+    "detailImage": null
   },
   {
     "slug": "zaha-hadid",
     "name": "Zaha Hadid",
     "discipline": "Architecture",
     "category": "creators",
-    "image": null,
     "externalUrl": "https://www.zaha-hadid.com",
-    "description": "Fluid geometry before the software made it easy."
+    "description": "Fluid geometry before the software made it easy.",
+    "listingImage": null,
+    "detailImage": null
   },
   {
     "slug": "issey-miyake",
     "name": "Issey Miyake",
     "discipline": "Fashion",
     "category": "creators",
-    "image": null,
     "externalUrl": "https://www.isseymiyake.com",
-    "description": "Pleats Please. Fabric engineered like industrial design."
+    "description": "Pleats Please. Fabric engineered like industrial design.",
+    "listingImage": null,
+    "detailImage": null
   },
   {
     "slug": "james-turrell",
     "name": "James Turrell",
     "discipline": "Art",
     "category": "creators",
-    "image": null,
     "externalUrl": "https://jamesturrell.com",
-    "description": "Light as material. Skyspaces that slow time."
+    "description": "Light as material. Skyspaces that slow time.",
+    "listingImage": null,
+    "detailImage": null
   },
   {
     "slug": "donald-judd",
     "name": "Donald Judd",
     "discipline": "Art & Design",
     "category": "creators",
-    "image": null,
     "externalUrl": "https://juddfoundation.org",
-    "description": "Specific objects. Marfa. Permanence in proportion."
+    "description": "Specific objects. Marfa. Permanence in proportion.",
+    "listingImage": null,
+    "detailImage": null
   }
 ]

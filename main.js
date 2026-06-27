@@ -117,7 +117,7 @@
             hero.classList.remove("is-developed", "is-developing", "is-visible");
         });
 
-        const heroes = catalog.querySelectorAll(".hero-media");
+        const heroes = catalog.querySelectorAll(".object-screen--featured .hero-media");
 
         if (prefersReducedMotion) {
             heroes.forEach(finishHeroDevelop);
@@ -143,7 +143,7 @@
             },
             {
                 threshold: 0.35,
-                root: catalog,
+                root: null,
                 rootMargin: "0px",
             }
         );
