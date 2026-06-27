@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeless Objects — Design-led things that outlast trends</title>
+    <meta name="description" content="A curated catalog of timeless objects — audio, furniture, tech, fashion, cars, and the creators behind them. Some you can buy. Some you can only admire.">
+    <meta name="author" content="Timeless Objects">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://studiostudio.store/">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Timeless Objects">
+    <meta property="og:title" content="Timeless Objects">
+    <meta property="og:description" content="A curated catalog of design-led things that outlast trends.">
+    <meta property="og:url" content="https://studiostudio.store/">
+    <meta property="og:image" content="https://studiostudio.store/images/objects/km5-cp2solid.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Timeless Objects">
+    <meta name="twitter:description" content="A curated catalog of design-led things that outlast trends.">
+    <meta name="twitter:image" content="https://studiostudio.store/images/objects/km5-cp2solid.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/favicon/favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="images/favicon/site.webmanifest">
+    <script>
+        (function () {
+            var height = Math.round(window.innerHeight);
+            document.documentElement.style.setProperty("--top-screen-height", height + "px");
+            if (height <= 700) {
+                document.documentElement.classList.add("compact-top");
+            }
+            try {
+                if (sessionStorage.getItem("timeless-nav-intro-seen")) {
+                    document.documentElement.classList.add("nav-intro-seen");
+                }
+            } catch (error) {}
+        })();
+    </script>
+</head>
+<body>
+    <div class="page page--catalog" data-node-id="1:977">
+        <header class="site-header">
+            <nav class="filter-bar" aria-label="Browse">
+                <div class="filter-bar__group filter-bar__group--start"></div>
+                <div class="filter-bar__group filter-bar__group--end">
+                    <button type="button" class="filter-bar__link filter-bar__link--active" data-collection="new">New</button>
+                    <button type="button" class="filter-bar__link" data-collection="editor-picks">Editor picks</button>
+                </div>
+            </nav>
+        </header>
+
+        <main class="catalog" id="catalog" aria-live="polite"></main>
+    </div>
+    <script src="nav.js"></script>
+    <script src="catalog.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

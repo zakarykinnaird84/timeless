@@ -1,0 +1,465 @@
+[
+  {
+    "slug": "cp2-instant-disk-audio",
+    "name": "Instant Disk Audio CP2",
+    "brand": "KM5",
+    "category": "audio",
+    "image": "images/objects/km5-cp2solid.png",
+    "externalUrl": "https://www.makeyourownmixtape.com/t/8Pa6wcBn6j",
+    "availability": "buyable",
+    "featured": true,
+    "description": "A vertical CD player and speaker in one — minimal, physical, and deliberately slow."
+  },
+  {
+    "slug": "cp1-instant-disk-audio",
+    "name": "CP1 Instant Disk Audio",
+    "brand": "KM5",
+    "category": "audio",
+    "image": "images/objects/book-test.png",
+    "externalUrl": "https://www.makeyourownmixtape.com/t/8Pa6wcBn6j",
+    "availability": "buyable",
+    "description": "Transparent PNG test — cutout product on placeholder background."
+  },
+  {
+    "slug": "nothing-headphones",
+    "name": "Headphones (1)",
+    "brand": "Nothing",
+    "category": "audio",
+    "image": null,
+    "externalUrl": "https://nothing.tech",
+    "availability": "buyable"
+  },
+  {
+    "slug": "dyson-ontrac",
+    "name": "OnTrac",
+    "brand": "Dyson",
+    "category": "audio",
+    "image": null,
+    "externalUrl": "https://www.dyson.com",
+    "availability": "buyable"
+  },
+  {
+    "slug": "airpods",
+    "name": "AirPods",
+    "brand": "Apple",
+    "category": "audio",
+    "image": null,
+    "externalUrl": "https://www.apple.com/airpods/",
+    "availability": "buyable"
+  },
+  {
+    "slug": "ipod",
+    "name": "iPod",
+    "brand": "Apple",
+    "category": "audio",
+    "image": null,
+    "externalUrl": "https://en.wikipedia.org/wiki/IPod",
+    "availability": "archival"
+  },
+  {
+    "slug": "od-11",
+    "name": "OD-11",
+    "brand": "Teenage Engineering",
+    "category": "audio",
+    "image": null,
+    "externalUrl": "https://teenage.engineering/products/od-11",
+    "availability": "buyable"
+  },
+  {
+    "slug": "ghost-speakers",
+    "name": "Ghost Speakers",
+    "brand": "Devialet",
+    "category": "audio",
+    "image": null,
+    "externalUrl": "https://www.devialet.com",
+    "availability": "reference"
+  },
+  {
+    "slug": "teenage-engineering",
+    "name": "OP-1 Field",
+    "brand": "Teenage Engineering",
+    "category": "audio",
+    "image": null,
+    "externalUrl": "https://teenage.engineering/products/op-1",
+    "availability": "buyable"
+  },
+  {
+    "slug": "walkman",
+    "name": "Walkman",
+    "brand": "Sony",
+    "category": "audio",
+    "image": null,
+    "externalUrl": "https://en.wikipedia.org/wiki/Walkman",
+    "availability": "archival"
+  },
+  {
+    "slug": "discman",
+    "name": "Discman",
+    "brand": "Sony",
+    "category": "audio",
+    "image": null,
+    "externalUrl": "https://en.wikipedia.org/wiki/Discman",
+    "availability": "archival"
+  },
+  {
+    "slug": "minidisc",
+    "name": "MiniDisc",
+    "brand": "Sony",
+    "category": "audio",
+    "image": null,
+    "externalUrl": "https://en.wikipedia.org/wiki/MiniDisc",
+    "availability": "archival"
+  },
+  {
+    "slug": "rams-audio",
+    "name": "RT 20 Table Radio",
+    "brand": "Dieter Rams",
+    "category": "audio",
+    "image": null,
+    "externalUrl": "https://en.wikipedia.org/wiki/Dieter_Rams",
+    "availability": "archival"
+  },
+  {
+    "slug": "bang-olufsen",
+    "name": "Beosound 1",
+    "brand": "Bang & Olufsen",
+    "category": "audio",
+    "image": null,
+    "externalUrl": "https://www.bang-olufsen.com",
+    "availability": "buyable"
+  },
+  {
+    "slug": "muji-cd-player",
+    "name": "Wall-Mounted CD Player",
+    "brand": "Muji",
+    "category": "audio",
+    "image": null,
+    "externalUrl": "https://www.muji.com",
+    "availability": "reference"
+  },
+  {
+    "slug": "game-boy",
+    "name": "Game Boy",
+    "brand": "Nintendo",
+    "category": "audio",
+    "image": null,
+    "externalUrl": "https://en.wikipedia.org/wiki/Game_Boy",
+    "availability": "archival",
+    "description": "The grey brick that made chiptune a cultural form."
+  },
+  {
+    "slug": "we-are-rewind",
+    "name": "WE-001 Cassette Player",
+    "brand": "We Are Rewind",
+    "category": "audio",
+    "image": null,
+    "externalUrl": "https://we-are-rewind.com",
+    "availability": "buyable"
+  },
+  {
+    "slug": "kiss-headphones",
+    "name": "Kiss Headphones",
+    "brand": "Kiss",
+    "category": "audio",
+    "image": null,
+    "externalUrl": null,
+    "availability": "reference"
+  },
+  {
+    "slug": "hsm-side-table",
+    "name": "Side Table",
+    "brand": "HSM",
+    "category": "studio",
+    "image": null,
+    "externalUrl": null,
+    "availability": "reference"
+  },
+  {
+    "slug": "metal-shelving",
+    "name": "Metal Shelving",
+    "brand": "HSM",
+    "category": "studio",
+    "image": null,
+    "externalUrl": null,
+    "availability": "reference"
+  },
+  {
+    "slug": "note-taker",
+    "name": "Note Taker",
+    "brand": "reMarkable",
+    "category": "studio",
+    "image": null,
+    "externalUrl": "https://remarkable.com",
+    "availability": "buyable"
+  },
+  {
+    "slug": "groove-made",
+    "name": "Leather Desk Pad",
+    "brand": "Groovemade",
+    "category": "studio",
+    "image": null,
+    "externalUrl": "https://www.grovemade.com",
+    "availability": "buyable"
+  },
+  {
+    "slug": "shure-mic",
+    "name": "SM7B",
+    "brand": "Shure",
+    "category": "studio",
+    "image": null,
+    "externalUrl": "https://www.shure.com",
+    "availability": "buyable"
+  },
+  {
+    "slug": "beovision-hanging",
+    "name": "Beovision Theatre",
+    "brand": "Bang & Olufsen",
+    "category": "tech",
+    "image": null,
+    "externalUrl": "https://www.bang-olufsen.com",
+    "availability": "buyable"
+  },
+  {
+    "slug": "beolab-frame-tv",
+    "name": "Beovision Harmony",
+    "brand": "Bang & Olufsen",
+    "category": "tech",
+    "image": null,
+    "externalUrl": "https://www.bang-olufsen.com",
+    "availability": "buyable"
+  },
+  {
+    "slug": "serif-tv",
+    "name": "The Serif",
+    "brand": "Samsung",
+    "category": "tech",
+    "image": null,
+    "externalUrl": "https://www.samsung.com",
+    "availability": "buyable"
+  },
+  {
+    "slug": "frame-tv",
+    "name": "The Frame",
+    "brand": "Samsung",
+    "category": "tech",
+    "image": null,
+    "externalUrl": "https://www.samsung.com",
+    "availability": "buyable"
+  },
+  {
+    "slug": "pvm",
+    "name": "PVM-20M4U",
+    "brand": "Sony",
+    "category": "tech",
+    "image": null,
+    "externalUrl": "https://en.wikipedia.org/wiki/Sony_PVM",
+    "availability": "archival"
+  },
+  {
+    "slug": "panton-chair",
+    "name": "Panton Chair",
+    "brand": "Verner Panton",
+    "category": "furniture",
+    "image": null,
+    "externalUrl": "https://en.wikipedia.org/wiki/Panton_Chair",
+    "availability": "reference"
+  },
+  {
+    "slug": "eames-lounge",
+    "name": "Eames Lounge Chair",
+    "brand": "Charles & Ray Eames",
+    "category": "furniture",
+    "image": null,
+    "externalUrl": "https://www.hermanmiller.com/products/seating/lounge-seating/eames-lounge-chair-and-ottoman/",
+    "availability": "buyable"
+  },
+  {
+    "slug": "grillogic",
+    "name": "Grillogic",
+    "brand": "Grillogic",
+    "category": "furniture",
+    "image": null,
+    "externalUrl": null,
+    "availability": "reference"
+  },
+  {
+    "slug": "xbox-original",
+    "name": "Original Xbox",
+    "brand": "Microsoft",
+    "category": "gaming",
+    "image": null,
+    "externalUrl": "https://en.wikipedia.org/wiki/Xbox_(console)",
+    "availability": "archival"
+  },
+  {
+    "slug": "ps1",
+    "name": "PlayStation",
+    "brand": "Sony",
+    "category": "gaming",
+    "image": null,
+    "externalUrl": "https://en.wikipedia.org/wiki/PlayStation_(console)",
+    "availability": "archival"
+  },
+  {
+    "slug": "gamecube",
+    "name": "GameCube",
+    "brand": "Nintendo",
+    "category": "gaming",
+    "image": null,
+    "externalUrl": "https://en.wikipedia.org/wiki/GameCube",
+    "availability": "archival"
+  },
+  {
+    "slug": "gameboy-dmg",
+    "name": "Game Boy DMG",
+    "brand": "Nintendo",
+    "category": "gaming",
+    "image": null,
+    "externalUrl": "https://en.wikipedia.org/wiki/Game_Boy",
+    "availability": "archival"
+  },
+  {
+    "slug": "gameboy-sp",
+    "name": "Game Boy Advance SP",
+    "brand": "Nintendo",
+    "category": "gaming",
+    "image": null,
+    "externalUrl": "https://en.wikipedia.org/wiki/Game_Boy_Advance_SP",
+    "availability": "archival"
+  },
+  {
+    "slug": "yeezy-500",
+    "name": "Yeezy 500",
+    "brand": "Ye",
+    "category": "fashion",
+    "image": null,
+    "externalUrl": null,
+    "availability": "reference"
+  },
+  {
+    "slug": "bernie-sanders-mittens",
+    "name": "Inauguration Mittens",
+    "brand": "Jen Ellis",
+    "category": "fashion",
+    "image": null,
+    "externalUrl": "https://en.wikipedia.org/wiki/Bernie_Sanders_mittens",
+    "availability": "reference"
+  },
+  {
+    "slug": "chuck-taylor",
+    "name": "Chuck Taylor All Star",
+    "brand": "Converse",
+    "category": "fashion",
+    "image": null,
+    "externalUrl": "https://www.converse.com",
+    "availability": "buyable"
+  },
+  {
+    "slug": "adidas-stan-smith",
+    "name": "Stan Smith",
+    "brand": "Adidas",
+    "category": "fashion",
+    "image": null,
+    "externalUrl": "https://www.adidas.com",
+    "availability": "buyable"
+  },
+  {
+    "slug": "nike-air-max",
+    "name": "Air Max 1",
+    "brand": "Nike",
+    "category": "fashion",
+    "image": null,
+    "externalUrl": "https://www.nike.com",
+    "availability": "buyable"
+  },
+  {
+    "slug": "apple-watch",
+    "name": "Apple Watch",
+    "brand": "Apple",
+    "category": "fashion",
+    "image": null,
+    "externalUrl": "https://www.apple.com/watch/",
+    "availability": "buyable"
+  },
+  {
+    "slug": "muji-garments",
+    "name": "Organic Cotton Crew Neck",
+    "brand": "Muji",
+    "category": "fashion",
+    "image": null,
+    "externalUrl": "https://www.muji.com",
+    "availability": "buyable"
+  },
+  {
+    "slug": "delorean",
+    "name": "DMC-12",
+    "brand": "DeLorean",
+    "category": "cars",
+    "image": null,
+    "externalUrl": "https://en.wikipedia.org/wiki/DeLorean_DMC-12",
+    "availability": "archival"
+  },
+  {
+    "slug": "mini-cooper",
+    "name": "Mini Cooper",
+    "brand": "Mini",
+    "category": "cars",
+    "image": null,
+    "externalUrl": "https://www.mini.com",
+    "availability": "buyable"
+  },
+  {
+    "slug": "porsche-911",
+    "name": "911",
+    "brand": "Porsche",
+    "category": "cars",
+    "image": null,
+    "externalUrl": "https://www.porsche.com",
+    "availability": "buyable"
+  },
+  {
+    "slug": "lamborghini-countach",
+    "name": "Countach",
+    "brand": "Lamborghini",
+    "category": "cars",
+    "image": null,
+    "externalUrl": "https://www.lamborghini.com",
+    "availability": "reference"
+  },
+  {
+    "slug": "mercedes-g-wagon",
+    "name": "G-Class",
+    "brand": "Mercedes-Benz",
+    "category": "cars",
+    "image": null,
+    "externalUrl": "https://www.mercedes-benz.com",
+    "availability": "buyable"
+  },
+  {
+    "slug": "cybertruck",
+    "name": "Cybertruck",
+    "brand": "Tesla",
+    "category": "cars",
+    "image": null,
+    "externalUrl": "https://www.tesla.com/cybertruck",
+    "availability": "buyable"
+  },
+  {
+    "slug": "vw-beetle",
+    "name": "Beetle",
+    "brand": "Volkswagen",
+    "category": "cars",
+    "image": null,
+    "externalUrl": "https://en.wikipedia.org/wiki/Volkswagen_Beetle",
+    "availability": "archival"
+  },
+  {
+    "slug": "vw-combi",
+    "name": "Type 2 Kombi",
+    "brand": "Volkswagen",
+    "category": "cars",
+    "image": null,
+    "externalUrl": "https://en.wikipedia.org/wiki/Volkswagen_Type_2",
+    "availability": "archival"
+  }
+]
