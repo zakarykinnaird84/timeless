@@ -1271,7 +1271,7 @@ html.nav-intro-seen .object-screen:first-child:has(.hero-media.is-developing) .o
 .object-nav__end {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
     min-width: 0;
 }
 
@@ -1413,7 +1413,7 @@ html.nav-intro-seen .page--detail:has(.detail-hero.is-developing) .object-nav--d
 .detail-header__subtitle {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
     padding-top: 0.35em;
 }
 
