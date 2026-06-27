@@ -53,7 +53,7 @@
                 : `<div class="hero-placeholder detail-hero__placeholder" aria-hidden="true"></div>`;
 
             const externalLink = item.externalUrl
-                ? `<a class="object-nav__external" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open link"><img src="assets/external-link.svg" alt="" width="8" height="8"></a>`
+                ? `<a class="object-nav__external" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open link"><img src="assets/external-link.svg" alt="" width="16" height="16"></a>`
                 : "";
 
             const description = item.description

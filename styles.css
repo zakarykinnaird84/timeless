@@ -34,7 +34,9 @@
     --catalog-padding: 32px;
     --screen-bottom-padding: 48px;
     --detail-title-size: 128px;
-    --site-header-height: 63px;
+    --site-header-height: 51px;
+    --inter-ui-size: 12px;
+    --external-link-size: 16px;
 }
 
 @font-face {
@@ -143,11 +145,10 @@ html.nav-intro-seen .top-screen:has(.hero-media.is-developing) .title-row .app-s
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     align-items: center;
-    font-family: "Helvetica Neue", Helvetica, Inter, sans-serif;
-    font-size: 12px;
-    font-weight: 500;
+    font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: var(--inter-ui-size);
+    font-weight: 400;
     line-height: 1;
-    text-transform: uppercase;
     white-space: nowrap;
 }
 
@@ -527,12 +528,6 @@ html.compact-top .title-row {
     padding-bottom: 16px;
 }
 
-@media (max-width: 480px) {
-    .nav {
-        font-size: 11px;
-    }
-}
-
 /* Story page — frame 585:6584 */
 .story {
     width: 100%;
@@ -835,11 +830,10 @@ html.compact-top .title-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     align-items: center;
-    font-family: "Helvetica Neue", Helvetica, Inter, sans-serif;
-    font-size: 12px;
-    font-weight: 500;
+    font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: var(--inter-ui-size);
+    font-weight: 400;
     line-height: 1;
-    text-transform: uppercase;
     white-space: nowrap;
 }
 
@@ -930,12 +924,10 @@ html.compact-top .title-row {
 
 .legal-meta {
     margin-top: 16px;
-    font-family: "Helvetica Neue", Helvetica, Inter, sans-serif;
-    font-size: 12px;
-    font-weight: 500;
+    font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: var(--inter-ui-size);
+    font-weight: 400;
     line-height: 1.4;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
     color: var(--text-dimmed);
 }
 
@@ -948,12 +940,10 @@ html.compact-top .title-row {
 }
 
 .legal-heading {
-    font-family: "Helvetica Neue", Helvetica, Inter, sans-serif;
-    font-size: 12px;
-    font-weight: 500;
+    font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: var(--inter-ui-size);
+    font-weight: 400;
     line-height: 1.4;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
     color: var(--night);
     margin-bottom: 12px;
 }
@@ -1080,12 +1070,10 @@ html.nav-intro-seen .page--catalog .site-header {
     background: none;
     padding: 0;
     cursor: pointer;
-    font-family: "Helvetica Neue", Helvetica, Inter, sans-serif;
-    font-size: 12px;
-    font-weight: 500;
+    font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: var(--inter-ui-size);
+    font-weight: 400;
     line-height: 1;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
     color: var(--text-dimmed);
     transition: color var(--link-hover-duration) var(--link-hover-ease);
 }
@@ -1101,11 +1089,10 @@ html.nav-intro-seen .page--catalog .site-header {
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     width: 100%;
-    font-family: "Helvetica Neue", Helvetica, Inter, sans-serif;
-    font-size: 12px;
-    font-weight: 500;
+    font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: var(--inter-ui-size);
+    font-weight: 400;
     line-height: 1;
-    text-transform: uppercase;
 }
 
 .site-nav__link {
@@ -1116,7 +1103,6 @@ html.nav-intro-seen .page--catalog .site-header {
     cursor: pointer;
     color: var(--text-dimmed);
     font: inherit;
-    text-transform: inherit;
     transition: color var(--link-hover-duration) var(--link-hover-ease);
 }
 
@@ -1160,9 +1146,9 @@ html.nav-intro-seen .page--catalog .site-header {
     background: none;
     padding: 0;
     cursor: pointer;
-    font-family: "Helvetica Neue", Helvetica, Inter, sans-serif;
-    font-size: 12px;
-    font-weight: 500;
+    font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: var(--inter-ui-size);
+    font-weight: 400;
     line-height: 1;
     color: var(--text-dimmed);
     transition: color var(--link-hover-duration) var(--link-hover-ease);
@@ -1185,8 +1171,9 @@ html.nav-intro-seen .page--catalog .site-header {
 .catalog-error,
 .catalog-empty {
     padding: calc(env(safe-area-inset-top, 0px) + 80px) var(--catalog-padding) 40px;
-    font-family: "Helvetica Neue", Helvetica, Inter, sans-serif;
-    font-size: 14px;
+    font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: var(--inter-ui-size);
+    font-weight: 400;
     color: var(--text-muted);
 }
 
@@ -1252,7 +1239,7 @@ html.nav-intro-seen .object-screen:first-child:has(.hero-media.is-developing) .o
 
 .object-nav__brand {
     font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: var(--inter-ui-size);
     font-weight: 400;
     line-height: 1;
     color: var(--text-muted);
@@ -1277,7 +1264,7 @@ html.nav-intro-seen .object-screen:first-child:has(.hero-media.is-developing) .o
 
 .object-nav__link {
     font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: var(--inter-ui-size);
     font-weight: 400;
     line-height: 1;
     color: var(--text-primary);
@@ -1301,8 +1288,8 @@ html.nav-intro-seen .object-screen:first-child:has(.hero-media.is-developing) .o
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 16px;
-    height: 16px;
+    width: var(--external-link-size);
+    height: var(--external-link-size);
     opacity: 1;
     transition: opacity 0.2s ease;
 }
@@ -1313,8 +1300,9 @@ html.nav-intro-seen .object-screen:first-child:has(.hero-media.is-developing) .o
 }
 
 .object-nav__external img {
-    width: 8px;
-    height: 8px;
+    display: block;
+    width: var(--external-link-size);
+    height: var(--external-link-size);
 }
 
 .hero-media.is-visible:not(.is-developed):not(.is-developing) .hero-image,
@@ -1354,8 +1342,9 @@ html.nav-intro-seen .page--detail .site-header {
 
 .detail-loading,
 .detail-not-found {
-    font-family: "Helvetica Neue", Helvetica, Inter, sans-serif;
-    font-size: 14px;
+    font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: var(--inter-ui-size);
+    font-weight: 400;
     color: var(--text-muted);
 }
 
@@ -1439,12 +1428,10 @@ html.nav-intro-seen .page--detail:has(.detail-hero.is-developing) .object-nav--d
 }
 
 .detail-meta {
-    font-family: "Helvetica Neue", Helvetica, Inter, sans-serif;
-    font-size: 12px;
-    font-weight: 500;
+    font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: var(--inter-ui-size);
+    font-weight: 400;
     line-height: 1.4;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
     color: var(--text-dimmed);
 }
 

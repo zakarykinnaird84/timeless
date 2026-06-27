@@ -60,7 +60,7 @@
         if (!item.externalUrl) {
             return "";
         }
-        return `<a class="object-nav__external" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(item.name)} link"><img src="assets/external-link.svg" alt="" width="8" height="8"></a>`;
+        return `<a class="object-nav__external" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(item.name)} link"><img src="assets/external-link.svg" alt="" width="16" height="16"></a>`;
     }
 
     function renderObjectSection(item, index) {
