@@ -37,6 +37,7 @@
     --catalog-padding: 32px;
     --screen-bottom-padding: 48px;
     --detail-title-size: 128px;
+    --detail-copy-size: clamp(16px, 2vw, 20px);
     --site-header-height: 51px;
     --footer-closing-height: 80px;
     --inter-ui-size: 12px;
@@ -1863,7 +1864,7 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 .detail-about__body {
     grid-column: 1;
     min-width: 0;
-    max-width: 640px;
+    max-width: min(640px, 80ch);
 }
 
 .detail-about__heading {
@@ -1874,6 +1875,7 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     line-height: 1;
     color: var(--text-dimmed);
     margin-bottom: 0;
+    text-wrap: balance;
 }
 
 .detail-brand--aside {
@@ -1944,10 +1946,13 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 
 .detail-copy {
     font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: var(--detail-copy-size);
     font-weight: 400;
     line-height: 1.55;
     color: var(--text-muted);
+    text-wrap: pretty;
+    hyphens: none;
+    overflow-wrap: break-word;
 }
 
 .detail-copy + .detail-copy {
@@ -2043,6 +2048,7 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
         --catalog-padding: 16px;
         --screen-bottom-padding: 40px;
         --detail-title-size: 72px;
+        --detail-copy-size: 14px;
         --site-header-height: 50px;
     }
 
