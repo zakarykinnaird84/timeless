@@ -1330,8 +1330,13 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     display: inline-flex;
     align-items: center;
     gap: 4px;
+    flex-shrink: 0;
+    font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: var(--inter-ui-size);
+    font-weight: 400;
+    line-height: 1;
     text-decoration: none;
-    color: var(--text-muted);
+    color: var(--text-dimmed);
     transition: color var(--link-hover-duration) var(--link-hover-ease);
 }
 
@@ -1340,7 +1345,9 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     color: var(--night);
 }
 
-.object-nav__brand-name {
+.object-nav__brand-name,
+.object-nav__external,
+.object-nav__external-icon {
     color: inherit;
 }
 
@@ -1384,7 +1391,6 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     flex-shrink: 0;
     width: var(--external-link-size);
     height: var(--external-link-size);
-    color: inherit;
 }
 
 .object-nav__external-icon {
@@ -1572,6 +1578,10 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     font-weight: 400;
     line-height: 1.55;
     color: var(--text-primary);
+}
+
+.detail-copy + .detail-copy {
+    margin-top: 1.25em;
 }
 
 .detail-copy--empty {

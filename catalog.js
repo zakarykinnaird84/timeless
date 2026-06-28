@@ -77,7 +77,7 @@
             return `<span class="object-nav__brand">${brand}</span>`;
         }
 
-        return `<a class="object-nav__brand object-nav__brand--link" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${brand} link"><span class="object-nav__brand-name">${brand}</span><span class="object-nav__external" aria-hidden="true">${CATALOG_EXTERNAL_LINK_ICON}</span></a>`;
+        return `<a class="object-nav__brand--link" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${brand} link"><span class="object-nav__brand-name">${brand}</span><span class="object-nav__external" aria-hidden="true">${CATALOG_EXTERNAL_LINK_ICON}</span></a>`;
     }
 
     function renderObjectSection(item, index) {

@@ -58,7 +58,11 @@
                 : "";
 
             const description = item.description
-                ? `<p class="detail-copy">${escapeHtml(item.description)}</p>`
+                ? item.description
+                      .split(/\n\s*\n/)
+                      .filter(Boolean)
+                      .map((paragraph) => `<p class="detail-copy">${escapeHtml(paragraph.trim())}</p>`)
+                      .join("")
                 : `<p class="detail-copy detail-copy--empty">No description yet.</p>`;
 
             root.innerHTML = `
