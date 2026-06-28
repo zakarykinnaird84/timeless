@@ -162,7 +162,7 @@
             root.innerHTML = `
                 <div class="detail-frame">
                     <header class="detail-header">
-                        <h1 class="detail-title">${escapeHtml(name)}</h1>
+                        <h1 class="detail-title"><a class="detail-title__link" href="index.html">${escapeHtml(name)}</a></h1>
                         <button
                             type="button"
                             class="detail-header__dot"
