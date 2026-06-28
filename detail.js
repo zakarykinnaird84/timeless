@@ -1,4 +1,6 @@
 (function () {
+    const DETAIL_EXTERNAL_LINK_ICON = `<svg class="detail-brand__external-icon" width="0.7em" height="0.7em" viewBox="46.828 46.823 82.118 82.118" fill="none" aria-hidden="true"><path d="M48.828 48.823h78.118v78.118M48.828 126.941l78.118-78.118" stroke="currentColor" stroke-width="4"/></svg>`;
+
     const params = new URLSearchParams(window.location.search);
     const slug = params.get("slug");
     const type = params.get("type") === "creator" ? "creator" : "object";
@@ -46,7 +48,7 @@
                 : `<div class="hero-placeholder detail-hero__placeholder" aria-hidden="true"></div>`;
 
             const brandExternalLink = item.externalUrl
-                ? `<span class="detail-brand__external" aria-hidden="true"><img src="assets/big-external-link.svg" alt=""></span>`
+                ? `<span class="detail-brand__external" aria-hidden="true">${DETAIL_EXTERNAL_LINK_ICON}</span>`
                 : "";
 
             const brandMarkup = brand

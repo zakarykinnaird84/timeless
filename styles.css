@@ -1531,30 +1531,30 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 }
 
 .detail-brand__link {
-    display: inline;
+    display: inline-flex;
+    align-items: center;
     font-size: clamp(48px, 8vw, var(--detail-title-size));
     line-height: 1;
-    color: inherit;
+    color: var(--text-dimmed);
     text-decoration: none;
+    transition: color var(--link-hover-duration) var(--link-hover-ease);
+}
+
+.detail-brand__link:hover,
+.detail-brand__link:focus-visible {
+    color: var(--night);
 }
 
 .detail-brand__external {
     display: inline;
     margin-left: 0.18em;
-    opacity: 0.55;
-    transition: opacity var(--link-hover-duration) var(--link-hover-ease);
+    color: inherit;
 }
 
-.detail-brand__external img {
-    display: inline-block;
+.detail-brand__external-icon {
+    display: block;
     width: 0.70em;
     height: 0.70em;
-    vertical-align: baseline;
-}
-
-.detail-brand__link:hover .detail-brand__external,
-.detail-brand__link:focus-visible .detail-brand__external {
-    opacity: 1;
 }
 
 .detail-brand__name {
@@ -1563,13 +1563,7 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     font-size: inherit;
     font-weight: 400;
     line-height: inherit;
-    color: var(--text-dimmed);
-    transition: color var(--link-hover-duration) var(--link-hover-ease);
-}
-
-.detail-brand__link:hover .detail-brand__name,
-.detail-brand__link:focus-visible .detail-brand__name {
-    color: var(--night);
+    color: inherit;
 }
 
 .detail-copy {
