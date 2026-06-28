@@ -364,6 +364,17 @@
     "detailImage": null
   },
   {
+    "slug": "blockitecture-frank-lloyd-wright",
+    "name": "Blockitecture — Frank Lloyd Wright",
+    "brand": "Areaware",
+    "category": "collectable",
+    "externalUrl": "https://areaware.com/products/blockitecture-frank-lloyd-wright",
+    "availability": "buyable",
+    "description": "Wooden architectural blocks inspired by Frank Lloyd Wright — stack, arrange, and build miniature modernist forms.",
+    "listingImage": "images/objects/blockitecture_frank_lloyd_wright.webp",
+    "detailImage": "images/objects/blockitecture_frank_lloyd_wright_detail.webp"
+  },
+  {
     "slug": "yeezy-500",
     "name": "Yeezy 500",
     "brand": "Ye",
