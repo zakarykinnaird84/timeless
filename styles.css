@@ -1424,9 +1424,9 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 
 .detail-hero__media {
     position: relative;
-    display: inline-block;
+    display: block;
+    width: 100%;
     max-width: 100%;
-    vertical-align: top;
 }
 
 .page--detail .detail-hero__media.hero-media {
@@ -1439,7 +1439,7 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 .page--detail .detail-hero__media .detail-hero__image {
     position: static;
     display: block;
-    width: auto;
+    width: 100%;
     height: auto;
     max-width: 100%;
     object-fit: unset;

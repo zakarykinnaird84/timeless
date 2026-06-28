@@ -23,41 +23,6 @@
             .replace(/"/g, "&quot;");
     }
 
-    function fitDetailHeroImage(img) {
-        const hero = img.closest(".detail-hero");
-        if (!hero) {
-            return;
-        }
-
-        const fit = () => {
-            const available = hero.clientWidth;
-            if (!img.naturalWidth || !available) {
-                return;
-            }
-
-            if (img.naturalWidth < available) {
-                img.style.width = "100%";
-                img.style.height = "auto";
-                img.style.maxWidth = "none";
-            } else {
-                img.style.width = "auto";
-                img.style.height = "auto";
-                img.style.maxWidth = "100%";
-            }
-        };
-
-        if (img.complete) {
-            fit();
-        } else {
-            img.addEventListener("load", fit, { once: true });
-        }
-
-        if (!img.dataset.fitBound) {
-            img.dataset.fitBound = "true";
-            window.addEventListener("resize", fit);
-        }
-    }
-
     Promise.all([
         fetch("data/objects.json").then((response) => response.json()),
         fetch("data/creators.json").then((response) => response.json()),
@@ -114,11 +79,6 @@
                     </div>
                 </div>
             `;
-
-            const heroImage = root.querySelector(".detail-hero__image");
-            if (heroImage) {
-                fitDetailHeroImage(heroImage);
-            }
 
             document.dispatchEvent(new CustomEvent("detail:rendered"));
         })
