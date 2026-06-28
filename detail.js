@@ -1,5 +1,6 @@
 (function () {
     const DETAIL_EXTERNAL_LINK_ICON = `<svg class="detail-brand__external-icon" width="0.7em" height="0.7em" viewBox="46.828 46.823 82.118 82.118" fill="none" aria-hidden="true"><path d="M48.828 48.823h78.118v78.118M48.828 126.941l78.118-78.118" stroke="currentColor" stroke-width="4"/></svg>`;
+    const CATALOG_EXTERNAL_LINK_ICON = `<svg class="object-nav__external-icon" width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M5 5h8v8M5 13l8-8" stroke="currentColor"/></svg>`;
 
     const params = new URLSearchParams(window.location.search);
     const slug = params.get("slug");
@@ -23,6 +24,75 @@
             .replace(/</g, "&lt;")
             .replace(/>/g, "&gt;")
             .replace(/"/g, "&quot;");
+    }
+
+    function getListingImage(item) {
+        return item.listingImage || item.image || null;
+    }
+
+    function renderBrandEnd(relatedItem) {
+        const brand = escapeHtml(relatedItem.brand || relatedItem.discipline || "");
+        if (!brand) {
+            return "";
+        }
+
+        if (!relatedItem.externalUrl) {
+            return `<span class="object-nav__brand">${brand}</span>`;
+        }
+
+        return `<a class="object-nav__brand--link" href="${escapeHtml(relatedItem.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${brand} link"><span class="object-nav__brand-name">${brand}</span><span class="object-nav__external" aria-hidden="true">${CATALOG_EXTERNAL_LINK_ICON}</span></a>`;
+    }
+
+    function renderRelatedCard(relatedItem, itemType) {
+        const name = escapeHtml(relatedItem.name);
+        const relatedSlug = escapeHtml(relatedItem.slug);
+        const category = escapeHtml(relatedItem.category || "");
+        const detailHref = `detail.html?slug=${relatedSlug}&type=${itemType}`;
+        const alt = `${relatedItem.name}${relatedItem.brand ? ` by ${relatedItem.brand}` : relatedItem.discipline ? ` — ${relatedItem.discipline}` : ""}`;
+        const listingImage = getListingImage(relatedItem);
+        const media = listingImage
+            ? `<img class="object-card__image" src="${escapeHtml(listingImage)}" alt="${escapeHtml(alt)}" loading="lazy">`
+            : `<div class="object-card__placeholder" aria-hidden="true"></div>`;
+
+        return `
+            <article class="object-card" id="${category}-${relatedSlug}" data-category="${category}" data-slug="${relatedSlug}">
+                <a class="object-card__media" href="${detailHref}">
+                    ${media}
+                </a>
+                <nav class="object-nav object-nav--card" aria-label="${name}">
+                    <a class="object-nav__link" href="${detailHref}">${name}</a>
+                    <div class="object-nav__end">
+                        ${renderBrandEnd(relatedItem)}
+                    </div>
+                </nav>
+            </article>
+        `;
+    }
+
+    function renderRelatedGrid(currentItem, collection, itemType) {
+        const relatedItems = collection.filter((entry) => {
+            if (entry.slug === currentItem.slug) {
+                return false;
+            }
+
+            if (itemType === "creator") {
+                return true;
+            }
+
+            return entry.category === currentItem.category;
+        });
+
+        if (relatedItems.length === 0) {
+            return "";
+        }
+
+        const cards = relatedItems.map((relatedItem) => renderRelatedCard(relatedItem, itemType)).join("");
+
+        return `
+            <section class="detail-related" aria-label="More in this category">
+                <div class="catalog-grid catalog-grid--detail">${cards}</div>
+            </section>
+        `;
     }
 
     Promise.all([
@@ -65,6 +135,15 @@
                       .join("")
                 : `<p class="detail-copy detail-copy--empty">No description yet.</p>`;
 
+            const relatedGrid = renderRelatedGrid(item, collection, type);
+
+            const brandAside = brandMarkup
+                ? `<div class="detail-brand detail-brand--aside">${brandMarkup}</div>`
+                : "";
+            const brandMobileFooter = brandMarkup
+                ? `<div class="detail-brand detail-brand--mobile-footer">${brandMarkup}</div>`
+                : "";
+
             root.innerHTML = `
                 <div class="detail-frame">
                     <header class="detail-header">
@@ -77,12 +156,14 @@
                         </div>
                     </div>
                     <div class="detail-content">
-                        <div class="detail-about">
-                            <h2 class="detail-about__heading">About</h2>
+                        <h2 class="detail-about__heading">About</h2>
+                        ${brandAside}
+                        <div class="detail-about__body">
                             ${description}
                         </div>
-                        ${brandMarkup ? `<div class="detail-brand">${brandMarkup}</div>` : ""}
+                        ${brandMobileFooter}
                     </div>
+                    ${relatedGrid}
                 </div>
             `;
 

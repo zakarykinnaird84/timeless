@@ -1219,6 +1219,11 @@ html.nav-intro-seen .page--catalog .site-header {
     padding: 0 var(--catalog-padding) calc(var(--screen-bottom-padding) + env(safe-area-inset-bottom, 0px));
 }
 
+.catalog-grid--detail {
+    padding: 0;
+    padding-bottom: calc(var(--screen-bottom-padding) + env(safe-area-inset-bottom, 0px));
+}
+
 .object-card {
     display: flex;
     flex-direction: column;
@@ -1511,22 +1516,47 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 .detail-content {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    gap: 48px;
+    gap: 24px 48px;
     align-items: start;
 }
 
-.detail-about {
+.detail-about__body {
+    grid-column: 1;
     min-width: 0;
     max-width: 640px;
 }
 
 .detail-about__heading {
+    grid-column: 1;
     font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
     font-size: clamp(48px, 8vw, var(--detail-title-size));
     font-weight: 400;
     line-height: 1;
     color: var(--text-dimmed);
-    margin-bottom: 24px;
+    margin-bottom: 0;
+}
+
+.detail-brand--aside {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.detail-brand--mobile-footer {
+    display: none;
+}
+
+@media (min-width: 769px) {
+    .detail-brand--mobile-footer {
+        display: none !important;
+    }
+
+    .detail-brand--aside .detail-brand__name {
+        display: inline;
+    }
+
+    .detail-brand--aside .detail-brand__external {
+        margin-left: 0.18em;
+    }
 }
 
 .detail-brand {
@@ -1776,12 +1806,32 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     }
 
     .detail-content {
-        grid-template-columns: 1fr;
-        gap: 32px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 24px 16px;
     }
 
-    .detail-brand {
-        justify-content: flex-start;
+    .detail-about__body {
+        grid-column: 1 / -1;
+    }
+
+    .detail-brand--aside {
+        grid-column: 2;
+        grid-row: 1;
+        justify-content: flex-end;
+    }
+
+    .detail-brand--aside .detail-brand__name {
+        display: none;
+    }
+
+    .detail-brand--aside .detail-brand__external {
+        margin-left: 0;
+    }
+
+    .detail-brand--mobile-footer {
+        display: flex;
+        grid-column: 1 / -1;
+        justify-content: flex-end;
     }
 
     .object-nav {
