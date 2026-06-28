@@ -1944,10 +1944,10 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 
 .detail-copy {
     font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 1.55;
-    color: var(--text-primary);
+    color: var(--text-muted);
 }
 
 .detail-copy + .detail-copy {
