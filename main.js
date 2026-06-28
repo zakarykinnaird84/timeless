@@ -1,6 +1,7 @@
 (function () {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const navIntroKey = "timeless-nav-intro-seen";
+    const detailKeyboardNavKey = "timeless-detail-keyboard-nav";
     const compactTopMaxHeight = 700;
 
     function lockTopScreenHeight() {
@@ -248,14 +249,39 @@
         });
     }
 
+    function consumeKeyboardDetailNav() {
+        try {
+            if (sessionStorage.getItem(detailKeyboardNavKey) === "1") {
+                sessionStorage.removeItem(detailKeyboardNavKey);
+                return true;
+            }
+        } catch (error) {}
+        return false;
+    }
+
     function bindDetailHeroDevelop(heroMedia) {
         if (!heroMedia) {
             return;
         }
 
+        const skipDevelop = consumeKeyboardDetailNav();
+
         const img = heroMedia.querySelector(".detail-hero__image, .hero-image");
         if (!img) {
             finishHeroDevelop(heroMedia);
+            return;
+        }
+
+        const complete = () => {
+            finishHeroDevelop(heroMedia);
+        };
+
+        if (skipDevelop) {
+            if (img.complete && img.naturalWidth) {
+                complete();
+            } else {
+                img.addEventListener("load", complete, { once: true });
+            }
             return;
         }
 

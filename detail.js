@@ -2,6 +2,14 @@
     const DETAIL_EXTERNAL_LINK_ICON = `<svg class="detail-brand__external-icon" width="0.7em" height="0.7em" viewBox="46.828 46.823 82.118 82.118" fill="none" aria-hidden="true"><path d="M48.828 48.823h78.118v78.118M48.828 126.941l78.118-78.118" stroke="currentColor" stroke-width="4"/></svg>`;
     const CATALOG_EXTERNAL_LINK_ICON = `<svg class="object-nav__external-icon" width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M5 5h8v8M5 13l8-8" stroke="currentColor"/></svg>`;
 
+    const DETAIL_KEYBOARD_NAV_KEY = "timeless-detail-keyboard-nav";
+
+    function markKeyboardDetailNav() {
+        try {
+            sessionStorage.setItem(DETAIL_KEYBOARD_NAV_KEY, "1");
+        } catch (error) {}
+    }
+
     const params = new URLSearchParams(window.location.search);
     const slug = params.get("slug");
     const type = params.get("type") === "creator" ? "creator" : "object";
@@ -142,6 +150,7 @@
             }
 
             event.preventDefault();
+            markKeyboardDetailNav();
             window.location.href = `detail.html?slug=${encodeURIComponent(adjacentItem.slug)}&type=${itemType}`;
         });
     }
