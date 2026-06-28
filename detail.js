@@ -144,16 +144,23 @@
                 ? `<div class="detail-brand detail-brand--mobile-footer">${brandMarkup}</div>`
                 : "";
 
+            const heroMediaInner = `
+                        <div class="detail-hero__media hero-media">
+                            ${hero}
+                            <span class="hero-develop" aria-hidden="true"></span>
+                        </div>`;
+
+            const heroMarkup = item.externalUrl
+                ? `<a class="detail-hero__link" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(name)} link">${heroMediaInner}</a>`
+                : heroMediaInner;
+
             root.innerHTML = `
                 <div class="detail-frame">
                     <header class="detail-header">
                         <h1 class="detail-title">${escapeHtml(name)}</h1>
                     </header>
                     <div class="detail-hero">
-                        <div class="detail-hero__media hero-media">
-                            ${hero}
-                            <span class="hero-develop" aria-hidden="true"></span>
-                        </div>
+                        ${heroMarkup}
                     </div>
                     <div class="detail-content">
                         <h2 class="detail-about__heading">About</h2>

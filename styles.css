@@ -1480,6 +1480,13 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     min-height: inherit;
 }
 
+.detail-hero__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .detail-hero__media {
     position: relative;
     display: block;
@@ -1813,6 +1820,11 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
         aspect-ratio: 1;
         overflow: hidden;
         background: var(--placeholder);
+    }
+
+    .page--detail .detail-hero__link {
+        display: block;
+        height: 100%;
     }
 
     .page--detail .detail-hero__media.hero-media {
