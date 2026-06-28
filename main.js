@@ -387,7 +387,7 @@
 
     function initFooterReveal() {
         const footer = document.querySelector(".site-footer");
-        const footerTargets = footer?.querySelectorAll(".site-footer__text, .site-footer__title") || [];
+        const footerTargets = footer?.querySelectorAll(".site-footer__text") || [];
         if (!footerTargets.length) {
             return;
         }
