@@ -1328,7 +1328,7 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 
 .object-nav__brand--link {
     display: inline-flex;
-    align-items: baseline;
+    align-items: center;
     gap: 4px;
     text-decoration: none;
     color: var(--text-muted);
@@ -1340,9 +1340,8 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     color: var(--night);
 }
 
-.object-nav__brand--link:hover .object-nav__external,
-.object-nav__brand--link:focus-visible .object-nav__external {
-    opacity: 1;
+.object-nav__brand-name {
+    color: inherit;
 }
 
 .object-nav__end {
@@ -1385,11 +1384,10 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     flex-shrink: 0;
     width: var(--external-link-size);
     height: var(--external-link-size);
-    opacity: 0.55;
-    transition: opacity var(--link-hover-duration) var(--link-hover-ease);
+    color: inherit;
 }
 
-.object-nav__external img {
+.object-nav__external-icon {
     display: block;
     width: var(--external-link-size);
     height: var(--external-link-size);

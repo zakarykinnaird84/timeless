@@ -1,5 +1,6 @@
 (function () {
     const catalogEl = document.getElementById("catalog");
+    const CATALOG_EXTERNAL_LINK_ICON = `<svg class="object-nav__external-icon" width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M5 5h8v8M5 13l8-8" stroke="currentColor"/></svg>`;
 
     if (!catalogEl) {
         return;
@@ -76,7 +77,7 @@
             return `<span class="object-nav__brand">${brand}</span>`;
         }
 
-        return `<a class="object-nav__brand object-nav__brand--link" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${brand} link"><span class="object-nav__brand-name">${brand}</span><span class="object-nav__external" aria-hidden="true"><img src="assets/external-link.svg" alt="" width="16" height="16"></span></a>`;
+        return `<a class="object-nav__brand object-nav__brand--link" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${brand} link"><span class="object-nav__brand-name">${brand}</span><span class="object-nav__external" aria-hidden="true">${CATALOG_EXTERNAL_LINK_ICON}</span></a>`;
     }
 
     function renderObjectSection(item, index) {
