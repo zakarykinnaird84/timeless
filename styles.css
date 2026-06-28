@@ -1327,12 +1327,22 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 }
 
 .object-nav__brand--link {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+    text-decoration: none;
+    color: var(--text-muted);
     transition: color var(--link-hover-duration) var(--link-hover-ease);
 }
 
 .object-nav__brand--link:hover,
 .object-nav__brand--link:focus-visible {
     color: var(--night);
+}
+
+.object-nav__brand--link:hover .object-nav__external,
+.object-nav__brand--link:focus-visible .object-nav__external {
+    opacity: 1;
 }
 
 .object-nav__end {
@@ -1375,13 +1385,8 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     flex-shrink: 0;
     width: var(--external-link-size);
     height: var(--external-link-size);
-    opacity: 1;
-    transition: opacity 0.2s ease;
-}
-
-.object-nav__external:hover,
-.object-nav__external:focus-visible {
     opacity: 0.55;
+    transition: opacity var(--link-hover-duration) var(--link-hover-ease);
 }
 
 .object-nav__external img {
@@ -1538,7 +1543,8 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 .detail-brand__external {
     display: inline;
     margin-left: 0.18em;
-    transition: opacity 0.2s ease;
+    opacity: 0.55;
+    transition: opacity var(--link-hover-duration) var(--link-hover-ease);
 }
 
 .detail-brand__external img {
@@ -1550,7 +1556,7 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 
 .detail-brand__link:hover .detail-brand__external,
 .detail-brand__link:focus-visible .detail-brand__external {
-    opacity: 0.55;
+    opacity: 1;
 }
 
 .detail-brand__name {

@@ -66,11 +66,17 @@
         return `<div class="hero-placeholder" aria-hidden="true"></div>`;
     }
 
-    function renderExternalLink(item) {
-        if (!item.externalUrl) {
+    function renderBrandEnd(item) {
+        const brand = escapeHtml(item.brand || item.discipline || "");
+        if (!brand) {
             return "";
         }
-        return `<a class="object-nav__external" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(item.name)} link"><img src="assets/external-link.svg" alt="" width="16" height="16"></a>`;
+
+        if (!item.externalUrl) {
+            return `<span class="object-nav__brand">${brand}</span>`;
+        }
+
+        return `<a class="object-nav__brand object-nav__brand--link" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${brand} link"><span class="object-nav__brand-name">${brand}</span><span class="object-nav__external" aria-hidden="true"><img src="assets/external-link.svg" alt="" width="16" height="16"></span></a>`;
     }
 
     function renderObjectSection(item, index) {
@@ -95,8 +101,7 @@
                     <nav class="object-nav" aria-label="${name}">
                         <a class="object-nav__link" href="${detailHref}">${name}</a>
                         <div class="object-nav__end">
-                            <span class="object-nav__brand">${brand}</span>
-                            ${renderExternalLink(item)}
+                            ${renderBrandEnd(item)}
                         </div>
                     </nav>
                 </div>
@@ -117,8 +122,7 @@
                 <nav class="object-nav object-nav--card" aria-label="${name}">
                     <a class="object-nav__link" href="${detailHref}">${name}</a>
                     <div class="object-nav__end">
-                        <span class="object-nav__brand">${brand}</span>
-                        ${renderExternalLink(item)}
+                        ${renderBrandEnd(item)}
                     </div>
                 </nav>
             </article>
