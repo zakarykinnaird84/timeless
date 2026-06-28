@@ -33,7 +33,9 @@
                 document.documentElement.classList.add("compact-top");
             }
             try {
-                if (sessionStorage.getItem("timeless-nav-intro-seen")) {
+                var entry = performance.getEntriesByType("navigation")[0];
+                var isReload = entry && entry.type === "reload";
+                if (!isReload && sessionStorage.getItem("timeless-nav-intro-seen")) {
                     document.documentElement.classList.add("nav-intro-seen");
                 }
             } catch (error) {}

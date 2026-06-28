@@ -80,13 +80,13 @@
                 ? `<img class="hero-image detail-hero__image" src="${escapeHtml(getDetailImage(item))}" alt="${escapeHtml(name)}">`
                 : `<div class="hero-placeholder detail-hero__placeholder" aria-hidden="true"></div>`;
 
-            const externalLink = item.externalUrl
-                ? `<a class="object-nav__external" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(brand || name)} link"><img src="assets/external-link.svg" alt="" width="16" height="16"></a>`
+            const brandExternalLink = item.externalUrl
+                ? `<span class="detail-brand__external" aria-hidden="true"><img src="assets/big-external-link.svg" alt=""></span>`
                 : "";
 
             const brandMarkup = brand
                 ? item.externalUrl
-                    ? `<a class="detail-brand__link" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer"><span class="detail-brand__name">${escapeHtml(brand)}</span>${externalLink}</a>`
+                    ? `<a class="detail-brand__link" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(brand)} link"><span class="detail-brand__name">${escapeHtml(brand)}</span>${brandExternalLink}</a>`
                     : `<div class="detail-brand__link"><span class="detail-brand__name">${escapeHtml(brand)}</span></div>`
                 : "";
 

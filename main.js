@@ -15,10 +15,34 @@
         window.setTimeout(lockTopScreenHeight, 150);
     });
 
+    function isPageReload() {
+        const entry = performance.getEntriesByType("navigation")[0];
+        return entry?.type === "reload";
+    }
+
+    function hasNavIntroSeen() {
+        try {
+            return sessionStorage.getItem(navIntroKey) === "1";
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function shouldPlayCatalogIntro() {
+        if (prefersReducedMotion) {
+            return false;
+        }
+        if (isPageReload()) {
+            return true;
+        }
+        return !hasNavIntroSeen();
+    }
+
     function markNavIntroSeen() {
         try {
             sessionStorage.setItem(navIntroKey, "1");
         } catch (error) {}
+        document.documentElement.classList.add("nav-intro-seen");
     }
 
     function getDevelopDurationMs() {
@@ -52,10 +76,6 @@
 
         const isIntroHero = hero.dataset.intro === "true";
 
-        if (isIntroHero) {
-            markNavIntroSeen();
-        }
-
         startHeroDevelop(hero);
 
         const developDurationMs = getDevelopDurationMs();
@@ -67,6 +87,9 @@
                 return;
             }
             finished = true;
+            if (isIntroHero) {
+                markNavIntroSeen();
+            }
             finishHeroDevelop(hero);
         };
 
@@ -119,6 +142,19 @@
 
         const heroes = catalog.querySelectorAll(".object-screen--featured .hero-media");
 
+        if (!shouldPlayCatalogIntro()) {
+            markNavIntroSeen();
+            heroes.forEach(finishHeroDevelop);
+            return;
+        }
+
+        const introHero = catalog.querySelector(".object-screen--featured .hero-media[data-intro='true']");
+        if (!introHero) {
+            markNavIntroSeen();
+            heroes.forEach(finishHeroDevelop);
+            return;
+        }
+
         if (prefersReducedMotion) {
             heroes.forEach(finishHeroDevelop);
             return;
@@ -160,6 +196,17 @@
     }
 
     function initCatalogPage() {
+        document.addEventListener("click", (event) => {
+            const link = event.target.closest("a[href]");
+            if (!link || link.target === "_blank") {
+                return;
+            }
+            const href = link.getAttribute("href") || "";
+            if (href.includes("detail.html") || href.includes("about.html")) {
+                markNavIntroSeen();
+            }
+        });
+
         document.addEventListener("catalog:rendered", () => {
             observeHeroSections();
         });
@@ -190,6 +237,8 @@
     }
 
     function initDetailPage() {
+        markNavIntroSeen();
+
         document.addEventListener("detail:rendered", () => {
             const heroMedia = document.querySelector(".detail-hero__media.hero-media");
             bindDetailHeroDevelop(heroMedia);
@@ -202,6 +251,10 @@
 
     if (document.getElementById("detail-root")) {
         initDetailPage();
+    }
+
+    if (document.querySelector(".page--about-timeless, .page--legal")) {
+        markNavIntroSeen();
     }
 
     document.querySelectorAll(".about-copy .story-line").forEach((line, index) => {

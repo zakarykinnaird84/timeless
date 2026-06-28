@@ -10,6 +10,7 @@
     let currentView = "objects";
     let activeCategory = "all";
     let activeCollection = "featured";
+    let isInitialCatalogRender = true;
 
     function escapeHtml(value) {
         return String(value)
@@ -74,7 +75,7 @@
 
     function renderObjectSection(item, index) {
         const isFirst = index === 0;
-        const introAttr = isFirst ? ' data-intro="true"' : "";
+        const introAttr = isFirst && isInitialCatalogRender ? ' data-intro="true"' : "";
         const brand = escapeHtml(item.brand || item.discipline || "");
         const name = escapeHtml(item.name);
         const slug = escapeHtml(item.slug);
@@ -154,6 +155,7 @@
         }
 
         window.scrollTo({ top: 0, behavior: "auto" });
+        isInitialCatalogRender = false;
         document.dispatchEvent(new CustomEvent("catalog:rendered", { detail: { count: items.length } }));
     }
 

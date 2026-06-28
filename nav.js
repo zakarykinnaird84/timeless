@@ -78,7 +78,15 @@
         window.history.replaceState({}, "", `${url.pathname}${url.search}`);
     }
 
+    function markNavIntroSeen() {
+        try {
+            sessionStorage.setItem("timeless-nav-intro-seen", "1");
+        } catch (error) {}
+        document.documentElement.classList.add("nav-intro-seen");
+    }
+
     function dispatchFilterChange() {
+        markNavIntroSeen();
         document.dispatchEvent(
             new CustomEvent("filter:change", {
                 detail: {
