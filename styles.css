@@ -1228,8 +1228,14 @@ html.nav-intro-seen .page--catalog .site-header {
     background: var(--placeholder);
 }
 
-.object-hero .hero-image,
-.detail-hero .hero-image {
+.object-hero__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.object-hero .hero-image {
     object-fit: contain;
     object-position: center;
 }
@@ -1289,7 +1295,12 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-shrink: 0;
+}
+
+.object-nav > .object-nav__link {
     min-width: 0;
+    flex: 1;
 }
 
 .object-nav__link {
@@ -1352,22 +1363,8 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     min-height: 100vh;
     min-height: 100dvh;
     padding: var(--catalog-padding);
-    padding-top: calc(env(safe-area-inset-top, 0px) + var(--site-header-height));
+    padding-top: calc(env(safe-area-inset-top, 0px) + var(--catalog-padding));
     padding-bottom: env(safe-area-inset-bottom, 0px);
-}
-
-.page--detail:has(.detail-hero.is-developing) .site-header {
-    opacity: 0;
-    animation: nav-fade-in var(--reveal-duration) var(--reveal-ease) var(--nav-fade-delay) both;
-}
-
-.page--detail:has(.detail-hero.is-developed) .site-header {
-    opacity: 1;
-}
-
-html.nav-intro-seen .page--detail .site-header {
-    opacity: 1;
-    animation: none;
 }
 
 .detail-loading,
@@ -1382,95 +1379,142 @@ html.nav-intro-seen .page--detail .site-header {
     display: flex;
     flex-direction: column;
     gap: var(--section-gap);
-    min-height: calc(var(--top-screen-height, 100svh) - var(--catalog-padding) * 2);
 }
 
 .detail-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 24px;
     flex-shrink: 0;
-}
-
-.page--detail .object-nav--detail {
-    opacity: 0;
-}
-
-.page--detail:has(.detail-hero.is-developing) .object-nav--detail {
-    animation: nav-fade-in var(--reveal-duration) var(--reveal-ease) var(--nav-fade-delay) both;
-}
-
-.page--detail:has(.detail-hero.is-developed) .object-nav--detail {
-    opacity: 1;
-}
-
-html.nav-intro-seen .page--detail:has(.detail-hero.is-developing) .object-nav--detail {
-    opacity: 1;
-    animation: none;
-}
-
-.page--detail:has(.detail-hero.is-developing) .detail-title,
-.page--detail:has(.detail-hero.is-developing) .detail-subtitle {
-    will-change: color;
-    animation: text-polaroid-develop var(--text-develop-duration) var(--hero-develop-ease) var(--nav-fade-delay) forwards;
 }
 
 .detail-title {
     font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
-    font-size: clamp(64px, 10vw, var(--detail-title-size));
+    font-size: clamp(48px, 8vw, 96px);
     font-weight: 400;
     line-height: 1;
     word-break: break-word;
-}
-
-.page--detail:has(.detail-hero:not(.is-developed)) .detail-title,
-.page--detail:has(.detail-hero:not(.is-developed)) .detail-subtitle {
-    color: var(--polaroid-text);
-}
-
-.detail-header__subtitle {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-top: 0.35em;
-}
-
-.detail-subtitle {
-    font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
-    font-size: clamp(32px, 5vw, 64px);
-    font-weight: 400;
-    line-height: 1;
     color: var(--text-primary);
 }
 
 .detail-hero {
+    position: relative;
     width: 100%;
-    min-height: 50vh;
-    flex: 1;
+    flex: none;
+    min-height: 0;
+    overflow: visible;
+    background: transparent;
 }
 
-.detail-body {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.page--detail .detail-hero {
+    position: relative;
+    inset: auto;
+    overflow: visible;
+}
+
+.page--detail .detail-hero:has(.detail-hero__placeholder) {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--placeholder);
+}
+
+.page--detail .detail-hero:has(.detail-hero__placeholder) .detail-hero__media {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+}
+
+.detail-hero__media {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: top;
+}
+
+.page--detail .detail-hero__media.hero-media {
+    position: relative;
+    inset: auto;
+    overflow: hidden;
+}
+
+.page--detail .detail-hero__media .hero-image,
+.page--detail .detail-hero__media .detail-hero__image {
+    position: static;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    object-fit: unset;
+    object-position: center;
+    pointer-events: none;
+    opacity: 0.08;
+    filter: brightness(0.18) saturate(0.2) sepia(0.12);
+}
+
+.page--detail .detail-hero__media.is-developed .hero-image,
+.page--detail .detail-hero__media.is-developed .detail-hero__image {
+    opacity: 1;
+    filter: none;
+}
+
+.detail-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 48px;
+    align-items: start;
+}
+
+.detail-about {
+    min-width: 0;
     max-width: 640px;
 }
 
-.detail-meta {
-    font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: var(--inter-ui-size);
+.detail-about__heading {
+    font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+    font-size: clamp(48px, 8vw, var(--detail-title-size));
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1;
     color: var(--text-dimmed);
+    margin-bottom: 24px;
+}
+
+.detail-brand {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.detail-brand__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.detail-brand__name {
+    font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+    font-size: clamp(48px, 8vw, var(--detail-title-size));
+    font-weight: 400;
+    line-height: 1;
+    color: var(--text-dimmed);
+    transition: color var(--link-hover-duration) var(--link-hover-ease);
+}
+
+.detail-brand__link:hover .detail-brand__name,
+.detail-brand__link:focus-visible .detail-brand__name {
+    color: var(--night);
 }
 
 .detail-copy {
-    font-family: "Helvetica Neue", Helvetica, Inter, sans-serif;
+    font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 17px;
     font-weight: 400;
     line-height: 1.55;
     color: var(--text-primary);
+}
+
+.detail-copy--empty {
+    color: var(--text-muted);
 }
 
 .detail-copy a {
@@ -1482,11 +1526,6 @@ html.nav-intro-seen .page--detail:has(.detail-hero.is-developing) .object-nav--d
 .detail-copy a:hover,
 .detail-copy a:focus-visible {
     color: var(--night);
-}
-
-.object-nav--detail {
-    margin-top: auto;
-    padding-bottom: 0;
 }
 
 /* About page — Timeless */
@@ -1558,13 +1597,13 @@ html.nav-intro-seen .page--detail:has(.detail-hero.is-developing) .object-nav--d
         gap: 40px;
     }
 
-    .detail-header {
-        flex-direction: column;
-        gap: 16px;
+    .detail-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
     }
 
-    .detail-header__subtitle {
-        padding-top: 0;
+    .detail-brand {
+        justify-content: flex-start;
     }
 
     .object-nav {
@@ -1578,15 +1617,15 @@ html.nav-intro-seen .page--detail:has(.detail-hero.is-developing) .object-nav--d
 
 @media (prefers-reduced-motion: reduce) {
     .page--catalog .site-header,
-    .page--catalog .object-screen--featured .object-nav,
-    .page--detail:has(.detail-hero.is-developing) .detail-header {
+    .page--catalog .object-screen--featured .object-nav {
         opacity: 1;
         animation: none;
     }
 
-    .page--detail:has(.detail-hero.is-developing) .object-nav--detail,
-    .page--detail:has(.detail-hero.is-developed) .object-nav--detail {
+    .page--detail .detail-hero__media .hero-image,
+    .page--detail .detail-hero__media .detail-hero__image {
         opacity: 1;
+        filter: none;
         animation: none;
     }
 

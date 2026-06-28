@@ -23,14 +23,39 @@
             .replace(/"/g, "&quot;");
     }
 
-    function availabilityLabel(availability) {
-        if (availability === "buyable") {
-            return "Available to buy";
+    function fitDetailHeroImage(img) {
+        const hero = img.closest(".detail-hero");
+        if (!hero) {
+            return;
         }
-        if (availability === "archival") {
-            return "Out of production";
+
+        const fit = () => {
+            const available = hero.clientWidth;
+            if (!img.naturalWidth || !available) {
+                return;
+            }
+
+            if (img.naturalWidth < available) {
+                img.style.width = "100%";
+                img.style.height = "auto";
+                img.style.maxWidth = "none";
+            } else {
+                img.style.width = "auto";
+                img.style.height = "auto";
+                img.style.maxWidth = "100%";
+            }
+        };
+
+        if (img.complete) {
+            fit();
+        } else {
+            img.addEventListener("load", fit, { once: true });
         }
-        return "Reference";
+
+        if (!img.dataset.fitBound) {
+            img.dataset.fitBound = "true";
+            window.addEventListener("resize", fit);
+        }
     }
 
     Promise.all([
@@ -48,57 +73,52 @@
             }
 
             const brand = item.brand || item.discipline || "";
-            const title = type === "creator" ? item.name : brand;
-            const subtitle = type === "creator" ? item.discipline : item.name;
-            document.title = `${item.name} — Timeless Objects`;
+            const name = item.name;
+            document.title = `${name} — Timeless Objects`;
 
             const hero = getDetailImage(item)
-                ? `<img class="hero-image detail-hero__image" src="${escapeHtml(getDetailImage(item))}" alt="${escapeHtml(item.name)}">`
+                ? `<img class="hero-image detail-hero__image" src="${escapeHtml(getDetailImage(item))}" alt="${escapeHtml(name)}">`
                 : `<div class="hero-placeholder detail-hero__placeholder" aria-hidden="true"></div>`;
 
             const externalLink = item.externalUrl
-                ? `<a class="object-nav__external" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open link"><img src="assets/external-link.svg" alt="" width="16" height="16"></a>`
+                ? `<a class="object-nav__external" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(brand || name)} link"><img src="assets/external-link.svg" alt="" width="16" height="16"></a>`
+                : "";
+
+            const brandMarkup = brand
+                ? item.externalUrl
+                    ? `<a class="detail-brand__link" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer"><span class="detail-brand__name">${escapeHtml(brand)}</span>${externalLink}</a>`
+                    : `<div class="detail-brand__link"><span class="detail-brand__name">${escapeHtml(brand)}</span></div>`
                 : "";
 
             const description = item.description
                 ? `<p class="detail-copy">${escapeHtml(item.description)}</p>`
-                : "";
-
-            const availability = item.availability
-                ? `<p class="detail-meta">${availabilityLabel(item.availability)}</p>`
-                : "";
-
-            const externalCta = item.externalUrl
-                ? `<p class="detail-copy"><a href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer">Where to find →</a></p>`
-                : "";
+                : `<p class="detail-copy detail-copy--empty">No description yet.</p>`;
 
             root.innerHTML = `
                 <div class="detail-frame">
                     <header class="detail-header">
-                        <h1 class="detail-title">${escapeHtml(title)}</h1>
-                        <div class="detail-header__subtitle">
-                            <p class="detail-subtitle">${escapeHtml(subtitle)}</p>
-                            ${externalLink}
-                        </div>
+                        <h1 class="detail-title">${escapeHtml(name)}</h1>
                     </header>
-                    <div class="detail-hero hero-media">
-                        ${hero}
-                        <span class="hero-develop" aria-hidden="true"></span>
-                    </div>
-                    <div class="detail-body">
-                        ${availability}
-                        ${description}
-                        ${externalCta}
-                    </div>
-                    <nav class="object-nav object-nav--detail" aria-label="Detail navigation">
-                        <a class="object-nav__brand object-nav__brand--link" href="index.html">${escapeHtml(brand || "Timeless")}</a>
-                        <div class="object-nav__end">
-                            <span class="object-nav__link object-nav__link--current">${escapeHtml(item.name)}</span>
-                            ${externalLink}
+                    <div class="detail-hero">
+                        <div class="detail-hero__media hero-media">
+                            ${hero}
+                            <span class="hero-develop" aria-hidden="true"></span>
                         </div>
-                    </nav>
+                    </div>
+                    <div class="detail-content">
+                        <div class="detail-about">
+                            <h2 class="detail-about__heading">About</h2>
+                            ${description}
+                        </div>
+                        ${brandMarkup ? `<div class="detail-brand">${brandMarkup}</div>` : ""}
+                    </div>
                 </div>
             `;
+
+            const heroImage = root.querySelector(".detail-hero__image");
+            if (heroImage) {
+                fitDetailHeroImage(heroImage);
+            }
 
             document.dispatchEvent(new CustomEvent("detail:rendered"));
         })

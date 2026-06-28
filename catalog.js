@@ -9,7 +9,7 @@
     let creators = [];
     let currentView = "objects";
     let activeCategory = "all";
-    let activeCollection = "new";
+    let activeCollection = "featured";
 
     function escapeHtml(value) {
         return String(value)
@@ -43,9 +43,13 @@
             if (activeCategory !== "all") {
                 items = items.filter((item) => item.category === activeCategory);
             }
+
+            if (activeCollection === "featured" || activeCollection === "editor-picks") {
+                return sortFeaturedFirst(items);
+            }
         }
 
-        return sortFeaturedFirst(items);
+        return items;
     }
 
     function getListingImage(item) {
@@ -83,14 +87,14 @@
             return `
             <section class="object-screen object-screen--featured" id="${category}-${slug}" data-category="${category}" data-slug="${slug}">
                 <div class="object-screen__inner">
-                    <div class="object-hero hero-media"${introAttr}>
+                    <a class="object-hero hero-media object-hero__link" href="${detailHref}" aria-label="View ${name}"${introAttr}>
                         ${renderHeroImage(item, alt, true)}
                         <span class="hero-develop" aria-hidden="true"></span>
-                    </div>
+                    </a>
                     <nav class="object-nav" aria-label="${name}">
-                        <span class="object-nav__brand">${brand}</span>
+                        <a class="object-nav__link" href="${detailHref}">${name}</a>
                         <div class="object-nav__end">
-                            <a class="object-nav__link" href="${detailHref}">${name}</a>
+                            <span class="object-nav__brand">${brand}</span>
                             ${renderExternalLink(item)}
                         </div>
                     </nav>
@@ -110,9 +114,9 @@
                     ${media}
                 </a>
                 <nav class="object-nav object-nav--card" aria-label="${name}">
-                    <span class="object-nav__brand">${brand}</span>
+                    <a class="object-nav__link" href="${detailHref}">${name}</a>
                     <div class="object-nav__end">
-                        <a class="object-nav__link" href="${detailHref}">${name}</a>
+                        <span class="object-nav__brand">${brand}</span>
                         ${renderExternalLink(item)}
                     </div>
                 </nav>
@@ -158,7 +162,7 @@
     function applyFilterState(view, category, collection) {
         currentView = view;
         activeCategory = category;
-        activeCollection = collection || "new";
+        activeCollection = collection || "featured";
         if (dataLoaded) {
             renderCatalog();
         }

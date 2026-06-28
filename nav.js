@@ -19,10 +19,13 @@
         return;
     }
 
+    const COLLECTIONS = new Set(["new", "featured", "editor-picks"]);
+    const DEFAULT_COLLECTION = "featured";
     const params = new URLSearchParams(window.location.search);
     let currentView = params.get("view") === "creators" ? "creators" : "objects";
     let activeCategory = params.get("category") || "all";
-    let activeCollection = params.get("collection") === "editor-picks" ? "editor-picks" : "new";
+    const collectionParam = params.get("collection");
+    let activeCollection = COLLECTIONS.has(collectionParam) ? collectionParam : DEFAULT_COLLECTION;
 
     function renderLeftFilters() {
         filterStartEl.innerHTML = LEFT_FILTERS.map((item) => {
@@ -66,8 +69,8 @@
             url.searchParams.delete("category");
         }
 
-        if (activeCollection === "editor-picks") {
-            url.searchParams.set("collection", "editor-picks");
+        if (activeCollection !== DEFAULT_COLLECTION) {
+            url.searchParams.set("collection", activeCollection);
         } else {
             url.searchParams.delete("collection");
         }
@@ -108,8 +111,8 @@
             if (activeCategory !== "all" && currentView === "objects") {
                 url.searchParams.set("category", activeCategory);
             }
-            if (activeCollection === "editor-picks") {
-                url.searchParams.set("collection", "editor-picks");
+            if (activeCollection !== DEFAULT_COLLECTION) {
+                url.searchParams.set("collection", activeCollection);
             }
             window.location.href = `${url.pathname}${url.search}`;
             return;

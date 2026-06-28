@@ -165,12 +165,34 @@
         });
     }
 
+    function bindDetailHeroDevelop(heroMedia) {
+        if (!heroMedia) {
+            return;
+        }
+
+        const img = heroMedia.querySelector(".detail-hero__image, .hero-image");
+        if (!img) {
+            finishHeroDevelop(heroMedia);
+            return;
+        }
+
+        const start = () => {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => bindHeroDevelop(heroMedia));
+            });
+        };
+
+        if (img.complete && img.naturalWidth) {
+            start();
+        } else {
+            img.addEventListener("load", start, { once: true });
+        }
+    }
+
     function initDetailPage() {
         document.addEventListener("detail:rendered", () => {
-            const hero = document.querySelector(".detail-hero.hero-media");
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => bindHeroDevelop(hero));
-            });
+            const heroMedia = document.querySelector(".detail-hero__media.hero-media");
+            bindDetailHeroDevelop(heroMedia);
         });
     }
 

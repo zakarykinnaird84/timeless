@@ -38,8 +38,8 @@
     "category": "audio",
     "externalUrl": "https://www.apple.com/airpods/",
     "availability": "buyable",
-    "listingImage": null,
-    "detailImage": null
+    "listingImage": "images/objects/airpods.webp",
+    "detailImage": "images/objects/airpods-detail.webp"
   },
   {
     "slug": "ipod",
