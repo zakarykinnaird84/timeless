@@ -1065,6 +1065,12 @@ html.compact-top .title-row {
 
 .site-footer--catalog .site-footer__nav .filter-bar {
     width: 100%;
+    align-self: stretch;
+    height: 100%;
+}
+
+.site-footer--catalog .site-footer__nav .filter-bar__group {
+    align-items: stretch;
 }
 
 .filter-bar--footer .filter-bar__group--end {
@@ -1074,6 +1080,8 @@ html.compact-top .title-row {
 .site-footer__maker {
     display: inline-flex;
     align-items: center;
+    align-self: stretch;
+    min-height: var(--site-header-height);
     gap: 0.35em;
     color: var(--text-dimmed);
     text-decoration: none;
@@ -1224,6 +1232,15 @@ html.compact-top .title-row {
     pointer-events: auto;
 }
 
+.site-header .filter-bar {
+    align-self: stretch;
+    height: 100%;
+}
+
+.site-header .filter-bar__group {
+    align-items: stretch;
+}
+
 .page--catalog .site-header {
     opacity: 0;
 }
@@ -1267,6 +1284,10 @@ html.nav-intro-seen .page--catalog .site-header {
     background: none;
     padding: 0;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    align-self: stretch;
+    min-height: var(--site-header-height);
     font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
     font-size: var(--inter-ui-size);
     font-weight: 400;
@@ -1284,12 +1305,14 @@ html.nav-intro-seen .page--catalog .site-header {
 .collection-tabs--desktop {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: stretch;
     gap: 12px 16px;
 }
 
 .collection-dropdown--mobile {
     display: none;
+    align-items: stretch;
+    align-self: stretch;
 }
 
 .collection-dropdown {
@@ -2074,7 +2097,7 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
         margin-left: auto;
         padding-left: 16px;
         background: linear-gradient(to right, transparent, var(--background) 12px);
-        align-self: center;
+        align-self: stretch;
     }
 
     .site-footer--catalog .site-footer__nav {
@@ -2089,7 +2112,8 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 
     .collection-dropdown--mobile {
         display: flex;
-        align-items: center;
+        align-items: stretch;
+        align-self: stretch;
     }
 
     .page--catalog .site-header .filter-bar,
