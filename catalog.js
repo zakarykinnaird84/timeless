@@ -37,7 +37,7 @@
         let items = [...source];
 
         if (currentView === "objects") {
-            if (activeCollection === "editor-picks") {
+            if (activeCollection === "curated") {
                 items = items.filter((item) => item.featured);
             }
 
@@ -45,7 +45,7 @@
                 items = items.filter((item) => item.category === activeCategory);
             }
 
-            if (activeCollection === "featured" || activeCollection === "editor-picks") {
+            if (activeCollection === "featured" || activeCollection === "curated") {
                 return sortFeaturedFirst(items);
             }
         }

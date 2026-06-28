@@ -19,7 +19,7 @@
         return;
     }
 
-    const COLLECTIONS = new Set(["new", "featured", "editor-picks"]);
+    const COLLECTIONS = new Set(["new", "featured", "curated"]);
     const DEFAULT_COLLECTION = "featured";
     const params = new URLSearchParams(window.location.search);
     let currentView = params.get("view") === "creators" ? "creators" : "objects";

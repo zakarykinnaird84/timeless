@@ -1253,7 +1253,7 @@ html.nav-intro-seen .page--catalog .site-header {
     justify-content: space-between;
     gap: 16px;
     flex-shrink: 0;
-    padding: 24px 0 0;
+    padding: 4px 0 0;
 }
 
 .page--catalog .object-screen--featured .object-nav {
@@ -1294,7 +1294,7 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 .object-nav__end {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 4px;
     flex-shrink: 0;
 }
 
