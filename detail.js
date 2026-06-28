@@ -74,18 +74,82 @@
         `;
     }
 
-    function renderRelatedGrid(currentItem, collection, itemType) {
-        const relatedItems = collection.filter((entry) => {
-            if (entry.slug === currentItem.slug) {
-                return false;
-            }
+    function getCategoryItems(collection, currentItem, itemType) {
+        if (itemType === "creator") {
+            return collection;
+        }
 
-            if (itemType === "creator") {
+        return collection.filter((entry) => entry.category === currentItem.category);
+    }
+
+    function getAdjacentItem(collection, currentItem, itemType, direction) {
+        const items = getCategoryItems(collection, currentItem, itemType);
+        if (items.length <= 1) {
+            return null;
+        }
+
+        const currentIndex = items.findIndex((entry) => entry.slug === currentItem.slug);
+        if (currentIndex === -1) {
+            return null;
+        }
+
+        const offset = direction === "next" ? 1 : -1;
+        const nextIndex = (currentIndex + offset + items.length) % items.length;
+        return items[nextIndex];
+    }
+
+    function bindDetailKeyboardNav(collection, currentItem, itemType) {
+        if (getCategoryItems(collection, currentItem, itemType).length <= 1) {
+            return;
+        }
+
+        function shouldIgnoreKeydown(event) {
+            if (event.metaKey || event.ctrlKey || event.altKey) {
                 return true;
             }
 
-            return entry.category === currentItem.category;
+            const target = event.target;
+            if (!(target instanceof Element)) {
+                return false;
+            }
+
+            if (target.closest("input, textarea, select, [contenteditable='true']")) {
+                return true;
+            }
+
+            return Boolean(target.closest(".collection-dropdown.is-open"));
+        }
+
+        document.addEventListener("keydown", (event) => {
+            if (shouldIgnoreKeydown(event)) {
+                return;
+            }
+
+            let direction = null;
+            if (event.key === "ArrowLeft") {
+                direction = "prev";
+            } else if (event.key === "ArrowRight") {
+                direction = "next";
+            }
+
+            if (!direction) {
+                return;
+            }
+
+            const adjacentItem = getAdjacentItem(collection, currentItem, itemType, direction);
+            if (!adjacentItem) {
+                return;
+            }
+
+            event.preventDefault();
+            window.location.href = `detail.html?slug=${encodeURIComponent(adjacentItem.slug)}&type=${itemType}`;
         });
+    }
+
+    function renderRelatedGrid(currentItem, collection, itemType) {
+        const relatedItems = getCategoryItems(collection, currentItem, itemType).filter(
+            (entry) => entry.slug !== currentItem.slug
+        );
 
         if (relatedItems.length === 0) {
             return "";
@@ -197,6 +261,7 @@
                 })
             );
             document.dispatchEvent(new CustomEvent("detail:rendered"));
+            bindDetailKeyboardNav(collection, item, type);
             window.scrollTo(0, 0);
         })
         .catch(() => {
