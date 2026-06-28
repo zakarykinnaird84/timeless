@@ -12,17 +12,6 @@
     "detailImage": "images/objects/cp2_detail.webp"
   },
   {
-    "slug": "cp1-instant-disk-audio",
-    "name": "CP1 Instant Disk Audio",
-    "brand": "KM5",
-    "category": "audio",
-    "externalUrl": "https://www.makeyourownmixtape.com/t/8Pa6wcBn6j",
-    "availability": "buyable",
-    "description": "Transparent PNG test — cutout product on placeholder background.",
-    "listingImage": "images/objects/book-test.png",
-    "detailImage": null
-  },
-  {
     "slug": "nothing-headphones",
     "name": "Headphones (1)",
     "brand": "Nothing",
