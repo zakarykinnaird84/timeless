@@ -209,6 +209,20 @@
         }
     }
 
+    function syncFooterClosingHeight() {
+        const closing =
+            document.querySelector(".site-footer__closing--catalog") ||
+            document.querySelector(".page--about-timeless .site-footer__closing");
+        if (!closing) {
+            return;
+        }
+
+        const height = Math.ceil(closing.getBoundingClientRect().height);
+        if (height > 0) {
+            document.documentElement.style.setProperty("--footer-closing-height", `${height}px`);
+        }
+    }
+
     function initCatalogPage() {
         syncCatalogHeaderHeight();
         window.addEventListener("resize", syncCatalogHeaderHeight);
@@ -369,6 +383,41 @@
 
     if (document.querySelector(".page--about-timeless, .page--legal")) {
         markNavIntroSeen();
+    }
+
+    function initFooterReveal() {
+        const footerTargets = document.querySelectorAll(".site-footer__text");
+        if (!footerTargets.length) {
+            return;
+        }
+
+        if (prefersReducedMotion) {
+            footerTargets.forEach((target) => target.classList.add("is-visible"));
+            return;
+        }
+
+        const footerObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+                    entry.target.classList.add("is-visible");
+                    footerObserver.unobserve(entry.target);
+                });
+            },
+            { threshold: 0.35, rootMargin: "0px 0px -10% 0px" }
+        );
+
+        footerTargets.forEach((target) => footerObserver.observe(target));
+    }
+
+    initFooterReveal();
+
+    syncFooterClosingHeight();
+    window.addEventListener("resize", syncFooterClosingHeight);
+    if (document.fonts?.ready) {
+        document.fonts.ready.then(() => requestAnimationFrame(syncFooterClosingHeight));
     }
 
     document.querySelectorAll(".about-copy .story-line").forEach((line, index) => {

@@ -11,7 +11,7 @@
     --title-size: 128px;
     --story-size: clamp(32px, 5.5vw, 88px);
     --story-block-gap: 120px;
-    --footer-text-size: clamp(40px, 6vw, 72px);
+    --footer-text-size: clamp(48px, 8vw, var(--detail-title-size));
     --footer-padding: 48px;
     --footer-top-gap: 40px;
     --reveal-duration: 1.35s;
@@ -38,6 +38,7 @@
     --screen-bottom-padding: 48px;
     --detail-title-size: 128px;
     --site-header-height: 51px;
+    --footer-closing-height: 80px;
     --inter-ui-size: 12px;
     --external-link-size: 16px;
 }
@@ -745,9 +746,14 @@ html.compact-top .title-row {
 @media (prefers-reduced-motion: reduce) {
     .story-line,
     .story-line__segment,
-    .site-footer__title {
+    .site-footer__title,
+    .site-footer__credit-title {
         color: var(--text-primary);
         animation: none;
+    }
+
+    .site-footer__credit-title {
+        color: var(--text-dimmed);
     }
 
     .site-footer__text {
@@ -863,7 +869,6 @@ html.compact-top .title-row {
 @media (max-width: 768px) {
     :root {
         --story-block-gap: 72px;
-        --footer-text-size: clamp(32px, 9vw, 48px);
         --footer-top-gap: var(--menu-padding);
     }
 
@@ -993,6 +998,168 @@ html.compact-top .title-row {
 
 .site-footer--compact .site-footer__closing {
     min-height: calc(var(--title-size) + var(--section-gap) + var(--menu-padding) * 2);
+}
+
+/* Timeless Objects — catalog footer */
+.site-footer--catalog {
+    min-height: auto;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.site-footer__nav {
+    padding: var(--catalog-padding);
+    background: var(--background);
+}
+
+.filter-bar--footer .filter-bar__group--end {
+    margin-left: auto;
+}
+
+.site-footer__maker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    color: var(--text-dimmed);
+    text-decoration: none;
+    font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: var(--inter-ui-size);
+    font-weight: 400;
+    line-height: 1;
+    white-space: nowrap;
+    transition: color var(--link-hover-duration) var(--link-hover-ease);
+}
+
+.site-footer__maker:hover,
+.site-footer__maker:focus-visible {
+    color: var(--night);
+}
+
+.site-footer__maker-icon {
+    flex-shrink: 0;
+}
+
+.site-footer--catalog .site-footer__credit {
+    height: calc(var(--top-screen-height, 100svh) - var(--footer-closing-height));
+    min-height: calc(var(--top-screen-height, 100svh) - var(--footer-closing-height));
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 0;
+    padding-top: var(--catalog-padding);
+    padding-right: var(--catalog-padding);
+    padding-left: var(--catalog-padding);
+    padding-bottom: 0;
+    background: var(--background);
+    box-sizing: border-box;
+}
+
+.site-footer__credit-panel {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    min-height: 0;
+    width: 100%;
+    padding: var(--catalog-padding);
+    padding-bottom: calc(var(--screen-bottom-padding) + env(safe-area-inset-bottom, 0px));
+    background: #000000;
+    box-sizing: border-box;
+}
+
+.site-footer__credit-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    max-width: 100%;
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--link-hover-duration) var(--link-hover-ease);
+}
+
+.site-footer__credit-link:hover,
+.site-footer__credit-link:focus-visible {
+    color: var(--background);
+}
+
+.site-footer__credit-icon {
+    width: 0.70em;
+    height: 0.70em;
+    margin-left: 0.18em;
+    flex-shrink: 0;
+    color: inherit;
+    opacity: 0;
+    transition:
+        color var(--link-hover-duration) var(--link-hover-ease),
+        opacity var(--link-hover-duration) var(--link-hover-ease);
+}
+
+.page--about-timeless .site-footer__credit {
+    height: calc(var(--top-screen-height, 100svh) - var(--footer-closing-height));
+    min-height: calc(var(--top-screen-height, 100svh) - var(--footer-closing-height));
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+    padding-top: var(--catalog-padding);
+    padding-right: var(--catalog-padding);
+    padding-left: var(--catalog-padding);
+    padding-bottom: 0;
+    background: var(--background);
+    box-sizing: border-box;
+}
+
+.site-footer--catalog .site-footer__credit-link,
+.page--about-timeless .site-footer__credit-link {
+    font-size: clamp(48px, 8vw, var(--detail-title-size));
+    line-height: 1;
+    color: var(--night);
+    transition: color var(--link-hover-duration) var(--link-hover-ease);
+}
+
+.site-footer--catalog .site-footer__credit-link:hover,
+.site-footer--catalog .site-footer__credit-link:focus-visible,
+.page--about-timeless .site-footer__credit-link:hover,
+.page--about-timeless .site-footer__credit-link:focus-visible {
+    color: var(--background);
+}
+
+.site-footer--catalog .site-footer__text,
+.page--about-timeless .site-footer__text {
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    opacity: 0;
+    transition: color var(--link-hover-duration) var(--link-hover-ease);
+}
+
+.site-footer__text.is-visible + .site-footer__credit-icon {
+    animation: footer-credit-fade-in var(--footer-develop-duration) var(--hero-develop-ease) var(--footer-develop-delay) forwards;
+}
+
+.site-footer__closing--catalog {
+    min-height: auto;
+    padding: var(--catalog-padding);
+    padding-bottom: calc(var(--catalog-padding) + env(safe-area-inset-bottom, 0px));
+}
+
+.site-footer__legal-nav--catalog {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.site-footer__legal-nav--catalog .site-footer__legal-link:first-child {
+    justify-self: start;
+}
+
+.site-footer__legal-nav--catalog .site-footer__legal-link--terms {
+    grid-column: 2;
+    justify-self: center;
+}
+
+.site-footer__legal-nav--catalog .site-footer__legal-link--privacy {
+    grid-column: 3;
+    justify-self: end;
 }
 
 /* Timeless Objects — catalog */
@@ -1753,6 +1920,25 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     padding-top: var(--section-gap);
 }
 
+/* About page — Timeless */
+.page--about-timeless {
+    align-items: stretch;
+    width: 100%;
+}
+
+.page--about-timeless .site-footer {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.page--about-timeless .site-footer__closing {
+    padding-left: var(--catalog-padding);
+    padding-right: var(--catalog-padding);
+    min-height: auto;
+    padding-top: var(--catalog-padding);
+    padding-bottom: calc(var(--catalog-padding) + env(safe-area-inset-bottom, 0px));
+}
+
 .about-timeless {
     width: 100%;
     padding: var(--site-header-height) var(--catalog-padding) var(--catalog-padding);
@@ -1775,16 +1961,6 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 
 .about-timeless .story-line {
     font-size: clamp(28px, 4.5vw, 56px);
-}
-
-.about-timeless-footer {
-    margin-top: 80px;
-    padding-top: 40px;
-    border-top: 1px solid #eee;
-}
-
-.about-timeless-footer .site-nav {
-    max-width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -1851,6 +2027,12 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
         flex: 0 0 auto;
         padding-left: 20px;
         background: linear-gradient(to right, transparent, var(--background) 16px);
+    }
+
+    .site-footer__nav .filter-bar__group--end {
+        margin-left: auto;
+        padding-left: 16px;
+        background: linear-gradient(to right, transparent, var(--background) 12px);
     }
 
     .collection-tabs--desktop {

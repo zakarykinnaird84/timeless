@@ -17,16 +17,24 @@
 
     const MOBILE_MAX_WIDTH = 768;
 
-    const headerEl = document.querySelector(".site-header");
-    const filterBarEl = document.querySelector(".filter-bar");
-    const filterStartEl = document.querySelector(".filter-bar__group--start");
-    const filterEndEl = document.querySelector(".filter-bar__group--end");
+    const headerFilterBarEl = document.querySelector(".site-header .filter-bar");
+    const footerFilterBarEl = document.querySelector(".site-footer__nav .filter-bar");
+    const filterStartEl = headerFilterBarEl?.querySelector(".filter-bar__group--start") || null;
+    const filterEndEl = headerFilterBarEl?.querySelector(".filter-bar__group--end") || null;
+    const footerFilterStartEl = footerFilterBarEl?.querySelector(".filter-bar__group--start") || null;
     const catalogEl = document.getElementById("catalog");
     const isCatalogPage = Boolean(catalogEl);
 
-    if (!headerEl || !filterBarEl || !filterStartEl || !filterEndEl) {
+    if (!headerFilterBarEl && !footerFilterBarEl) {
         return;
     }
+
+    if (headerFilterBarEl && (!filterStartEl || !filterEndEl)) {
+        return;
+    }
+
+    const filterBarEls = [headerFilterBarEl, footerFilterBarEl].filter(Boolean);
+    const filterStartEls = [filterStartEl, footerFilterStartEl].filter(Boolean);
 
     const COLLECTIONS = new Set(COLLECTION_OPTIONS.map((option) => option.value));
     const DEFAULT_COLLECTION = "featured";
@@ -41,8 +49,8 @@
         return COLLECTION_OPTIONS.find((option) => option.value === value)?.label || "Featured";
     }
 
-    function renderLeftFilters() {
-        filterStartEl.innerHTML = LEFT_FILTERS.map((item) => {
+    function renderCategoryButtons() {
+        return LEFT_FILTERS.map((item) => {
             const isActive =
                 item.type === "all"
                     ? currentView === "objects" && activeCategory === "all"
@@ -56,7 +64,29 @@
         }).join("");
     }
 
+    function renderLeftFilters() {
+        if (!filterStartEl) {
+            return;
+        }
+
+        filterStartEl.innerHTML = renderCategoryButtons();
+    }
+
+    function renderFooterFilters() {
+        if (!footerFilterStartEl) {
+            return;
+        }
+
+        const creatorsActive = currentView === "creators";
+        const creatorsButton = `<button type="button" class="filter-bar__link${creatorsActive ? " filter-bar__link--active" : ""}" data-view="creators">Creators</button>`;
+        footerFilterStartEl.innerHTML = `${renderCategoryButtons()}${creatorsButton}`;
+    }
+
     function renderCollectionControls() {
+        if (!filterEndEl) {
+            return;
+        }
+
         const desktopButtons = COLLECTION_OPTIONS.map((option) => {
             const isActive = option.value === activeCollection;
             return `<button type="button" class="filter-bar__link${isActive ? " filter-bar__link--active" : ""}" data-collection="${option.value}">${option.label}</button>`;
@@ -100,6 +130,7 @@
 
     function updateNavUI() {
         renderLeftFilters();
+        renderFooterFilters();
         renderCollectionControls();
         scrollActiveCategoryIntoView();
     }
@@ -109,13 +140,15 @@
             return;
         }
 
-        const activeLink = filterStartEl.querySelector(".filter-bar__link--active");
-        if (!activeLink) {
-            return;
-        }
+        filterStartEls.forEach((groupEl) => {
+            const activeLink = groupEl.querySelector(".filter-bar__link--active");
+            if (!activeLink) {
+                return;
+            }
 
-        requestAnimationFrame(() => {
-            activeLink.scrollIntoView({ inline: "nearest", block: "nearest", behavior: "smooth" });
+            requestAnimationFrame(() => {
+                activeLink.scrollIntoView({ inline: "nearest", block: "nearest", behavior: "smooth" });
+            });
         });
     }
 
@@ -199,7 +232,7 @@
         dispatchFilterChange();
     }
 
-    filterBarEl.addEventListener("click", (event) => {
+    function handleFilterBarClick(event) {
         event.stopPropagation();
 
         const categoryButton = event.target.closest("[data-category]");
@@ -209,6 +242,13 @@
                 view: "objects",
                 category: categoryButton.dataset.category || "all",
             });
+            return;
+        }
+
+        const viewButton = event.target.closest("[data-view]");
+        if (viewButton) {
+            closeCollectionDropdown();
+            applyFilter({ view: viewButton.dataset.view || "creators" });
             return;
         }
 
@@ -226,6 +266,10 @@
             collectionDropdownOpen = false;
             applyFilter({ collection: collectionButton.dataset.collection || DEFAULT_COLLECTION });
         }
+    }
+
+    filterBarEls.forEach((filterBarEl) => {
+        filterBarEl.addEventListener("click", handleFilterBarClick);
     });
 
     document.addEventListener("click", (event) => {
