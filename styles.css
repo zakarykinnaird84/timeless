@@ -1463,11 +1463,13 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 
 .detail-header__dot {
     position: relative;
+    display: flex;
+    align-items: center;
+    align-self: center;
     appearance: none;
     border: 0;
     background: none;
-    padding: 10px 0 10px 16px;
-    margin-top: clamp(10px, 1.8vw, 18px);
+    padding: 0 0 0 16px;
     cursor: pointer;
     flex-shrink: 0;
     transition: transform 140ms var(--detail-nav-ease-out);
@@ -1488,7 +1490,7 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: var(--night);
+    background-color: #ff5c25;
     transition:
         background-color var(--link-hover-duration) var(--link-hover-ease),
         transform var(--detail-nav-enter-duration) var(--detail-nav-ease-out),
@@ -1498,12 +1500,13 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 @media (hover: hover) and (pointer: fine) {
     .detail-header__dot:hover .detail-header__dot-mark,
     .detail-header__dot:focus-visible .detail-header__dot-mark {
-        background-color: var(--text-dimmed);
+        background-color: #ff5c25;
+        opacity: 0.72;
     }
 }
 
 .page--detail.is-header-open .detail-header__dot-mark {
-    background-color: var(--text-dimmed);
+    background-color: #ff5c25;
     transform: scale(0.82);
     opacity: 0.72;
 }
