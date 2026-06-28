@@ -269,6 +269,17 @@
                 return;
             }
 
+            const header = document.querySelector(".page--detail .site-header");
+            const isOpen = page.classList.contains("is-header-open");
+
+            if (open === isOpen) {
+                return;
+            }
+
+            if (open) {
+                syncCatalogHeaderHeight();
+            }
+
             page.classList.toggle("is-header-open", open);
 
             const dot = document.querySelector(".detail-header__dot");
@@ -277,8 +288,15 @@
                 dot.setAttribute("aria-label", open ? "Close browse menu" : "Open browse menu");
             }
 
-            if (open) {
-                requestAnimationFrame(syncCatalogHeaderHeight);
+            if (header && open) {
+                header.addEventListener(
+                    "transitionend",
+                    () => {
+                        header.style.willChange = "";
+                    },
+                    { once: true }
+                );
+                header.style.willChange = "transform, opacity";
             }
         }
 

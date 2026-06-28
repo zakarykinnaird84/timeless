@@ -29,6 +29,9 @@
     --footer-reveal-duration: calc(var(--reveal-duration) * 1.5);
     --link-hover-duration: 1.5s;
     --link-hover-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --detail-nav-enter-duration: 260ms;
+    --detail-nav-exit-duration: 180ms;
+    --detail-nav-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     --placeholder: #f3f3f5;
     --text-muted: #808080;
     --catalog-padding: 32px;
@@ -1459,6 +1462,7 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 }
 
 .detail-header__dot {
+    position: relative;
     appearance: none;
     border: 0;
     background: none;
@@ -1466,6 +1470,17 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     margin-top: clamp(10px, 1.8vw, 18px);
     cursor: pointer;
     flex-shrink: 0;
+    transition: transform 140ms var(--detail-nav-ease-out);
+}
+
+.detail-header__dot::after {
+    content: "";
+    position: absolute;
+    inset: -12px -8px -12px -16px;
+}
+
+.detail-header__dot:active {
+    transform: scale(0.96);
 }
 
 .detail-header__dot-mark {
@@ -1474,31 +1489,56 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     height: 6px;
     border-radius: 50%;
     background-color: var(--night);
-    transition: background-color var(--link-hover-duration) var(--link-hover-ease);
+    transition:
+        background-color var(--link-hover-duration) var(--link-hover-ease),
+        transform var(--detail-nav-enter-duration) var(--detail-nav-ease-out),
+        opacity var(--detail-nav-enter-duration) var(--detail-nav-ease-out);
 }
 
-.detail-header__dot:hover .detail-header__dot-mark,
-.detail-header__dot:focus-visible .detail-header__dot-mark {
-    background-color: var(--text-dimmed);
+@media (hover: hover) and (pointer: fine) {
+    .detail-header__dot:hover .detail-header__dot-mark,
+    .detail-header__dot:focus-visible .detail-header__dot-mark {
+        background-color: var(--text-dimmed);
+    }
 }
 
 .page--detail.is-header-open .detail-header__dot-mark {
     background-color: var(--text-dimmed);
+    transform: scale(0.82);
+    opacity: 0.72;
 }
 
 .page--detail .site-header {
-    opacity: 1;
+    opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    transform: translate3d(0, calc(-100% - 6px), 0);
+    transition:
+        transform var(--detail-nav-exit-duration) var(--detail-nav-ease-out),
+        opacity var(--detail-nav-exit-duration) var(--detail-nav-ease-out),
+        visibility 0s linear var(--detail-nav-exit-duration);
 }
 
 .page--detail.is-header-open .site-header {
+    opacity: 1;
     visibility: visible;
     pointer-events: auto;
+    transform: translate3d(0, 0, 0);
+    transition:
+        transform var(--detail-nav-enter-duration) var(--detail-nav-ease-out),
+        opacity var(--detail-nav-enter-duration) var(--detail-nav-ease-out),
+        visibility 0s;
 }
 
-.page--detail.is-header-open .detail-shell {
-    padding-top: calc(env(safe-area-inset-top, 0px) + var(--site-header-height) + var(--catalog-padding));
+.page--detail #detail-root > .detail-frame,
+.page--detail #detail-root > .detail-not-found {
+    transition: transform var(--detail-nav-exit-duration) var(--detail-nav-ease-out);
+}
+
+.page--detail.is-header-open #detail-root > .detail-frame,
+.page--detail.is-header-open #detail-root > .detail-not-found {
+    transform: translate3d(0, var(--site-header-height), 0);
+    transition: transform var(--detail-nav-enter-duration) var(--detail-nav-ease-out);
 }
 
 .detail-hero {
@@ -1937,10 +1977,31 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 
 @media (prefers-reduced-motion: reduce) {
     .page--catalog .site-header,
-    .page--detail .site-header,
     .page--catalog .object-screen--featured .object-nav {
         opacity: 1;
         animation: none;
+    }
+
+    .page--detail .site-header {
+        animation: none;
+        transform: none;
+    }
+
+    .page--detail #detail-root > .detail-frame,
+    .page--detail #detail-root > .detail-not-found,
+    .detail-header__dot,
+    .detail-header__dot-mark {
+        transition: opacity 120ms ease !important;
+        transform: none !important;
+        transition-delay: 0ms !important;
+    }
+
+    .page--detail .site-header {
+        transition: opacity 120ms ease, visibility 0s linear 120ms !important;
+    }
+
+    .page--detail.is-header-open .site-header {
+        transition: opacity 120ms ease, visibility 0s !important;
     }
 
     .page--detail .detail-hero__media .hero-image,
