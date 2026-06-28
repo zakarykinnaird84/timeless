@@ -1668,13 +1668,14 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
         align-items: center;
         padding-top: 0;
         padding-bottom: 0;
+        --inter-ui-size: 11px;
     }
 
     .filter-bar {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        gap: 16px;
+        gap: 12px;
     }
 
     .filter-bar__group--start {
@@ -1686,7 +1687,7 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         -ms-overflow-style: none;
-        gap: 12px 14px;
+        gap: 10px 12px;
         padding-right: 4px;
         -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 32px), transparent 100%);
         mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 32px), transparent 100%);
@@ -1719,6 +1720,42 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     .collection-dropdown--mobile {
         display: flex;
         align-items: center;
+    }
+
+    .page--catalog .site-header .filter-bar {
+        position: relative;
+        z-index: 2;
+    }
+
+    .page--catalog .site-header:has(.collection-dropdown.is-open)::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        height: 40px;
+        background: var(--background);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .collection-dropdown.is-open {
+        align-items: flex-end;
+    }
+
+    .collection-dropdown.is-open .collection-dropdown__menu {
+        top: calc(100% + 2px);
+        right: calc(-1 * var(--catalog-padding));
+        gap: 6px;
+        padding: 7px var(--catalog-padding) 9px;
+        align-items: flex-end;
+        box-sizing: border-box;
+    }
+
+    .collection-dropdown.is-open .collection-dropdown__option {
+        padding: 1px 0;
+        width: 100%;
+        text-align: right;
     }
 
     .filter-bar__link {
