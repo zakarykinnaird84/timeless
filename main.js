@@ -322,7 +322,11 @@
                     return;
                 }
 
-                if (event.target.closest(".site-header") || event.target.closest(".detail-header__dot")) {
+                if (
+                    event.target.closest(".site-header") ||
+                    event.target.closest(".detail-header__dot") ||
+                    event.target.closest(".filter-bar")
+                ) {
                     return;
                 }
 

@@ -200,6 +200,8 @@
     }
 
     filterBarEl.addEventListener("click", (event) => {
+        event.stopPropagation();
+
         const categoryButton = event.target.closest("[data-category]");
         if (categoryButton) {
             closeCollectionDropdown();
@@ -212,8 +214,10 @@
 
         if (event.target.closest(".collection-dropdown__trigger")) {
             collectionDropdownOpen = !collectionDropdownOpen;
-            renderCollectionControls();
-            document.dispatchEvent(new CustomEvent("filter:ui-change"));
+            requestAnimationFrame(() => {
+                renderCollectionControls();
+                document.dispatchEvent(new CustomEvent("filter:ui-change"));
+            });
             return;
         }
 
