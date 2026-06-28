@@ -195,7 +195,26 @@
         });
     }
 
+    function syncCatalogHeaderHeight() {
+        const header = document.querySelector(".page--catalog .site-header");
+        if (!header) {
+            return;
+        }
+
+        const height = Math.ceil(header.getBoundingClientRect().height);
+        if (height > 0) {
+            document.documentElement.style.setProperty("--site-header-height", `${height}px`);
+        }
+    }
+
     function initCatalogPage() {
+        syncCatalogHeaderHeight();
+        window.addEventListener("resize", syncCatalogHeaderHeight);
+        document.addEventListener("filter:ready", () => {
+            requestAnimationFrame(syncCatalogHeaderHeight);
+        });
+        document.addEventListener("filter:ui-change", syncCatalogHeaderHeight);
+
         document.addEventListener("click", (event) => {
             const link = event.target.closest("a[href]");
             if (!link || link.target === "_blank") {
@@ -209,6 +228,7 @@
 
         document.addEventListener("catalog:rendered", () => {
             observeHeroSections();
+            syncCatalogHeaderHeight();
         });
     }
 
