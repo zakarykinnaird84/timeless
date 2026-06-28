@@ -147,7 +147,16 @@
             }
 
             requestAnimationFrame(() => {
-                activeLink.scrollIntoView({ inline: "nearest", block: "nearest", behavior: "smooth" });
+                const linkStart = activeLink.offsetLeft;
+                const linkEnd = linkStart + activeLink.offsetWidth;
+                const viewStart = groupEl.scrollLeft;
+                const viewEnd = viewStart + groupEl.clientWidth;
+
+                if (linkStart < viewStart) {
+                    groupEl.scrollTo({ left: linkStart, behavior: "smooth" });
+                } else if (linkEnd > viewEnd) {
+                    groupEl.scrollTo({ left: linkEnd - groupEl.clientWidth, behavior: "smooth" });
+                }
             });
         });
     }

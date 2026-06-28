@@ -14,6 +14,11 @@
         return;
     }
 
+    if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+
     function getDetailImage(item) {
         return item.detailImage || item.listingImage || item.image || null;
     }
@@ -192,6 +197,7 @@
                 })
             );
             document.dispatchEvent(new CustomEvent("detail:rendered"));
+            window.scrollTo(0, 0);
         })
         .catch(() => {
             root.innerHTML = `<div class="detail-not-found"><h1 class="detail-title">Error</h1><p class="detail-copy"><a href="index.html">Back to catalog</a></p></div>`;
