@@ -2222,7 +2222,11 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     .detail-brand--mobile-footer {
         display: flex;
         grid-column: 1 / -1;
-        justify-content: flex-end;
+        justify-content: flex-start;
+    }
+
+    .detail-brand--mobile-footer .detail-brand__link {
+        justify-content: flex-start;
     }
 
     .object-nav {
