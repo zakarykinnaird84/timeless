@@ -29,8 +29,8 @@
     "category": "audio",
     "externalUrl": "https://nothing.tech",
     "availability": "buyable",
-    "listingImage": null,
-    "detailImage": null
+    "listingImage": "images/objects/nothing-headphones.webp",
+    "detailImage": "images/objects/nothing-headphones-detail.webp"
   },
   {
     "slug": "dyson-ontrac",
@@ -39,8 +39,8 @@
     "category": "audio",
     "externalUrl": "https://www.dyson.com",
     "availability": "buyable",
-    "listingImage": null,
-    "detailImage": null
+    "listingImage": "images/objects/ontac.webp",
+    "detailImage": "images/objects/ontac-detail.webp"
   },
   {
     "slug": "airpods",

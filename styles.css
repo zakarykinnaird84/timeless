@@ -1248,18 +1248,21 @@ html.nav-intro-seen .page--catalog .site-header {
     gap: 16px;
     flex-shrink: 0;
     padding: 24px 0 0;
+}
+
+.page--catalog .object-screen--featured .object-nav {
     opacity: 0;
 }
 
-.object-screen:has(.hero-media.is-developing) .object-nav {
+.page--catalog:has(.catalog > .object-screen--featured .hero-media.is-developing) .object-screen--featured .object-nav {
     animation: nav-fade-in var(--reveal-duration) var(--reveal-ease) var(--nav-fade-delay) both;
 }
 
-.object-screen:has(.hero-media.is-developed) .object-nav {
+.page--catalog:has(.catalog > .object-screen--featured .hero-media.is-developed) .object-screen--featured .object-nav {
     opacity: 1;
 }
 
-html.nav-intro-seen .object-screen--featured:has(.hero-media.is-developing) .object-nav {
+html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     opacity: 1;
     animation: none;
 }
@@ -1575,13 +1578,12 @@ html.nav-intro-seen .page--detail:has(.detail-hero.is-developing) .object-nav--d
 
 @media (prefers-reduced-motion: reduce) {
     .page--catalog .site-header,
+    .page--catalog .object-screen--featured .object-nav,
     .page--detail:has(.detail-hero.is-developing) .detail-header {
         opacity: 1;
         animation: none;
     }
 
-    .object-screen:has(.hero-media.is-developing) .object-nav,
-    .object-screen:has(.hero-media.is-developed) .object-nav,
     .page--detail:has(.detail-hero.is-developing) .object-nav--detail,
     .page--detail:has(.detail-hero.is-developed) .object-nav--detail {
         opacity: 1;
