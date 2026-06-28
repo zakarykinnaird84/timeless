@@ -245,6 +245,21 @@
         }
     });
 
+    document.addEventListener("detail:context", (event) => {
+        if (isCatalogPage) {
+            return;
+        }
+
+        const { category, type } = event.detail || {};
+        applyFilter(
+            {
+                view: type === "creator" ? "creators" : "objects",
+                category: category || "all",
+            },
+            { navigate: false }
+        );
+    });
+
     updateNavUI();
 
     document.dispatchEvent(

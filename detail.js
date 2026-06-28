@@ -158,6 +158,15 @@
                 <div class="detail-frame">
                     <header class="detail-header">
                         <h1 class="detail-title">${escapeHtml(name)}</h1>
+                        <button
+                            type="button"
+                            class="detail-header__dot"
+                            aria-label="Open browse menu"
+                            aria-expanded="false"
+                            aria-controls="detail-site-header"
+                        >
+                            <span class="detail-header__dot-mark" aria-hidden="true"></span>
+                        </button>
                     </header>
                     <div class="detail-hero">
                         ${heroMarkup}
@@ -174,6 +183,14 @@
                 </div>
             `;
 
+            document.dispatchEvent(
+                new CustomEvent("detail:context", {
+                    detail: {
+                        category: item.category || "all",
+                        type,
+                    },
+                })
+            );
             document.dispatchEvent(new CustomEvent("detail:rendered"));
         })
         .catch(() => {
