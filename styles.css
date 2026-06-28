@@ -724,7 +724,7 @@ html.compact-top .title-row {
 
 .site-footer__title.is-visible {
     will-change: color;
-    animation: text-polaroid-develop var(--footer-develop-duration) var(--hero-develop-ease) var(--footer-develop-delay) forwards;
+    animation: text-polaroid-develop var(--text-develop-duration) var(--hero-develop-ease) forwards;
 }
 
 .site-footer__text.is-visible {
@@ -817,14 +817,41 @@ html.compact-top .title-row {
 .site-footer__title-row {
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
     gap: 24px;
 }
 
 .site-footer__title {
-    word-break: break-word;
+    font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+    font-size: var(--footer-text-size);
+    font-weight: 400;
+    line-height: 1;
     color: var(--polaroid-text);
+}
+
+.site-footer__title-row .site-footer__title {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.site-footer__title-row .site-footer__legal-nav {
+    margin-top: 0;
+    width: auto;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 3vw, 32px);
+}
+
+.site-footer__title-row .site-footer__legal-link {
+    justify-self: auto;
+}
+
+.site-footer__title-row .site-footer__legal-link--terms,
+.site-footer__title-row .site-footer__legal-link--privacy {
+    grid-column: auto;
+    justify-self: auto;
 }
 
 @media (min-width: 769px) {
@@ -1077,13 +1104,25 @@ html.compact-top .title-row {
     flex: 1;
     display: flex;
     align-items: flex-end;
-    justify-content: flex-start;
+    justify-content: flex-end;
     min-height: 0;
     width: 100%;
     padding: var(--catalog-padding);
     padding-bottom: calc(var(--screen-bottom-padding) + env(safe-area-inset-bottom, 0px));
     background: #000000;
     box-sizing: border-box;
+}
+
+.site-footer__credit-label {
+    margin: 0;
+    max-width: 100%;
+    font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+    font-size: clamp(28px, 4.5vw, 56px);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--night);
+    text-align: right;
+    opacity: 0;
 }
 
 .site-footer__credit-link {
@@ -1128,35 +1167,10 @@ html.compact-top .title-row {
     box-sizing: border-box;
 }
 
-.site-footer--catalog .site-footer__credit-link,
-.page--about-timeless .site-footer__credit-link {
-    font-size: clamp(48px, 8vw, var(--detail-title-size));
-    line-height: 1;
-    color: var(--night);
-    transition: color var(--link-hover-duration) var(--link-hover-ease);
-}
-
-.site-footer--catalog .site-footer__credit-link:hover,
-.site-footer--catalog .site-footer__credit-link:focus-visible,
-.page--about-timeless .site-footer__credit-link:hover,
-.page--about-timeless .site-footer__credit-link:focus-visible {
-    color: var(--background);
-}
-
-.site-footer--catalog .site-footer__text,
-.page--about-timeless .site-footer__text {
-    font-size: inherit;
-    line-height: inherit;
-    color: inherit;
-    opacity: 0;
-    transition: color var(--link-hover-duration) var(--link-hover-ease);
-}
-
-.site-footer__text.is-visible + .site-footer__credit-icon {
-    animation: footer-credit-fade-in var(--footer-develop-duration) var(--hero-develop-ease) var(--footer-develop-delay) forwards;
-}
-
 .site-footer__closing--catalog {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     min-height: auto;
     padding: var(--catalog-padding);
     padding-bottom: calc(var(--catalog-padding) + env(safe-area-inset-bottom, 0px));
@@ -1950,6 +1964,9 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
 }
 
 .page--about-timeless .site-footer__closing {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     padding-left: var(--catalog-padding);
     padding-right: var(--catalog-padding);
     min-height: auto;

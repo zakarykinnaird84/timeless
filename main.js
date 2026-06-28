@@ -386,7 +386,8 @@
     }
 
     function initFooterReveal() {
-        const footerTargets = document.querySelectorAll(".site-footer__text");
+        const footer = document.querySelector(".site-footer");
+        const footerTargets = footer?.querySelectorAll(".site-footer__text, .site-footer__title") || [];
         if (!footerTargets.length) {
             return;
         }
@@ -402,14 +403,14 @@
                     if (!entry.isIntersecting) {
                         return;
                     }
-                    entry.target.classList.add("is-visible");
-                    footerObserver.unobserve(entry.target);
+                    footerTargets.forEach((target) => target.classList.add("is-visible"));
+                    footerObserver.disconnect();
                 });
             },
-            { threshold: 0.35, rootMargin: "0px 0px -10% 0px" }
+            { threshold: 0.12, rootMargin: "0px 0px 0px 0px" }
         );
 
-        footerTargets.forEach((target) => footerObserver.observe(target));
+        footerObserver.observe(footer || footerTargets[0]);
     }
 
     initFooterReveal();
