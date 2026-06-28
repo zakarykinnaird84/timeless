@@ -1,6 +1,6 @@
 (function () {
     const LEFT_FILTERS = [
-        { type: "all", value: "all", label: "All" },
+        { type: "all", value: "all", label: "Home" },
         { type: "category", value: "furniture", label: "Furniture" },
         { type: "category", value: "audio", label: "Audio" },
         { type: "category", value: "studio", label: "Workspace" },
@@ -57,7 +57,7 @@
                     : currentView === "objects" && activeCategory === item.value;
 
             if (item.type === "all") {
-                return `<button type="button" class="filter-bar__link${isActive ? " filter-bar__link--active" : ""}" data-category="all">All</button>`;
+                return `<button type="button" class="filter-bar__link${isActive ? " filter-bar__link--active" : ""}" data-category="all">${item.label}</button>`;
             }
 
             return `<button type="button" class="filter-bar__link${isActive ? " filter-bar__link--active" : ""}" data-category="${item.value}">${item.label}</button>`;

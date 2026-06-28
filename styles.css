@@ -1007,9 +1007,31 @@ html.compact-top .title-row {
     padding-right: 0;
 }
 
-.site-footer__nav {
-    padding: var(--catalog-padding);
+.site-footer--catalog .site-footer__stage {
+    display: flex;
+    flex-direction: column;
+    height: calc(var(--top-screen-height, 100svh) - var(--footer-closing-height));
+    min-height: calc(var(--top-screen-height, 100svh) - var(--footer-closing-height));
+    padding-top: 0;
+    padding-right: var(--catalog-padding);
+    padding-left: var(--catalog-padding);
+    padding-bottom: 0;
     background: var(--background);
+    box-sizing: border-box;
+}
+
+.site-footer--catalog .site-footer__nav {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    height: var(--site-header-height);
+    min-height: var(--site-header-height);
+    padding: 0;
+    background: transparent;
+}
+
+.site-footer--catalog .site-footer__nav .filter-bar {
+    width: 100%;
 }
 
 .filter-bar--footer .filter-bar__group--end {
@@ -1040,18 +1062,14 @@ html.compact-top .title-row {
 }
 
 .site-footer--catalog .site-footer__credit {
-    height: calc(var(--top-screen-height, 100svh) - var(--footer-closing-height));
-    min-height: calc(var(--top-screen-height, 100svh) - var(--footer-closing-height));
-    flex: none;
+    flex: 1;
+    min-height: 0;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     margin-top: 0;
-    padding-top: var(--catalog-padding);
-    padding-right: var(--catalog-padding);
-    padding-left: var(--catalog-padding);
-    padding-bottom: 0;
-    background: var(--background);
+    padding: 0;
+    background: transparent;
     box-sizing: border-box;
 }
 
@@ -2033,6 +2051,13 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
         margin-left: auto;
         padding-left: 16px;
         background: linear-gradient(to right, transparent, var(--background) 12px);
+        align-self: center;
+    }
+
+    .site-footer--catalog .site-footer__nav {
+        height: var(--site-header-height);
+        min-height: var(--site-header-height);
+        max-height: var(--site-header-height);
     }
 
     .collection-tabs--desktop {
