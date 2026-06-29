@@ -36,6 +36,7 @@
         "images/objects/chair_one-magis-detail.webp": [1728, 939],
         "images/objects/panton-chair-vitra-detail.webp": [1600, 1083],
         "images/objects/up-5-detail.webp": [1600, 1600],
+        "images/objects/de-la-warr-pavilion-chair-detail.webp": [1600, 1781],
     };
 
     function getDetailImage(item) {

@@ -353,6 +353,17 @@
     "detailImage": "images/objects/up-5-detail.webp"
   },
   {
+    "slug": "de-la-warr-pavilion-chair",
+    "name": "De La Warr Pavilion Chair",
+    "brand": "Established & Sons",
+    "category": "furniture",
+    "externalUrl": "https://barberosgerby.com/work/de-la-warr-pavilion-chair",
+    "availability": "buyable",
+    "description": "It is easy to forget that many classic design works were meant for a specific building. This is a rare, more modern example of a chair designed for a particular project.\n\nDesigned by Barber Osgerby, this piece came at a time when they were not well known — in fact, it may have been the first time I saw their work. What makes it special is the connection to the De La Warr Pavilion itself. It appears to come straight out of the 1930s, but with the sophistication of 2005.\n\nDesigning a chair for an art gallery, let alone a building, must be a dream commission for a designer. Form follows function here: perforated holes let water and wind pass through, given its outdoor use.\n\nThe orange-red finish references Alvar Aalto's original chairs for the building — a subtle but lovely note.",
+    "listingImage": "images/objects/de-la-warr-pavilion-chair.webp",
+    "detailImage": "images/objects/de-la-warr-pavilion-chair-detail.webp"
+  },
+  {
     "slug": "xbox-original",
     "name": "Original Xbox",
     "brand": "Microsoft",
