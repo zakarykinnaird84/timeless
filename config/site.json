@@ -1,0 +1,13 @@
+{
+  "origin": "https://studiostudio.store",
+  "name": "Timeless Objects",
+  "shortName": "Timeless",
+  "tagline": "Design-led things that outlast trends.",
+  "description": "A curated catalog of timeless objects — audio, furniture, tech, fashion, cars, and the creators behind them. Some you can buy. Some you can only admire.",
+  "aboutDescription": "Not a store. A catalog of design-led things that outlast trends — objects and the people who made them.",
+  "ogImage": "images/share/og-default.webp",
+  "ogImageWidth": 1500,
+  "ogImageHeight": 1500,
+  "twitterCard": "summary_large_image",
+  "locale": "en_GB"
+}

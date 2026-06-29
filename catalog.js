@@ -35,7 +35,7 @@
 
     function getActiveItems() {
         const source = currentView === "creators" ? creators : objects;
-        let items = [...source];
+        let items = source.filter((item) => item.published !== false);
 
         if (currentView === "objects") {
             if (activeCollection === "curated") {

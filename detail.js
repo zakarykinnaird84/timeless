@@ -200,7 +200,7 @@
     ])
         .then(([objects, creators]) => {
             const collection = type === "creator" ? creators : objects;
-            const item = collection.find((entry) => entry.slug === slug);
+            const item = collection.find((entry) => entry.slug === slug && entry.published !== false);
 
             if (!item) {
                 root.innerHTML = `<div class="detail-not-found"><h1 class="detail-title">Not found</h1><p class="detail-copy"><a href="index.html">Back to catalog</a></p></div>`;
@@ -291,6 +291,30 @@
                     },
                 })
             );
+
+            if (window.TimelessSiteMeta) {
+                window.TimelessSiteMeta.getSiteConfig().then((site) => {
+                    const pageUrl = `${site.origin.replace(/\/$/, "")}/detail.html?slug=${encodeURIComponent(item.slug)}&type=${type}`;
+                    const shareImage = detailImageSrc || site.ogImage;
+                    const shareDescription =
+                        window.TimelessSiteMeta.summarizeDescription(item.description) ||
+                        `${name}${brand ? ` by ${brand}` : ""}. ${site.tagline || site.description}`;
+
+                    window.TimelessSiteMeta.setPageMeta({
+                        title: `${name} — ${site.name}`,
+                        description: shareDescription,
+                        url: pageUrl,
+                        image: window.TimelessSiteMeta.absoluteUrl(site.origin, shareImage),
+                        imageWidth: site.ogImageWidth,
+                        imageHeight: site.ogImageHeight,
+                        imageAlt: `${name}${brand ? ` by ${brand}` : ""}`,
+                        type: "article",
+                        siteName: site.name,
+                        twitterCard: site.twitterCard,
+                    });
+                });
+            }
+
             document.dispatchEvent(new CustomEvent("detail:rendered"));
             bindDetailKeyboardNav(collection, item, type);
             window.scrollTo(0, 0);
