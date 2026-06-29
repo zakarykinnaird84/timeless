@@ -342,6 +342,17 @@
     "detailImage": "images/objects/chair_one-magis-detail.webp"
   },
   {
+    "slug": "up-5",
+    "name": "Up 5",
+    "brand": "B&B Italia",
+    "category": "furniture",
+    "externalUrl": "https://www.bebitalia.com/en-us/en-us-serie-up-2000-poltrone.html",
+    "availability": "buyable",
+    "description": "Gaetano Pesce's Up 5 looks like it was inflated rather than built. A swollen, anthropomorphic armchair that seems to hold the room the moment it arrives.\n\nDesigned in 1969, it was shipped vacuum-compressed to a fraction of its size — a practical trick that only added to the drama when the foam expanded into its final form. The chair and its tethered Up 6 ottoman ball read as one piece: womb-like, playful, and unmistakably of their moment.\n\nIt is not subtle furniture. The silhouette is bold enough to feel almost confrontational, yet the deep seat and generous curves make it surprisingly comfortable once you sit down.\n\nFew objects from the late '60s still feel this alive. Up 5 is less a chair than a statement — about softness, femininity, and the idea that domestic design could be provocative as well as useful.",
+    "listingImage": "images/objects/up-5.webp",
+    "detailImage": "images/objects/up-5-detail.webp"
+  },
+  {
     "slug": "xbox-original",
     "name": "Original Xbox",
     "brand": "Microsoft",
