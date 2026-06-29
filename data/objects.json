@@ -18,7 +18,7 @@
     "category": "audio",
     "externalUrl": "https://nothing.tech",
     "availability": "buyable",
-    "description": "Nothing Headphone (1) takes a raw, industrial approach to over-ear headphones. An exposed aluminium frame sits beneath semi-transparent shells, revealing structural elements that are usually hidden. The mix of metal, matte plastics, and synthetic leather feels functional rather than decorative, closer to a piece of studio equipment than a consumer accessory.\n\nThe earcups carry a clear sense of weight and intention. A metal scroll wheel provides volume control with a defined resistance, while a spring-loaded paddle handles track navigation with a physical snap. The headphones don't try to disappear when worn — they sit with presence, resting visibly on a desk or hook like a designed object rather than packaging.\n\nInside, 40 mm drivers tuned with KEF deliver a neutral, detailed sound profile that avoids exaggeration. Adaptive noise cancellation reduces up to 45 dB of ambient sound, while battery life extends beyond 60 hours in standard use. Dual-device pairing and fast charging support everyday switching without interrupting how the device is used.",
+    "description": "Nothing Headphone (1) takes a raw, industrial approach to over-ear headphones. An exposed aluminium frame sits beneath semi-transparent shells, revealing structural elements that are usually hidden. The mix of metal, matte plastics, and synthetic leather feels functional rather than decorative, closer to a piece of studio equipment than a consumer accessory.\n\nThe earcups carry a clear sense of weight and intention. A metal scroll wheel provides volume control with a defined resistance, while a spring-loaded paddle handles track navigation with a physical snap. The headphones don't try to disappear when worn. They sit with presence, resting visibly on a desk or hook like a designed object rather than packaging.\n\nInside, 40 mm drivers tuned with KEF deliver a neutral, detailed sound profile that avoids exaggeration. Adaptive noise cancellation reduces up to 45 dB of ambient sound, while battery life extends beyond 60 hours in standard use. Dual-device pairing and fast charging support everyday switching without interrupting how the device is used.",
     "listingImage": "images/objects/nothing-headphones.webp",
     "detailImage": "images/objects/nothing-headphones-detail.webp"
   },
@@ -303,7 +303,7 @@
     "category": "furniture",
     "externalUrl": "https://www.vitra.com/en-un/product/panton-chair",
     "availability": "buyable",
-    "description": "From boardrooms to dining tables, the Panton chair is a classic.\n\nIt never really worked for the longest time, as the material science was a little behind the vision. The chair famously broke many times before the prototype was ready, but the end result seemed to defy gravity.\n\nThis is one I've sat in many times — the cool plastic and the slight spring make it magic to sit in.\n\nIt instantly brightens up a room, gives it a cool vibe so common in the '60s. This is a piece that, although stylistic, can sit in any situation and own the space.",
+    "description": "From boardrooms to dining tables, the Panton chair is a classic.\n\nIt never really worked for the longest time, as the material science was a little behind the vision. The chair famously broke many times before the prototype was ready, but the end result seemed to defy gravity.\n\nThis is one I've sat in many times. The cool plastic and the slight spring make it magic to sit in.\n\nIt instantly brightens up a room, gives it a cool vibe so common in the '60s. This is a piece that, although stylistic, can sit in any situation and own the space.",
     "listingImage": "images/objects/panton-chair-vitra.webp",
     "detailImage": "images/objects/panton-chair-vitra-detail.webp"
   },
@@ -348,7 +348,7 @@
     "category": "furniture",
     "externalUrl": "https://www.bebitalia.com/en-us/en-us-serie-up-2000-poltrone.html",
     "availability": "buyable",
-    "description": "Gaetano Pesce's Up 5 looks like it was inflated rather than built. A swollen, anthropomorphic armchair that seems to hold the room the moment it arrives.\n\nDesigned in 1969, it was shipped vacuum-compressed to a fraction of its size — a practical trick that only added to the drama when the foam expanded into its final form. The chair and its tethered Up 6 ottoman ball read as one piece: womb-like, playful, and unmistakably of their moment.\n\nIt is not subtle furniture. The silhouette is bold enough to feel almost confrontational, yet the deep seat and generous curves make it surprisingly comfortable once you sit down.\n\nFew objects from the late '60s still feel this alive. Up 5 is less a chair than a statement — about softness, femininity, and the idea that domestic design could be provocative as well as useful.",
+    "description": "Gaetano Pesce's Up 5 looks like it was inflated rather than built. A swollen, anthropomorphic armchair that seems to hold the room the moment it arrives.\n\nDesigned in 1969, it was shipped vacuum-compressed to a fraction of its size. A practical trick that only added to the drama when the foam expanded into its final form. The chair and its tethered Up 6 ottoman ball read as one piece: womb-like, playful, and unmistakably of their moment.\n\nIt is not subtle furniture. The silhouette is bold enough to feel almost confrontational, yet the deep seat and generous curves make it surprisingly comfortable once you sit down.\n\nFew objects from the late '60s still feel this alive. Up 5 is less a chair than a statement about softness, femininity, and the idea that domestic design could be provocative as well as useful.",
     "listingImage": "images/objects/up-5.webp",
     "detailImage": "images/objects/up-5-detail.webp"
   },
@@ -359,7 +359,7 @@
     "category": "furniture",
     "externalUrl": "https://barberosgerby.com/work/de-la-warr-pavilion-chair",
     "availability": "buyable",
-    "description": "It is easy to forget that many classic design works were meant for a specific building. This is a rare, more modern example of a chair designed for a particular project.\n\nDesigned by Barber Osgerby, this piece came at a time when they were not well known — in fact, it may have been the first time I saw their work. What makes it special is the connection to the De La Warr Pavilion itself. It appears to come straight out of the 1930s, but with the sophistication of 2005.\n\nDesigning a chair for an art gallery, let alone a building, must be a dream commission for a designer. Form follows function here: perforated holes let water and wind pass through, given its outdoor use.\n\nThe orange-red finish references Alvar Aalto's original chairs for the building — a subtle but lovely note.",
+    "description": "It is easy to forget that many classic design works were meant for a specific building. This is a rare, more modern example of a chair designed for a particular project.\n\nDesigned by Barber Osgerby, this piece came at a time when they were not well known. In fact, it may have been the first time I saw their work. What makes it special is the connection to the De La Warr Pavilion itself. It appears to come straight out of the 1930s, but with the sophistication of 2005.\n\nDesigning a chair for an art gallery, let alone a building, must be a dream commission for a designer. Form follows function here: perforated holes let water and wind pass through, given its outdoor use.\n\nThe orange-red finish references Alvar Aalto's original chairs for the building, a subtle but lovely note.",
     "listingImage": "images/objects/de-la-warr-pavilion-chair.webp",
     "detailImage": "images/objects/de-la-warr-pavilion-chair-detail.webp"
   },
@@ -425,7 +425,7 @@
     "category": "collectable",
     "externalUrl": "https://areaware.com/products/blockitecture-frank-lloyd-wright",
     "availability": "buyable",
-    "description": "Wooden architectural blocks inspired by Frank Lloyd Wright — stack, arrange, and build miniature modernist forms.",
+    "description": "Wooden architectural blocks inspired by Frank Lloyd Wright. Stack, arrange, and build miniature modernist forms.",
     "listingImage": "images/objects/blockitecture_frank_lloyd_wright.webp",
     "detailImage": "images/objects/blockitecture_frank_lloyd_wright_detail.webp"
   },
