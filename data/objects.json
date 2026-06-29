@@ -337,6 +337,7 @@
     "externalUrl": "https://www.magisdesign.com/product/chair_one/",
     "availability": "buyable",
     "featured": true,
+    "curated": true,
     "description": "Designed by Konstantin Grcic, the first time you see this chair you realise its beauty and Grcic's deep sense of bluntness.\n\nThe chair comes in two configurations, with four legs or a single pedestal, which is surely a touch of genius when it comes to material and form.\n\nGrcic is famous for modelling his pieces with cardboard, and this is a perfect example. It has no curves; rather, facets make up its form, each a cut piece of cardboard taped together and ultimately rendered in cast aluminium.\n\nCreating a new form is harder than it looks. Most recoil from new forms in disgust; some will likely react this way to this chair, but most will see its innate naive brutality.",
     "listingImage": "images/objects/chair_one-magis.webp",
     "detailImage": "images/objects/chair_one-magis-detail.webp"
@@ -359,6 +360,7 @@
     "category": "furniture",
     "externalUrl": "https://barberosgerby.com/work/de-la-warr-pavilion-chair",
     "availability": "buyable",
+    "curated": true,
     "description": "It is easy to forget that many classic design works were meant for a specific building. This is a rare, more modern example of a chair designed for a particular project.\n\nDesigned by Barber Osgerby, this piece came at a time when they were not well known. In fact, it may have been the first time I saw their work. What makes it special is the connection to the De La Warr Pavilion itself. It appears to come straight out of the 1930s, but with the sophistication of 2005.\n\nDesigning a chair for an art gallery, let alone a building, must be a dream commission for a designer. Form follows function here: perforated holes let water and wind pass through, given its outdoor use.\n\nThe orange-red finish references Alvar Aalto's original chairs for the building, a subtle but lovely note.",
     "listingImage": "images/objects/de-la-warr-pavilion-chair.webp",
     "detailImage": "images/objects/de-la-warr-pavilion-chair-detail.webp"
@@ -425,6 +427,7 @@
     "category": "collectable",
     "externalUrl": "https://areaware.com/products/blockitecture-frank-lloyd-wright",
     "availability": "buyable",
+    "curated": true,
     "description": "Wooden architectural blocks inspired by Frank Lloyd Wright. Stack, arrange, and build miniature modernist forms.",
     "listingImage": "images/objects/blockitecture_frank_lloyd_wright.webp",
     "detailImage": "images/objects/blockitecture_frank_lloyd_wright_detail.webp"

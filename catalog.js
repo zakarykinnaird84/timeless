@@ -13,6 +13,34 @@
     let activeCollection = "featured";
     let isInitialCatalogRender = true;
 
+    const NEW_COLLECTION_ORDER = [
+        "de-la-warr-pavilion-chair",
+        "up-5",
+        "panton-chair",
+        "chair-one-magis",
+        "blockitecture-frank-lloyd-wright",
+        "airpods",
+        "dyson-ontrac",
+        "nothing-headphones",
+        "cp2-instant-disk-audio",
+    ];
+
+    const CURATED_COLLECTION_ORDER = [
+        "chair-one-magis",
+        "de-la-warr-pavilion-chair",
+        "blockitecture-frank-lloyd-wright",
+    ];
+
+    function sortBySlugOrder(items, order) {
+        const rank = new Map(order.map((slug, index) => [slug, index]));
+
+        return [...items].sort((a, b) => {
+            const aRank = rank.has(a.slug) ? rank.get(a.slug) : Number.MAX_SAFE_INTEGER;
+            const bRank = rank.has(b.slug) ? rank.get(b.slug) : Number.MAX_SAFE_INTEGER;
+            return aRank - bRank;
+        });
+    }
+
     function escapeHtml(value) {
         return String(value)
             .replace(/&/g, "&amp;")
@@ -39,15 +67,22 @@
 
         if (currentView === "objects") {
             if (activeCollection === "curated") {
-                items = items.filter((item) => item.featured);
+                items = items.filter((item) => item.curated);
+                items = sortBySlugOrder(items, CURATED_COLLECTION_ORDER);
+            } else if (activeCollection === "new") {
+                items = sortBySlugOrder(items, NEW_COLLECTION_ORDER);
             }
 
             if (activeCategory !== "all") {
                 items = items.filter((item) => item.category === activeCategory);
             }
 
-            if (activeCollection === "featured" || activeCollection === "curated") {
+            if (activeCollection === "featured") {
                 return sortFeaturedFirst(items);
+            }
+
+            if (activeCollection === "curated" || activeCollection === "new") {
+                return items;
             }
         }
 
