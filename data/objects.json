@@ -276,12 +276,13 @@
   {
     "slug": "panton-chair",
     "name": "Panton Chair",
-    "brand": "Verner Panton",
+    "brand": "Vitra",
     "category": "furniture",
-    "externalUrl": "https://en.wikipedia.org/wiki/Panton_Chair",
-    "availability": "reference",
-    "listingImage": null,
-    "detailImage": null
+    "externalUrl": "https://www.vitra.com/en-un/product/panton-chair",
+    "availability": "buyable",
+    "description": "From boardrooms to dining tables, the Panton chair is a classic.\n\nIt never really worked for the longest time, as the material science was a little behind the vision. The chair famously broke many times before the prototype was ready, but the end result seemed to defy gravity.\n\nThis is one I've sat in many times — the cool plastic and the slight spring make it magic to sit in.\n\nIt instantly brightens up a room, gives it a cool vibe so common in the '60s. This is a piece that, although stylistic, can sit in any situation and own the space.",
+    "listingImage": "images/objects/panton-chair-vitra.webp",
+    "detailImage": "images/objects/panton-chair-vitra-detail.webp"
   },
   {
     "slug": "eames-lounge",

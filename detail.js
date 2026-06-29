@@ -34,6 +34,7 @@
         "images/objects/airpods-detail.webp": [4096, 2730],
         "images/objects/blockitecture_frank_lloyd_wright_detail.webp": [1512, 1512],
         "images/objects/chair_one-magis-detail.webp": [1728, 939],
+        "images/objects/panton-chair-vitra-detail.webp": [1600, 1083],
     };
 
     function getDetailImage(item) {
