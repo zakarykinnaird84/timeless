@@ -2169,6 +2169,10 @@ html.nav-intro-seen .page--about-timeless .top-screen:has(.hero-media.is-develop
         max-height: var(--site-header-height);
     }
 
+    .site-footer__credit-panel {
+        padding: var(--catalog-padding);
+    }
+
     .collection-tabs--desktop {
         display: none;
     }
