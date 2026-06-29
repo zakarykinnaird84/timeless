@@ -12,6 +12,8 @@
     let activeCategory = "all";
     let activeCollection = "featured";
     let isInitialCatalogRender = true;
+    let heroIndex = 0;
+    let keyboardNavBound = false;
 
     const NEW_COLLECTION_ORDER = [
         "de-la-warr-pavilion-chair",
@@ -87,6 +89,67 @@
         }
 
         return items;
+    }
+
+    function rotateItems(items, startIndex) {
+        if (items.length <= 1 || startIndex === 0) {
+            return items;
+        }
+
+        const normalized = ((startIndex % items.length) + items.length) % items.length;
+        return [...items.slice(normalized), ...items.slice(0, normalized)];
+    }
+
+    function shouldIgnoreCatalogKeydown(event) {
+        if (event.metaKey || event.ctrlKey || event.altKey) {
+            return true;
+        }
+
+        const target = event.target;
+        if (!(target instanceof Element)) {
+            return false;
+        }
+
+        if (target.closest("input, textarea, select, [contenteditable='true']")) {
+            return true;
+        }
+
+        return Boolean(target.closest(".collection-dropdown.is-open"));
+    }
+
+    function bindCatalogKeyboardNav() {
+        if (keyboardNavBound) {
+            return;
+        }
+
+        keyboardNavBound = true;
+
+        document.addEventListener("keydown", (event) => {
+            if (!dataLoaded || shouldIgnoreCatalogKeydown(event)) {
+                return;
+            }
+
+            let direction = null;
+            if (event.key === "ArrowLeft") {
+                direction = "prev";
+            } else if (event.key === "ArrowRight") {
+                direction = "next";
+            }
+
+            if (!direction) {
+                return;
+            }
+
+            const items = getActiveItems();
+            if (items.length <= 1) {
+                return;
+            }
+
+            event.preventDefault();
+            const offset = direction === "next" ? 1 : -1;
+            heroIndex = (heroIndex + offset + items.length) % items.length;
+            renderCatalog();
+        });
     }
 
     function getListingImage(item) {
@@ -186,7 +249,7 @@
     }
 
     function renderCatalog() {
-        const items = getActiveItems();
+        const items = rotateItems(getActiveItems(), heroIndex);
 
         if (items.length === 0) {
             catalogEl.innerHTML = renderEmptyState();
@@ -205,6 +268,7 @@
         currentView = view;
         activeCategory = category;
         activeCollection = collection || "featured";
+        heroIndex = 0;
         if (dataLoaded) {
             renderCatalog();
         }
@@ -226,6 +290,7 @@
             objects = objectsData;
             creators = creatorsData;
             dataLoaded = true;
+            bindCatalogKeyboardNav();
             renderCatalog();
         })
         .catch(() => {
