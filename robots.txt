@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://studiostudio.store/sitemap.xml
+Sitemap: https://timeless.directory/sitemap.xml

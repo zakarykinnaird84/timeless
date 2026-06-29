@@ -123,7 +123,7 @@ Global settings live in **`config/site.json`**:
 1. Buy/configure DNS for the new domain
 2. Update **`CNAME`** with the new domain
 3. Update **`config/site.json`** → `"origin": "https://yourdomain.com"`
-4. Find-replace `studiostudio.store` in HTML files (`index.html`, `about.html`, `detail.html`, `terms.html`, `privacy.html`)
+4. Find-replace the old domain in HTML files (`index.html`, `about.html`, `detail.html`, `terms.html`, `privacy.html`)
 5. Update domain references in `terms.html` body copy
 6. Run `node scripts/build-seo.js`
 7. Enable HTTPS in GitHub → Settings → Pages
@@ -177,7 +177,7 @@ About copy is in `about.html` directly (not JSON).
 ## Checklist — go live
 
 - [ ] New domain in `CNAME` + `config/site.json`
-- [ ] All `studiostudio.store` references updated
+- [ ] All old domain references updated
 - [ ] Custom share image at `images/share/og-default.webp`
 - [ ] Unwanted items set to `"published": false`
 - [ ] One `featured` object with good copy + images
