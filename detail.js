@@ -181,7 +181,7 @@
 
     function renderRelatedGrid(currentItem, collection, itemType) {
         const relatedItems = getCategoryItems(collection, currentItem, itemType).filter(
-            (entry) => entry.slug !== currentItem.slug
+            (entry) => entry.slug !== currentItem.slug && entry.published !== false && getListingImage(entry)
         );
 
         if (relatedItems.length === 0) {
