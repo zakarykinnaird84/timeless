@@ -373,7 +373,9 @@ html.nav-intro-seen .top-screen:has(.hero-media.is-developing) .title-row .app-s
     }
 
     .menu,
-    .title-row .app-store-badge {
+    .title-row .app-store-badge,
+    .page--about-timeless .site-header--about,
+    .page--about-timeless .title-row--about {
         opacity: 1;
         animation: none;
     }
@@ -1167,19 +1169,9 @@ html.compact-top .title-row {
         opacity var(--link-hover-duration) var(--link-hover-ease);
 }
 
-.page--about-timeless .site-footer__credit {
+.page--about-timeless .site-footer__stage {
     height: calc(var(--top-screen-height, 100svh) - var(--footer-closing-height));
     min-height: calc(var(--top-screen-height, 100svh) - var(--footer-closing-height));
-    flex: none;
-    display: flex;
-    flex-direction: column;
-    margin-top: 0;
-    padding-top: var(--catalog-padding);
-    padding-right: var(--catalog-padding);
-    padding-left: var(--catalog-padding);
-    padding-bottom: 0;
-    background: var(--background);
-    box-sizing: border-box;
 }
 
 .site-footer__closing--catalog {
@@ -2015,40 +2007,82 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     width: 100%;
 }
 
+.page--about-timeless .top-screen {
+    padding-left: var(--catalog-padding);
+    padding-right: var(--catalog-padding);
+}
+
+.page--about-timeless .site-header--about {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    flex-shrink: 0;
+    width: 100%;
+    height: auto;
+    min-height: var(--site-header-height);
+    padding: calc(env(safe-area-inset-top, 0px) + 0px) 0 0;
+    background: transparent;
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.page--about-timeless .top-screen:has(.hero-media.is-developing) .site-header--about,
+.page--about-timeless .top-screen:has(.hero-media.is-developing) .title-row--about {
+    opacity: 0;
+    animation: nav-fade-in var(--reveal-duration) var(--reveal-ease) var(--nav-fade-delay) both;
+}
+
+.page--about-timeless .top-screen:has(.hero-media.is-developed) .site-header--about,
+.page--about-timeless .top-screen:has(.hero-media.is-developed) .title-row--about {
+    opacity: 1;
+}
+
+html.nav-intro-seen .page--about-timeless .top-screen:has(.hero-media.is-developing) .site-header--about,
+html.nav-intro-seen .page--about-timeless .top-screen:has(.hero-media.is-developing) .title-row--about {
+    opacity: 1;
+    animation: none;
+}
+
+.page--about-timeless .site-header--about .filter-bar {
+    align-self: stretch;
+    height: 100%;
+}
+
+.title-row--about {
+    padding-top: var(--section-gap);
+    padding-bottom: var(--page-padding);
+}
+
 .page--about-timeless .site-footer {
     padding-left: 0;
     padding-right: 0;
 }
 
-.page--about-timeless .site-footer__closing {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding-left: var(--catalog-padding);
-    padding-right: var(--catalog-padding);
+.page--about-timeless .site-footer__closing--catalog {
     min-height: auto;
-    padding-top: var(--catalog-padding);
-    padding-bottom: calc(var(--catalog-padding) + env(safe-area-inset-bottom, 0px));
 }
 
 .about-timeless {
     width: 100%;
-    padding: var(--site-header-height) var(--catalog-padding) var(--catalog-padding);
-    padding-top: calc(env(safe-area-inset-top, 0px) + var(--site-header-height));
+    padding: 0 var(--catalog-padding) var(--catalog-padding);
 }
 
-.about-timeless__title {
-    font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
-    font-size: clamp(48px, 10vw, var(--detail-title-size));
-    font-weight: 400;
-    line-height: 1;
-    color: var(--text-primary);
-    margin-bottom: 48px;
+.page--about-timeless .about-copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--story-block-gap);
+    width: 100%;
+    max-width: none;
+    padding-top: var(--story-block-gap);
 }
 
-.about-timeless .story-copy {
-    gap: 0.75em;
-    max-width: 720px;
+.page--about-timeless .about-copy__group.story-copy {
+    gap: 0.15em;
+}
+
+.page--about-timeless .about-copy .story-line--lead {
+    margin-bottom: 0;
 }
 
 .about-timeless .story-line {

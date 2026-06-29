@@ -449,8 +449,47 @@
         initDetailPage();
     }
 
-    if (document.querySelector(".page--about-timeless, .page--legal")) {
+    if (document.querySelector(".page--legal")) {
         markNavIntroSeen();
+    }
+
+    function initAboutTimelessPage() {
+        const heroMedia = document.querySelector(".page--about-timeless .about-hero.hero-media");
+        syncCatalogHeaderHeight();
+        window.addEventListener("resize", syncCatalogHeaderHeight);
+        document.addEventListener("filter:ready", () => {
+            requestAnimationFrame(syncCatalogHeaderHeight);
+        });
+        document.addEventListener("filter:ui-change", syncCatalogHeaderHeight);
+
+        if (!heroMedia) {
+            return;
+        }
+
+        heroMedia.querySelectorAll(".hero-video").forEach((video) => {
+            video.play().catch(() => {});
+        });
+
+        const completeIntro = () => {
+            finishHeroDevelop(heroMedia);
+            markNavIntroSeen();
+        };
+
+        if (prefersReducedMotion) {
+            completeIntro();
+            return;
+        }
+
+        if (heroMedia.classList.contains("is-developing")) {
+            const developDurationMs = getDevelopDurationMs();
+            window.setTimeout(completeIntro, developDurationMs + 150);
+        } else {
+            completeIntro();
+        }
+    }
+
+    if (document.querySelector(".page--about-timeless")) {
+        initAboutTimelessPage();
     }
 
     function initFooterReveal() {
@@ -493,7 +532,7 @@
         line.style.setProperty("--reveal-delay", `${index * 150}ms`);
     });
 
-    const aboutRevealTargets = document.querySelectorAll(".about-copy .story-line, .about-hero.hero-media");
+    const aboutRevealTargets = document.querySelectorAll(".about-copy .story-line");
     if (aboutRevealTargets.length && !prefersReducedMotion) {
         const aboutObserver = new IntersectionObserver(
             (entries) => {

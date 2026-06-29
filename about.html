@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About — Timeless Objects</title>
-    <meta name="description" content="Not a store. A growing catalog of design-led things that outlast trends — objects and the creators behind them.">
+    <meta name="description" content="A directory of timeless creations and the people who made them. An ode to creators and the stuff worth making.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://timeless.directory/about.html">
     <meta name="theme-color" content="#ffffff">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Timeless Objects">
     <meta property="og:title" content="About — Timeless Objects">
-    <meta property="og:description" content="Not a store. A catalog of things that outlast trends. Some you can buy. Some you can only admire.">
+    <meta property="og:description" content="A directory of timeless creations and the people who made them.">
     <meta property="og:url" content="https://timeless.directory/about.html">
     <meta property="og:image" content="https://timeless.directory/images/share/og-default.webp">
     <meta property="og:image:width" content="1500">
@@ -19,7 +19,7 @@
     <meta property="og:image:alt" content="Timeless Objects — about the catalog">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="About — Timeless Objects">
-    <meta name="twitter:description" content="Not a store. A catalog of things that outlast trends. Some you can buy. Some you can only admire.">
+    <meta name="twitter:description" content="A directory of timeless creations and the people who made them.">
     <meta name="twitter:image" content="https://timeless.directory/images/share/og-default.webp">
     <meta name="twitter:image:alt" content="Timeless Objects — about the catalog">
     <script type="application/ld+json">
@@ -28,7 +28,7 @@
         "@type": "AboutPage",
         "name": "About Timeless Objects",
         "url": "https://timeless.directory/about.html",
-        "description": "A growing catalog of design-led things that outlast trends.",
+        "description": "A directory of timeless creations and the people who made them.",
         "isPartOf": {
             "@type": "WebSite",
             "name": "Timeless Objects",
@@ -46,53 +46,130 @@
         (function () {
             var height = Math.round(window.innerHeight);
             document.documentElement.style.setProperty("--top-screen-height", height + "px");
+            if (height <= 700) {
+                document.documentElement.classList.add("compact-top");
+            }
+            try {
+                if (sessionStorage.getItem("timeless-nav-intro-seen")) {
+                    document.documentElement.classList.add("nav-intro-seen");
+                }
+            } catch (error) {}
         })();
     </script>
 </head>
 <body>
     <div class="page page--about-timeless">
-        <header class="site-header site-header--simple">
-            <nav class="site-nav" aria-label="Primary">
-                <a href="index.html" class="site-nav__link site-nav__link--anchor">Objects</a>
-                <a href="index.html?view=creators" class="site-nav__link site-nav__link--anchor">Creators</a>
-                <a href="about.html" class="site-nav__link site-nav__link--active site-nav__link--anchor" aria-current="page">About</a>
-            </nav>
-        </header>
+        <div class="top-screen">
+            <header class="site-header site-header--about">
+                <nav class="filter-bar" aria-label="Browse">
+                    <div class="filter-bar__group filter-bar__group--start"></div>
+                    <div class="filter-bar__group filter-bar__group--end"></div>
+                </nav>
+            </header>
+
+            <div class="home-frame">
+                <section class="hero" aria-label="Timeless Objects">
+                    <div class="about-hero hero-media hero-media--video is-developing">
+                        <video
+                            class="hero-video hero-video--desktop"
+                            src="videos/hero-desktop.mp4"
+                            muted
+                            autoplay
+                            loop
+                            playsinline
+                            preload="auto"
+                            aria-label="Timeless Objects catalog"
+                        ></video>
+                        <video
+                            class="hero-video hero-video--mobile"
+                            src="videos/hero-mobile.mp4"
+                            muted
+                            autoplay
+                            loop
+                            playsinline
+                            preload="auto"
+                            aria-label="Timeless Objects catalog"
+                        ></video>
+                        <span class="hero-develop" aria-hidden="true"></span>
+                    </div>
+                </section>
+
+                <section class="title-row title-row--about">
+                    <h1 class="title">About</h1>
+                </section>
+            </div>
+        </div>
 
         <main class="about-timeless">
-            <h1 class="about-timeless__title">Timeless Objects.</h1>
-            <div class="about-copy story-copy">
-                <p class="story-line story-line--lead">Not a store.</p>
-                <p class="story-line">A catalog of things that outlast trends.</p>
-                <p class="story-line">Audio gear from another era.</p>
-                <p class="story-line">Furniture that still looks right.</p>
-                <p class="story-line">Cars, consoles, sneakers —</p>
-                <p class="story-line">and the people who made them.</p>
-                <p class="story-line story-line--close">Some you can buy.<br>Some you can only admire.<br>All worth knowing about.</p>
-                <p class="story-line">The catalog starts small and grows over time.</p>
-                <p class="story-line story-line--close story-line--split">
-                    <span class="story-line__segment">Created by </span><a class="story-line__segment" href="https://zakarykinnaird.com/">Zakary Kinnaird</a>
+            <div class="about-copy">
+                <p class="story-line story-line--lead">A directory of timeless creations and the people who made them.</p>
+
+                <div class="about-copy__group story-copy">
+                    <p class="story-line">Some things last decades</p>
+                    <p class="story-line">Some define a decade</p>
+                    <p class="story-line">Some define a generation</p>
+                    <p class="story-line">Others are simply timeless.</p>
+                </div>
+
+                <div class="about-copy__group story-copy">
+                    <p class="story-line">As a creator making new things occupies most of my time</p>
+                    <p class="story-line">Making something out of nothing is incredibly hard</p>
+                    <p class="story-line">Almost all of my income has revolved around making things up</p>
+                    <p class="story-line">The more you make the harder it gets not to step on other toes</p>
+                    <p class="story-line">But the more you develop your taste and your own approach the easier it gets.</p>
+                </div>
+
+                <div class="about-copy__group story-copy">
+                    <p class="story-line">This is an ode to creators</p>
+                    <p class="story-line">The stuff they make up</p>
+                    <p class="story-line">And most of all the stuff that’s worth making</p>
+                    <p class="story-line">If we don’t make stuff, there is no stuff – Elon Musk.</p>
+                </div>
+
+                <p class="story-line story-line--split">
+                    <span class="story-line__segment">Created by </span><a class="story-line__segment" href="https://zakarykinnaird.com/">Zakary Kinnaird</a><span class="story-line__segment">.</span>
                 </p>
             </div>
         </main>
 
-        <footer class="site-footer">
-            <div class="site-footer__credit">
-                <div class="site-footer__credit-panel">
-                    <p class="site-footer__credit-label site-footer__text">A catalogue by StudioStudio</p>
+        <footer class="site-footer site-footer--catalog">
+            <div class="site-footer__stage">
+                <div class="site-footer__nav">
+                    <nav class="filter-bar filter-bar--footer" aria-label="Footer browse">
+                        <div class="filter-bar__group filter-bar__group--start"></div>
+                        <div class="filter-bar__group filter-bar__group--end">
+                            <a
+                                class="site-footer__maker"
+                                href="https://zakarykinnaird.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <span class="site-footer__maker-label">Made by Zakary Kinnaird</span>
+                                <svg class="site-footer__maker-icon" width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true">
+                                    <path d="M5 5h8v8M5 13l8-8" stroke="currentColor"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </nav>
+                </div>
+                <div class="site-footer__credit">
+                    <div class="site-footer__credit-panel">
+                        <p class="site-footer__credit-label site-footer__text">A catalogue by StudioStudio</p>
+                    </div>
                 </div>
             </div>
-            <div class="site-footer__closing">
-                <div class="site-footer__title-row">
+            <div class="site-footer__closing site-footer__closing--catalog">
+                <div class="site-footer__title-row site-footer__title-row--catalog">
                     <h2 class="site-footer__title"><a class="site-footer__title-link" href="index.html">Timeless</a></h2>
-                    <nav class="site-footer__legal-nav" aria-label="Legal">
-                        <a href="privacy.html" class="site-footer__legal-link">Privacy</a>
+                    <nav class="site-footer__legal-nav site-footer__legal-nav--catalog" aria-label="Legal">
+                        <a href="about.html" class="site-footer__legal-link site-footer__legal-link--active" aria-current="page">About</a>
                         <a href="terms.html" class="site-footer__legal-link site-footer__legal-link--terms">Terms</a>
                     </nav>
                 </div>
             </div>
         </footer>
     </div>
+    <script src="nav.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
