@@ -27,8 +27,29 @@
     }
     window.scrollTo(0, 0);
 
+    const DETAIL_IMAGE_DIMENSIONS = {
+        "images/objects/cp2_detail.webp": [1500, 1500],
+        "images/objects/nothing-headphones-detail.webp": [4096, 2305],
+        "images/objects/ontac-detail.webp": [2321, 2364],
+        "images/objects/airpods-detail.webp": [4096, 2730],
+        "images/objects/blockitecture_frank_lloyd_wright_detail.webp": [1512, 1512],
+    };
+
     function getDetailImage(item) {
         return item.detailImage || item.listingImage || item.image || null;
+    }
+
+    function getDetailImageDimensions(src) {
+        if (!src) {
+            return [1, 1];
+        }
+
+        return DETAIL_IMAGE_DIMENSIONS[src] || [1, 1];
+    }
+
+    function renderDetailHeroImage(src, name) {
+        const [width, height] = getDetailImageDimensions(src);
+        return `<img class="hero-image detail-hero__image" src="${escapeHtml(src)}" alt="${escapeHtml(name)}" width="${width}" height="${height}">`;
     }
 
     function escapeHtml(value) {
@@ -191,8 +212,9 @@
             const name = item.name;
             document.title = `${name} — Timeless Objects`;
 
-            const hero = getDetailImage(item)
-                ? `<img class="hero-image detail-hero__image" src="${escapeHtml(getDetailImage(item))}" alt="${escapeHtml(name)}">`
+            const detailImageSrc = getDetailImage(item);
+            const hero = detailImageSrc
+                ? renderDetailHeroImage(detailImageSrc, name)
                 : `<div class="hero-placeholder detail-hero__placeholder" aria-hidden="true"></div>`;
 
             const brandExternalLink = item.externalUrl

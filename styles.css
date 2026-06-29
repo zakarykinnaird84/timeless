@@ -1801,10 +1801,14 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     overflow: visible;
 }
 
+.page--detail .detail-hero:has(.detail-hero__image),
+.page--detail .detail-hero:has(.detail-hero__placeholder) {
+    background: var(--placeholder);
+}
+
 .page--detail .detail-hero:has(.detail-hero__placeholder) {
     aspect-ratio: 16 / 9;
     overflow: hidden;
-    background: var(--placeholder);
 }
 
 .page--detail .detail-hero:has(.detail-hero__placeholder) .detail-hero__media {
