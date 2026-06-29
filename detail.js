@@ -107,12 +107,18 @@
         `;
     }
 
+    function isNavigableItem(entry) {
+        return entry.published !== false && getListingImage(entry);
+    }
+
     function getCategoryItems(collection, currentItem, itemType) {
+        let items = collection.filter(isNavigableItem);
+
         if (itemType === "creator") {
-            return collection;
+            return items;
         }
 
-        return collection.filter((entry) => entry.category === currentItem.category);
+        return items.filter((entry) => entry.category === currentItem.category);
     }
 
     function getAdjacentItem(collection, currentItem, itemType, direction) {
@@ -182,7 +188,7 @@
 
     function renderRelatedGrid(currentItem, collection, itemType) {
         const relatedItems = getCategoryItems(collection, currentItem, itemType).filter(
-            (entry) => entry.slug !== currentItem.slug && entry.published !== false && getListingImage(entry)
+            (entry) => entry.slug !== currentItem.slug
         );
 
         if (relatedItems.length === 0) {
