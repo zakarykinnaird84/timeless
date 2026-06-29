@@ -3,10 +3,7 @@
         { type: "all", value: "all", label: "Home" },
         { type: "category", value: "furniture", label: "Furniture" },
         { type: "category", value: "audio", label: "Audio" },
-        { type: "category", value: "studio", label: "Workspace" },
-        { type: "category", value: "gaming", label: "Gaming" },
         { type: "category", value: "collectable", label: "Collectable" },
-        { type: "category", value: "fashion", label: "Fashion" },
     ];
 
     const COLLECTION_OPTIONS = [
