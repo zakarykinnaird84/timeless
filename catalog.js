@@ -195,5 +195,6 @@
         })
         .catch(() => {
             catalogEl.innerHTML = `<p class="catalog-error">Could not load catalog.</p>`;
+            document.documentElement.classList.remove("catalog-boot");
         });
 })();

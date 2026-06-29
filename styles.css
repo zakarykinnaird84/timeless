@@ -1210,6 +1210,14 @@ html.compact-top .title-row {
 }
 
 /* Timeless Objects — catalog */
+html.catalog-boot {
+    background: var(--background);
+}
+
+html.catalog-boot .page--catalog {
+    visibility: hidden;
+}
+
 .page--catalog {
     align-items: stretch;
     min-height: 100%;

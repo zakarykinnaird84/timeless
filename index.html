@@ -9,6 +9,16 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://timeless.directory/">
     <meta name="theme-color" content="#ffffff">
+    <style>
+        html.catalog-boot {
+            background: #ffffff;
+        }
+
+        html.catalog-boot .page--catalog {
+            visibility: hidden;
+        }
+    </style>
+    <link rel="preload" as="image" href="images/objects/cp2.webp">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Timeless Objects">
     <meta property="og:title" content="Timeless Objects">
@@ -54,8 +64,12 @@
                 var isReload = entry && entry.type === "reload";
                 if (!isReload && sessionStorage.getItem("timeless-nav-intro-seen")) {
                     document.documentElement.classList.add("nav-intro-seen");
+                } else if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                    document.documentElement.classList.add("catalog-boot");
                 }
-            } catch (error) {}
+            } catch (error) {
+                document.documentElement.classList.add("catalog-boot");
+            }
         })();
     </script>
 </head>

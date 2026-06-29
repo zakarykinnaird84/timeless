@@ -131,6 +131,42 @@
         });
     }
 
+    function revealCatalogBoot() {
+        document.documentElement.classList.remove("catalog-boot");
+    }
+
+    function whenHeroMediaReady(hero, callback) {
+        if (!hero) {
+            callback();
+            return;
+        }
+
+        const img = hero.querySelector(".hero-image, .hero-video");
+        if (!img) {
+            callback();
+            return;
+        }
+
+        if (img.complete && img.naturalWidth) {
+            if (typeof img.decode === "function") {
+                img.decode().then(callback).catch(callback);
+            } else {
+                callback();
+            }
+            return;
+        }
+
+        const done = () => {
+            if (typeof img.decode === "function") {
+                img.decode().then(callback).catch(callback);
+            } else {
+                callback();
+            }
+        };
+        img.addEventListener("load", done, { once: true });
+        img.addEventListener("error", done, { once: true });
+    }
+
     function observeHeroSections() {
         const catalog = document.getElementById("catalog");
         if (!catalog) {
@@ -146,6 +182,7 @@
         if (!shouldPlayCatalogIntro()) {
             markNavIntroSeen();
             heroes.forEach(finishHeroDevelop);
+            revealCatalogBoot();
             return;
         }
 
@@ -153,11 +190,13 @@
         if (!introHero) {
             markNavIntroSeen();
             heroes.forEach(finishHeroDevelop);
+            revealCatalogBoot();
             return;
         }
 
         if (prefersReducedMotion) {
             heroes.forEach(finishHeroDevelop);
+            revealCatalogBoot();
             return;
         }
 
@@ -187,8 +226,11 @@
 
         heroes.forEach((hero) => {
             if (hero.dataset.intro === "true") {
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => bindHeroDevelop(hero));
+                whenHeroMediaReady(hero, () => {
+                    requestAnimationFrame(() => {
+                        bindHeroDevelop(hero);
+                        requestAnimationFrame(revealCatalogBoot);
+                    });
                 });
                 return;
             }
