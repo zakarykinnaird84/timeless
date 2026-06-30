@@ -2,13 +2,10 @@
     const DETAIL_EXTERNAL_LINK_ICON = `<svg class="detail-brand__external-icon" width="0.7em" height="0.7em" viewBox="46.828 46.823 82.118 82.118" fill="none" aria-hidden="true"><path d="M48.828 48.823h78.118v78.118M48.828 126.941l78.118-78.118" stroke="currentColor" stroke-width="4"/></svg>`;
     const CATALOG_EXTERNAL_LINK_ICON = `<svg class="object-nav__external-icon" width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true"><path d="M5 5h8v8M5 13l8-8" stroke="currentColor"/></svg>`;
 
-    const DETAIL_KEYBOARD_NAV_KEY = "timeless-detail-keyboard-nav";
-
-    function markKeyboardDetailNav() {
-        try {
-            sessionStorage.setItem(DETAIL_KEYBOARD_NAV_KEY, "1");
-        } catch (error) {}
-    }
+    let navigableCollection = [];
+    let currentDetailItem = null;
+    let detailKeyboardNavBound = false;
+    let detailKeyboardNavLocked = false;
 
     const params = new URLSearchParams(window.location.search);
     const slug = params.get("slug");
@@ -137,13 +134,15 @@
         return items[nextIndex];
     }
 
-    function bindDetailKeyboardNav(collection, currentItem, itemType) {
-        if (getCategoryItems(collection, currentItem, itemType).length <= 1) {
+    function bindDetailKeyboardNav() {
+        if (detailKeyboardNavBound) {
             return;
         }
 
+        detailKeyboardNavBound = true;
+
         function shouldIgnoreKeydown(event) {
-            if (event.metaKey || event.ctrlKey || event.altKey) {
+            if (event.metaKey || event.ctrlKey || event.altKey || event.repeat) {
                 return true;
             }
 
@@ -160,7 +159,7 @@
         }
 
         document.addEventListener("keydown", (event) => {
-            if (shouldIgnoreKeydown(event)) {
+            if (!currentDetailItem || shouldIgnoreKeydown(event) || detailKeyboardNavLocked) {
                 return;
             }
 
@@ -175,96 +174,102 @@
                 return;
             }
 
-            const adjacentItem = getAdjacentItem(collection, currentItem, itemType, direction);
+            const adjacentItem = getAdjacentItem(navigableCollection, currentDetailItem, type, direction);
             if (!adjacentItem) {
                 return;
             }
 
             event.preventDefault();
-            markKeyboardDetailNav();
-            window.location.href = `detail.html?slug=${encodeURIComponent(adjacentItem.slug)}&type=${itemType}`;
+            detailKeyboardNavLocked = true;
+            navigateToDetailItem(adjacentItem);
+            window.requestAnimationFrame(() => {
+                detailKeyboardNavLocked = false;
+            });
         });
     }
 
-    function renderRelatedGrid(currentItem, collection, itemType) {
-        const relatedItems = getCategoryItems(collection, currentItem, itemType).filter(
-            (entry) => entry.slug !== currentItem.slug
-        );
+    function updateDetailMeta(item, detailImageSrc) {
+        const brand = item.brand || item.discipline || "";
+        const name = item.name;
 
-        if (relatedItems.length === 0) {
-            return "";
+        document.title = `${name} — Timeless Objects`;
+
+        if (!window.TimelessSiteMeta) {
+            return;
         }
 
-        const cards = relatedItems.map((relatedItem) => renderRelatedCard(relatedItem, itemType)).join("");
+        window.TimelessSiteMeta.getSiteConfig().then((site) => {
+            const pageUrl = `${site.origin.replace(/\/$/, "")}/detail.html?slug=${encodeURIComponent(item.slug)}&type=${type}`;
+            const shareImage = detailImageSrc || site.ogImage;
+            const shareDescription =
+                window.TimelessSiteMeta.summarizeDescription(item.description) ||
+                `${name}${brand ? ` by ${brand}` : ""}. ${site.tagline || site.description}`;
 
-        return `
-            <section class="detail-related" aria-label="More in this category">
-                <div class="catalog-grid catalog-grid--detail">${cards}</div>
-            </section>
-        `;
+            window.TimelessSiteMeta.setPageMeta({
+                title: `${name} — ${site.name}`,
+                description: shareDescription,
+                url: pageUrl,
+                image: window.TimelessSiteMeta.absoluteUrl(site.origin, shareImage),
+                imageWidth: site.ogImageWidth,
+                imageHeight: site.ogImageHeight,
+                imageAlt: `${name}${brand ? ` by ${brand}` : ""}`,
+                type: "article",
+                siteName: site.name,
+                twitterCard: site.twitterCard,
+            });
+        });
     }
 
-    Promise.all([
-        fetch("data/objects.json").then((response) => response.json()),
-        fetch("data/creators.json").then((response) => response.json()),
-    ])
-        .then(([objects, creators]) => {
-            const collection = type === "creator" ? creators : objects;
-            const item = collection.find((entry) => entry.slug === slug && entry.published !== false);
+    function renderDetailItem(item, collection, itemType, { skipHeroDevelop = false } = {}) {
+        currentDetailItem = item;
+        navigableCollection = collection;
 
-            if (!item) {
-                root.innerHTML = `<div class="detail-not-found"><h1 class="detail-title">Not found</h1><p class="detail-copy"><a href="index.html">Back to catalog</a></p></div>`;
-                document.title = "Not found — Timeless Objects";
-                return;
-            }
+        const brand = item.brand || item.discipline || "";
+        const name = item.name;
+        const detailImageSrc = getDetailImage(item);
+        const hero = detailImageSrc
+            ? renderDetailHeroImage(detailImageSrc, name)
+            : `<div class="hero-placeholder detail-hero__placeholder" aria-hidden="true"></div>`;
 
-            const brand = item.brand || item.discipline || "";
-            const name = item.name;
-            document.title = `${name} — Timeless Objects`;
+        const brandExternalLink = item.externalUrl
+            ? `<span class="detail-brand__external" aria-hidden="true">${DETAIL_EXTERNAL_LINK_ICON}</span>`
+            : "";
 
-            const detailImageSrc = getDetailImage(item);
-            const hero = detailImageSrc
-                ? renderDetailHeroImage(detailImageSrc, name)
-                : `<div class="hero-placeholder detail-hero__placeholder" aria-hidden="true"></div>`;
+        const brandMarkup = brand
+            ? item.externalUrl
+                ? `<a class="detail-brand__link" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(brand)} link"><span class="detail-brand__name">${escapeHtml(brand)}</span>${brandExternalLink}</a>`
+                : `<div class="detail-brand__link"><span class="detail-brand__name">${escapeHtml(brand)}</span></div>`
+            : "";
 
-            const brandExternalLink = item.externalUrl
-                ? `<span class="detail-brand__external" aria-hidden="true">${DETAIL_EXTERNAL_LINK_ICON}</span>`
-                : "";
+        const description = item.description
+            ? item.description
+                  .split(/\n\s*\n/)
+                  .filter(Boolean)
+                  .map((paragraph) => `<p class="detail-copy">${escapeHtml(paragraph.trim())}</p>`)
+                  .join("")
+            : `<p class="detail-copy detail-copy--empty">No description yet.</p>`;
 
-            const brandMarkup = brand
-                ? item.externalUrl
-                    ? `<a class="detail-brand__link" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(brand)} link"><span class="detail-brand__name">${escapeHtml(brand)}</span>${brandExternalLink}</a>`
-                    : `<div class="detail-brand__link"><span class="detail-brand__name">${escapeHtml(brand)}</span></div>`
-                : "";
+        const relatedGrid = renderRelatedGrid(item, collection, itemType);
+        const heroMediaClass = skipHeroDevelop
+            ? "detail-hero__media hero-media is-developed"
+            : "detail-hero__media hero-media";
 
-            const description = item.description
-                ? item.description
-                      .split(/\n\s*\n/)
-                      .filter(Boolean)
-                      .map((paragraph) => `<p class="detail-copy">${escapeHtml(paragraph.trim())}</p>`)
-                      .join("")
-                : `<p class="detail-copy detail-copy--empty">No description yet.</p>`;
+        const brandAside = brandMarkup ? `<div class="detail-brand detail-brand--aside">${brandMarkup}</div>` : "";
+        const brandMobileFooter = brandMarkup
+            ? `<div class="detail-brand detail-brand--mobile-footer">${brandMarkup}</div>`
+            : "";
 
-            const relatedGrid = renderRelatedGrid(item, collection, type);
-
-            const brandAside = brandMarkup
-                ? `<div class="detail-brand detail-brand--aside">${brandMarkup}</div>`
-                : "";
-            const brandMobileFooter = brandMarkup
-                ? `<div class="detail-brand detail-brand--mobile-footer">${brandMarkup}</div>`
-                : "";
-
-            const heroMediaInner = `
-                        <div class="detail-hero__media hero-media">
+        const heroMediaInner = `
+                        <div class="${heroMediaClass}">
                             ${hero}
                             <span class="hero-develop" aria-hidden="true"></span>
                         </div>`;
 
-            const heroMarkup = item.externalUrl
-                ? `<a class="detail-hero__link" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(name)} link">${heroMediaInner}</a>`
-                : heroMediaInner;
+        const heroMarkup = item.externalUrl
+            ? `<a class="detail-hero__link" href="${escapeHtml(item.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(name)} link">${heroMediaInner}</a>`
+            : heroMediaInner;
 
-            root.innerHTML = `
+        root.innerHTML = `
                 <div class="detail-frame">
                     <header class="detail-header">
                         <h1 class="detail-title"><a class="detail-title__link" href="index.html">${escapeHtml(name)}</a></h1>
@@ -293,43 +298,98 @@
                 </div>
             `;
 
-            document.dispatchEvent(
-                new CustomEvent("detail:context", {
-                    detail: {
-                        category: item.category || "all",
-                        type,
-                    },
-                })
-            );
+        document.dispatchEvent(
+            new CustomEvent("detail:context", {
+                detail: {
+                    category: item.category || "all",
+                    type: itemType,
+                },
+            })
+        );
 
-            if (window.TimelessSiteMeta) {
-                window.TimelessSiteMeta.getSiteConfig().then((site) => {
-                    const pageUrl = `${site.origin.replace(/\/$/, "")}/detail.html?slug=${encodeURIComponent(item.slug)}&type=${type}`;
-                    const shareImage = detailImageSrc || site.ogImage;
-                    const shareDescription =
-                        window.TimelessSiteMeta.summarizeDescription(item.description) ||
-                        `${name}${brand ? ` by ${brand}` : ""}. ${site.tagline || site.description}`;
+        updateDetailMeta(item, detailImageSrc);
+        document.dispatchEvent(new CustomEvent("detail:rendered"));
+        window.scrollTo(0, 0);
+    }
 
-                    window.TimelessSiteMeta.setPageMeta({
-                        title: `${name} — ${site.name}`,
-                        description: shareDescription,
-                        url: pageUrl,
-                        image: window.TimelessSiteMeta.absoluteUrl(site.origin, shareImage),
-                        imageWidth: site.ogImageWidth,
-                        imageHeight: site.ogImageHeight,
-                        imageAlt: `${name}${brand ? ` by ${brand}` : ""}`,
-                        type: "article",
-                        siteName: site.name,
-                        twitterCard: site.twitterCard,
-                    });
-                });
+    function navigateToDetailItem(item, { replace = false } = {}) {
+        const url = `detail.html?slug=${encodeURIComponent(item.slug)}&type=${type}`;
+
+        if (replace) {
+            history.replaceState({ slug: item.slug, type }, "", url);
+        } else {
+            history.pushState({ slug: item.slug, type }, "", url);
+        }
+
+        renderDetailItem(item, navigableCollection, type, { skipHeroDevelop: true });
+    }
+
+    function renderDetailNotFound(title) {
+        currentDetailItem = null;
+        root.innerHTML = `<div class="detail-not-found"><h1 class="detail-title">${escapeHtml(title)}</h1><p class="detail-copy"><a href="index.html">Back to catalog</a></p></div>`;
+    }
+
+    function renderRelatedGrid(currentItem, collection, itemType) {
+        const relatedItems = getCategoryItems(collection, currentItem, itemType).filter(
+            (entry) => entry.slug !== currentItem.slug
+        );
+
+        if (relatedItems.length === 0) {
+            return "";
+        }
+
+        const cards = relatedItems.map((relatedItem) => renderRelatedCard(relatedItem, itemType)).join("");
+
+        return `
+            <section class="detail-related" aria-label="More in this category">
+                <div class="catalog-grid catalog-grid--detail">${cards}</div>
+            </section>
+        `;
+    }
+
+    Promise.all([
+        fetch("data/objects.json").then((response) => response.json()),
+        fetch("data/creators.json").then((response) => response.json()),
+    ])
+        .then(([objects, creators]) => {
+            const collection = type === "creator" ? creators : objects;
+            navigableCollection = collection;
+            const item = collection.find((entry) => entry.slug === slug && entry.published !== false);
+
+            if (!item) {
+                renderDetailNotFound("Not found");
+                document.title = "Not found — Timeless Objects";
+                return;
             }
 
-            document.dispatchEvent(new CustomEvent("detail:rendered"));
-            bindDetailKeyboardNav(collection, item, type);
-            window.scrollTo(0, 0);
+            history.replaceState({ slug: item.slug, type }, "", window.location.href);
+            renderDetailItem(item, collection, type);
+            bindDetailKeyboardNav();
         })
         .catch(() => {
-            root.innerHTML = `<div class="detail-not-found"><h1 class="detail-title">Error</h1><p class="detail-copy"><a href="index.html">Back to catalog</a></p></div>`;
+            renderDetailNotFound("Error");
         });
+
+    window.addEventListener("popstate", () => {
+        if (!navigableCollection.length) {
+            return;
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const nextSlug = params.get("slug");
+        const nextType = params.get("type") === "creator" ? "creator" : "object";
+
+        if (nextType !== type || !nextSlug) {
+            return;
+        }
+
+        const item = navigableCollection.find((entry) => entry.slug === nextSlug && entry.published !== false);
+        if (!item) {
+            renderDetailNotFound("Not found");
+            document.title = "Not found — Timeless Objects";
+            return;
+        }
+
+        renderDetailItem(item, navigableCollection, type, { skipHeroDevelop: true });
+    });
 })();
