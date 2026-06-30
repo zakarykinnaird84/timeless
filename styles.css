@@ -1126,7 +1126,7 @@ html.compact-top .title-row {
     width: 100%;
     padding: var(--catalog-padding);
     padding-bottom: calc(var(--screen-bottom-padding) + env(safe-area-inset-bottom, 0px));
-    background: #000000;
+    background: var(--placeholder);
     box-sizing: border-box;
 }
 
@@ -1137,7 +1137,7 @@ html.compact-top .title-row {
     font-size: clamp(28px, 4.5vw, 56px);
     font-weight: 400;
     line-height: 1;
-    color: var(--night);
+    color: var(--text-primary);
     text-align: right;
     opacity: 0;
 }
@@ -1154,7 +1154,7 @@ html.compact-top .title-row {
 
 .site-footer__credit-link:hover,
 .site-footer__credit-link:focus-visible {
-    color: var(--background);
+    color: var(--text-dimmed);
 }
 
 .site-footer__credit-icon {
