@@ -27,8 +27,9 @@
     "name": "OnTrac",
     "brand": "Dyson",
     "category": "audio",
-    "externalUrl": "https://www.dyson.com",
+    "externalUrl": "https://www.dyson.com/headphones/ontrac/cnc-copper",
     "availability": "buyable",
+    "description": "When I first tried these I was wearing the Apple AirPods Max and could not make out much of a difference, but that was fleeting, in public and only for a few minutes.\n\nI had to try them at home. They are as heavy as people say, but they are warm, solid and last for hours. When you put them on your music instantly plays. The beeps and bops from the product to say it's connected are far too loud.\n\nThe bold design is unmatched. Much like the vacuum cleaners, it seems no other designers are as bold as Dyson, and in a world full of black and white devices, the OnTrac headphones feel like something from the future.",
     "listingImage": "images/objects/ontac.webp",
     "detailImage": "images/objects/ontac-detail.webp"
   },
@@ -37,8 +38,9 @@
     "name": "AirPods",
     "brand": "Apple",
     "category": "audio",
-    "externalUrl": "https://www.apple.com/airpods/",
-    "availability": "buyable",
+    "externalUrl": "https://www.apple.com/nz/airpods/",
+    "availability": "archival",
+    "description": "You can't buy the originals any more. They are not as technically proficient as the latest models, but what they lack in quality they make up for in style.\n\nThe case itself is perfectly proportioned, made from what seems like Lego-block plastic. They fit perfectly in your hand and fall open with a subtle magnet. They don't fall out as another magnet holds them in place. It's almost like magic.\n\nIn the ear they look iconic, futuristic and modern. No other earphone, including Apple's, has come close to the beauty of the original design.",
     "listingImage": "images/objects/airpods.webp",
     "detailImage": "images/objects/airpods-detail.webp"
   },
