@@ -15,31 +15,34 @@
     let heroIndex = 0;
     let keyboardNavBound = false;
 
-    const NEW_COLLECTION_ORDER = [
-        "de-la-warr-pavilion-chair",
-        "up-5",
-        "panton-chair",
-        "chair-one-magis",
-        "blockitecture-frank-lloyd-wright",
-        "airpods",
-        "dyson-ontrac",
-        "nothing-headphones",
-        "cp2-instant-disk-audio",
-    ];
-
-    const CURATED_COLLECTION_ORDER = [
-        "chair-one-magis",
-        "de-la-warr-pavilion-chair",
-        "blockitecture-frank-lloyd-wright",
-    ];
-
-    function sortBySlugOrder(items, order) {
-        const rank = new Map(order.map((slug, index) => [slug, index]));
-
+    function sortByPublishedAt(items) {
         return [...items].sort((a, b) => {
-            const aRank = rank.has(a.slug) ? rank.get(a.slug) : Number.MAX_SAFE_INTEGER;
-            const bRank = rank.has(b.slug) ? rank.get(b.slug) : Number.MAX_SAFE_INTEGER;
-            return aRank - bRank;
+            const aDate = a.publishedAt || "";
+            const bDate = b.publishedAt || "";
+            const dateCompare = bDate.localeCompare(aDate);
+            if (dateCompare !== 0) {
+                return dateCompare;
+            }
+            return a.name.localeCompare(b.name);
+        });
+    }
+
+    function sortByCuratedOrder(items) {
+        return [...items].sort((a, b) => {
+            const aOrder = a.curatedOrder ?? Number.MAX_SAFE_INTEGER;
+            const bOrder = b.curatedOrder ?? Number.MAX_SAFE_INTEGER;
+            if (aOrder !== bOrder) {
+                return aOrder - bOrder;
+            }
+
+            const aDate = a.publishedAt || "";
+            const bDate = b.publishedAt || "";
+            const dateCompare = bDate.localeCompare(aDate);
+            if (dateCompare !== 0) {
+                return dateCompare;
+            }
+
+            return a.name.localeCompare(b.name);
         });
     }
 
@@ -70,9 +73,9 @@
         if (currentView === "objects") {
             if (activeCollection === "curated") {
                 items = items.filter((item) => item.curated);
-                items = sortBySlugOrder(items, CURATED_COLLECTION_ORDER);
+                items = sortByCuratedOrder(items);
             } else if (activeCollection === "new") {
-                items = sortBySlugOrder(items, NEW_COLLECTION_ORDER);
+                items = sortByPublishedAt(items);
             }
 
             if (activeCategory !== "all") {

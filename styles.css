@@ -1948,6 +1948,24 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     color: inherit;
 }
 
+.detail-meta {
+    font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: clamp(14px, 1.6vw, 16px);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text-dimmed);
+    margin: 1.25em 0 0;
+}
+
+.detail-image-credit {
+    font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: clamp(12px, 1.4vw, 14px);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--text-muted);
+    margin: 12px 0 0;
+}
+
 .detail-copy {
     font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
     font-size: var(--detail-copy-size);

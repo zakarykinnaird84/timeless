@@ -24,33 +24,42 @@
     }
     window.scrollTo(0, 0);
 
-    const DETAIL_IMAGE_DIMENSIONS = {
-        "images/objects/cp2_detail.webp": [1500, 1500],
-        "images/objects/nothing-headphones-detail.webp": [4096, 2305],
-        "images/objects/ontac-detail.webp": [2321, 2364],
-        "images/objects/airpods-detail.webp": [4096, 2730],
-        "images/objects/blockitecture_frank_lloyd_wright_detail.webp": [1512, 1512],
-        "images/objects/chair_one-magis-detail.webp": [1728, 939],
-        "images/objects/panton-chair-vitra-detail.webp": [1600, 1083],
-        "images/objects/up-5-detail.webp": [1600, 1600],
-        "images/objects/de-la-warr-pavilion-chair-detail.webp": [1600, 1781],
-    };
-
     function getDetailImage(item) {
         return item.detailImage || item.listingImage || item.image || null;
     }
 
-    function getDetailImageDimensions(src) {
-        if (!src) {
-            return [1, 1];
-        }
-
-        return DETAIL_IMAGE_DIMENSIONS[src] || [1, 1];
+    function renderDetailHeroImage(src, name) {
+        return `<img class="hero-image detail-hero__image" src="${escapeHtml(src)}" alt="${escapeHtml(name)}">`;
     }
 
-    function renderDetailHeroImage(src, name) {
-        const [width, height] = getDetailImageDimensions(src);
-        return `<img class="hero-image detail-hero__image" src="${escapeHtml(src)}" alt="${escapeHtml(name)}" width="${width}" height="${height}">`;
+    function renderObjectMeta(item) {
+        const parts = [];
+
+        if (item.designer) {
+            parts.push(escapeHtml(item.designer));
+        }
+
+        if (item.year) {
+            parts.push(escapeHtml(String(item.year)));
+        }
+
+        if (parts.length === 0) {
+            return "";
+        }
+
+        return `<p class="detail-meta">${parts.join(" · ")}</p>`;
+    }
+
+    function renderImageCredits(item) {
+        const credits = [item.imageCreditDetail, item.imageCreditListing].filter(Boolean);
+        const uniqueCredits = [...new Set(credits)];
+
+        if (uniqueCredits.length === 0) {
+            return "";
+        }
+
+        const creditText = uniqueCredits.map((credit) => escapeHtml(credit)).join(" · ");
+        return `<p class="detail-image-credit">Image: ${creditText}</p>`;
     }
 
     function escapeHtml(value) {
@@ -249,6 +258,9 @@
                   .join("")
             : `<p class="detail-copy detail-copy--empty">No description yet.</p>`;
 
+        const objectMeta = renderObjectMeta(item);
+        const imageCredits = renderImageCredits(item);
+
         const relatedGrid = renderRelatedGrid(item, collection, itemType);
         const heroMediaClass = skipHeroDevelop
             ? "detail-hero__media hero-media is-developed"
@@ -285,12 +297,14 @@
                     </header>
                     <div class="detail-hero">
                         ${heroMarkup}
+                        ${imageCredits}
                     </div>
                     <div class="detail-content">
                         <h2 class="detail-about__heading">About</h2>
                         ${brandAside}
                         <div class="detail-about__body">
                             ${description}
+                            ${objectMeta}
                         </div>
                         ${brandMobileFooter}
                     </div>

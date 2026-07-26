@@ -9,7 +9,8 @@
     "featured": true,
     "description": "CP1の思想を引き継いだ、KM5の一体型コンパクトCDプレーヤー。スピーカーまで内蔵しているのに、厚さはわずか27mm。\n\n本のように薄く、軽い。手に取ると、CDプレーヤーというより、ジャケットアートを持ち運ぶための器に感じる。部屋を移動しながら、選んだ一枚をそのまま鳴らせる——その軽さが、いちばんしっくりくる。\n\n内蔵スピーカーは、薄型の筐体とは思えない。低音から高音まで、派手さはないが素直に鳴る。Bluetoothでワイヤレスイヤフォンやスピーカーにも飛ばせる。CDの聴き方は、思ったよりいくつもある。\n\n専用のアルミスタンドに載せれば、棚の上のオブジェになる。壁掛けアクセサリーを付ければ、フォトフレームのように壁に浮かぶ。音楽を再生する機械でありながら、部屋の中で静かに佇む家具でもある。\n\nストリーミングが当たり前のいま、CDを「持ち運べるもの」として設計し直した——そう感じる。物理的な音楽を、もっと手軽に日常へ取り戻すための、新しい形だ。",
     "listingImage": "images/objects/cp2.webp",
-    "detailImage": "images/objects/cp2_detail.webp"
+    "detailImage": "images/objects/cp2_detail.webp",
+    "publishedAt": "2026-07-10"
   },
   {
     "slug": "nothing-headphones",
@@ -20,7 +21,8 @@
     "availability": "buyable",
     "description": "The Nothing phone is hailed for its instant retro look, and the headphones continue the trend.\n\nAlthough there are new models and cheaper alternatives, the originals have a style all of their own, with tactile controls and a stunning transparent casing.\n\nThe biggest pull for me is the 3.5mm jack, letting you wire these in, a feature missing from many contemporary headphones.\n\nThese headphones, perhaps even more than the Nothing phone, define a counter-culture of tech products, one that defies the trend to homogenise devices and technology so they no longer have a voice.",
     "listingImage": "images/objects/nothing-headphones.webp",
-    "detailImage": "images/objects/nothing-headphones-detail.webp"
+    "detailImage": "images/objects/nothing-headphones-detail.webp",
+    "publishedAt": "2026-07-12"
   },
   {
     "slug": "dyson-ontrac",
@@ -31,7 +33,8 @@
     "availability": "buyable",
     "description": "When I first tried these I was wearing the Apple AirPods Max and could not make out much of a difference, but that was fleeting, in public and only for a few minutes.\n\nI had to try them at home. They are as heavy as people say, but they are warm, solid and last for hours. When you put them on your music instantly plays. The beeps and bops from the product to say it's connected are far too loud.\n\nThe bold design is unmatched. Much like the vacuum cleaners, it seems no other designers are as bold as Dyson, and in a world full of black and white devices, the OnTrac headphones feel like something from the future.",
     "listingImage": "images/objects/ontac.webp",
-    "detailImage": "images/objects/ontac-detail.webp"
+    "detailImage": "images/objects/ontac-detail.webp",
+    "publishedAt": "2026-07-14"
   },
   {
     "slug": "airpods",
@@ -42,7 +45,8 @@
     "availability": "archival",
     "description": "You can't buy the originals any more. They are not as technically proficient as the latest models, but what they lack in quality they make up for in style.\n\nThe case itself is perfectly proportioned, made from what seems like Lego-block plastic. They fit perfectly in your hand and fall open with a subtle magnet. They don't fall out as another magnet holds them in place. It's almost like magic.\n\nIn the ear they look iconic, futuristic and modern. No other earphone, including Apple's, has come close to the beauty of the original design.",
     "listingImage": "images/objects/airpods.webp",
-    "detailImage": "images/objects/airpods-detail.webp"
+    "detailImage": "images/objects/airpods-detail.webp",
+    "publishedAt": "2026-07-16"
   },
   {
     "slug": "ipod",
@@ -307,7 +311,10 @@
     "availability": "buyable",
     "description": "From boardrooms to dining tables, the Panton chair is a classic.\n\nIt never really worked for the longest time, as the material science was a little behind the vision. The chair famously broke many times before the prototype was ready, but the end result seemed to defy gravity.\n\nThis is one I've sat in many times. The cool plastic and the slight spring make it magic to sit in.\n\nIt instantly brightens up a room, gives it a cool vibe so common in the '60s. This is a piece that, although stylistic, can sit in any situation and own the space.",
     "listingImage": "images/objects/panton-chair-vitra.webp",
-    "detailImage": "images/objects/panton-chair-vitra-detail.webp"
+    "detailImage": "images/objects/panton-chair-vitra-detail.webp",
+    "publishedAt": "2026-07-22",
+    "designer": "Verner Panton",
+    "year": 1960
   },
   {
     "slug": "eames-lounge",
@@ -342,7 +349,11 @@
     "curated": true,
     "description": "Designed by Konstantin Grcic, the first time you see this chair you realise its beauty and Grcic's deep sense of bluntness.\n\nThe chair comes in two configurations, with four legs or a single pedestal, which is surely a touch of genius when it comes to material and form.\n\nGrcic is famous for modelling his pieces with cardboard, and this is a perfect example. It has no curves; rather, facets make up its form, each a cut piece of cardboard taped together and ultimately rendered in cast aluminium.\n\nCreating a new form is harder than it looks. Most recoil from new forms in disgust; some will likely react this way to this chair, but most will see its innate naive brutality.",
     "listingImage": "images/objects/chair_one-magis.webp",
-    "detailImage": "images/objects/chair_one-magis-detail.webp"
+    "detailImage": "images/objects/chair_one-magis-detail.webp",
+    "publishedAt": "2026-07-20",
+    "designer": "Konstantin Grcic",
+    "year": 2004,
+    "curatedOrder": 1
   },
   {
     "slug": "up-5",
@@ -353,7 +364,10 @@
     "availability": "buyable",
     "description": "Gaetano Pesce's Up 5 looks like it was inflated rather than built. A swollen, anthropomorphic armchair that seems to hold the room the moment it arrives.\n\nDesigned in 1969, it was shipped vacuum-compressed to a fraction of its size. A practical trick that only added to the drama when the foam expanded into its final form. The chair and its tethered Up 6 ottoman ball read as one piece: womb-like, playful, and unmistakably of their moment.\n\nIt is not subtle furniture. The silhouette is bold enough to feel almost confrontational, yet the deep seat and generous curves make it surprisingly comfortable once you sit down.\n\nFew objects from the late '60s still feel this alive. Up 5 is less a chair than a statement about softness, femininity, and the idea that domestic design could be provocative as well as useful.",
     "listingImage": "images/objects/up-5.webp",
-    "detailImage": "images/objects/up-5-detail.webp"
+    "detailImage": "images/objects/up-5-detail.webp",
+    "publishedAt": "2026-07-24",
+    "designer": "Gaetano Pesce",
+    "year": 1969
   },
   {
     "slug": "de-la-warr-pavilion-chair",
@@ -365,7 +379,11 @@
     "curated": true,
     "description": "It is easy to forget that many classic design works were meant for a specific building. This is a rare, more modern example of a chair designed for a particular project.\n\nDesigned by Barber Osgerby, this piece came at a time when they were not well known. In fact, it may have been the first time I saw their work. What makes it special is the connection to the De La Warr Pavilion itself. It appears to come straight out of the 1930s, but with the sophistication of 2005.\n\nDesigning a chair for an art gallery, let alone a building, must be a dream commission for a designer. Form follows function here: perforated holes let water and wind pass through, given its outdoor use.\n\nThe orange-red finish references Alvar Aalto's original chairs for the building, a subtle but lovely note.",
     "listingImage": "images/objects/de-la-warr-pavilion-chair.webp",
-    "detailImage": "images/objects/de-la-warr-pavilion-chair-detail.webp"
+    "detailImage": "images/objects/de-la-warr-pavilion-chair-detail.webp",
+    "publishedAt": "2026-07-26",
+    "designer": "Barber Osgerby",
+    "year": 2005,
+    "curatedOrder": 2
   },
   {
     "slug": "xbox-original",
@@ -432,7 +450,9 @@
     "curated": true,
     "description": "Wooden architectural blocks inspired by Frank Lloyd Wright. Stack, arrange, and build miniature modernist forms.",
     "listingImage": "images/objects/blockitecture_frank_lloyd_wright.webp",
-    "detailImage": "images/objects/blockitecture_frank_lloyd_wright_detail.webp"
+    "detailImage": "images/objects/blockitecture_frank_lloyd_wright_detail.webp",
+    "publishedAt": "2026-07-18",
+    "curatedOrder": 3
   },
   {
     "slug": "yeezy-500",
