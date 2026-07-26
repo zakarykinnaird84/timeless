@@ -2085,6 +2085,17 @@ html.nav-intro-seen .page--about-timeless .top-screen:has(.hero-media.is-develop
     margin-bottom: 0;
 }
 
+.page--about-timeless .legal--timeless {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 var(--catalog-padding) var(--catalog-padding);
+}
+
+.page--about-timeless .title-row__intro .legal-meta {
+    margin-top: 16px;
+}
+
 .about-timeless .story-line {
     font-size: clamp(28px, 4.5vw, 56px);
 }
