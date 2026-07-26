@@ -1954,7 +1954,9 @@ html.nav-intro-seen .page--catalog .object-screen--featured .object-nav {
     font-weight: 500;
     line-height: 1.4;
     color: var(--text-dimmed);
-    margin: 1.25em 0 0;
+    margin: 3em 0 0;
+    padding-top: 0.9em;
+    padding-bottom: 1em;
 }
 
 .detail-image-credit {
